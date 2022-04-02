@@ -273,6 +273,7 @@ button {
 }
 
 .pagination__button[disabled]:hover {
+  border-color: var(--color-dark-s);
   background-color: transparent;
   cursor: auto;
 }
