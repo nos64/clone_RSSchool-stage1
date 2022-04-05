@@ -144,13 +144,21 @@ body {
   transform: scaleX(0);
 }
 
-.navigation__link:hover::before {
+.navigation__link:hover {
   color: var(--color-dark-3xl);
+}
+
+.navigation__link:hover::before {
+  /* color: var(--color-dark-3xl); */
   transform: scaleX(1);
 }
 
-.navigation__link-active::before {
+.navigation__link-active,
+.navigation__link-active:hover {
   color: var(--color-dark-3xl);
+}
+
+.navigation__link-active::before {
   transform: scaleX(1);
 }
 
@@ -280,7 +288,7 @@ body {
 
 .footer {
   background-image: url('../../assets/images/noise_transparent@2x.png'),
-  linear-gradient(#513D2F, #1A1A1C);
+  radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
 }
 
 .footer__container {
