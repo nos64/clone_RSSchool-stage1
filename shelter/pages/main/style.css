@@ -9,15 +9,16 @@
 }
 
 :root {
-  --color-dark-m: #B2B2B2;
-  --color-dark-3xl: #292929;
-  --color-dark-l: #545454;
-  --color-dark-s: #CDCDCD;
+  --color-light-s: #FAFAFA;
   --color-light-l: #F6F6F6;
   --color-light-xl: #FFFFFF;
-  --color-light-s: #FAFAFA;
   --color-primary: #F1CDB3;
   --color-primary-light: #FDDCC4;
+  --color-dark-s: #CDCDCD;
+  --color-dark-m: #B2B2B2;
+  --color-dark-l: #545454;
+  --color-dark-xl: #4C4C4C;
+  --color-dark-3xl: #292929;
 }
 
 html {
@@ -164,10 +165,6 @@ body {
   transform: scaleX(0);
 }
 
-.navigation__link:hover::before {
-  transform: scaleX(1);
-}
-
 .navigation__link-active,
 .navigation__link-active:hover {
   color: var(--color-light-s);
@@ -182,10 +179,6 @@ body {
   radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
 }
 
-.not-only__container {
-
-}
-
 .not-only {
   display: flex;
   padding-top: 180px;
@@ -195,14 +188,13 @@ body {
   padding-right: 42px;
 }
 
-.not-only__title {
+.not-only__title { 
   padding: 163px 0px 42px;
   width: 310px;
   font-family: 'Georgia';
   font-weight: 400;
   font-size: 44px;
   line-height: 130%;
-  /* letter-spacing: 2.1px; */
   color: var(--color-light-xl);
 }
 
@@ -225,7 +217,6 @@ body {
   line-height: 130%;
   letter-spacing: 1.02px;
   color: var(--color-dark-3xl);
-  /* border: 2px solid var(--color-primary); */
   border-radius: 100px;
   background-color: var(--color-primary);
   transition: all .3s ease-in-out;
@@ -308,10 +299,12 @@ body {
   flex-direction: column;
   align-items: center;
   border-radius: 9px;
+  transition: all .3s ease-in-out;
 }
 
 .pets-list__item:hover {
   cursor:pointer;
+  background-color: var(--color-light-xl);
 }
 
 .pets-list__image {
@@ -584,6 +577,7 @@ body {
 
 .locations__link {
   margin-bottom: 31px;
+  transition: all .3s ease-in-out;
 }
 
 .contacts__icon {
@@ -597,6 +591,16 @@ body {
   line-height: 115%;
   letter-spacing: 1.2px;
   color: var(--color-primary);
+  transition: all .3s ease-in-out;
+}
+
+.pets-list__item:hover .pets-list__button
+
+
+.contacts__link-text:hover .contacts__icon {
+  color: var(--color-primary-light);
+  fill: var(--color-primary-light);
+  stroke: var(--color-primary-light);
 }
 
 .footer__image {
