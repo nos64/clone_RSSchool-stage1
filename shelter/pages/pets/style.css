@@ -9,15 +9,16 @@
 }
 
 :root {
-  --color-dark-m: #B2B2B2;
-  --color-dark-3xl: #292929;
-  --color-dark-l: #545454;
-  --color-dark-s: #CDCDCD;
+  --color-light-s: #FAFAFA;
   --color-light-l: #F6F6F6;
   --color-light-xl: #FFFFFF;
-  --color-light-s: #FAFAFA;
   --color-primary: #F1CDB3;
   --color-primary-light: #FDDCC4;
+  --color-dark-s: #CDCDCD;
+  --color-dark-m: #B2B2B2;
+  --color-dark-l: #545454;
+  --color-dark-xl: #4C4C4C;
+  --color-dark-3xl: #292929;
 }
 
 html {
@@ -104,6 +105,11 @@ body {
   padding-top: 30px;
   padding-bottom: 10px;
   text-align: center;
+  transition: color .3s ease-in-out;
+}
+
+.header__logo-title:hover {
+  color: var(--color-dark-3xl);
 }
 
 .header__logo-subtitle {
@@ -149,13 +155,9 @@ body {
   color: var(--color-dark-3xl);
 }
 
-.navigation__link:hover::before {
-  transform: scaleX(1);
-}
-
 .navigation__link-active,
 .navigation__link-active:hover {
-  color: var(--color-dark-3xl);
+  color: var(--color-dark-l);
 }
 
 .navigation__link-active::before {
@@ -199,10 +201,12 @@ body {
   flex-direction: column;
   align-items: center;
   border-radius: 9px;
+  transition: all .3s ease-in-out;
 }
 
 .pets__item:hover {
   cursor:pointer;
+  background-color: var(--color-light-xl);
 }
 
 .pets__image {
