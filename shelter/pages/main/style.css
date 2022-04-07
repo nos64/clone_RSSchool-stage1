@@ -509,6 +509,11 @@ body {
   background-color: var(--color-primary);
   border-radius: 9px;
   margin-bottom: 20px;
+  transition: background-color .3s ease-in-out;
+}
+
+.in-addition__bank-card:hover {
+  background-color: var(--color-primary-light);
 }
 
 .bank-card__image {
@@ -573,11 +578,11 @@ body {
   display: flex;
   align-items:center;
   margin-bottom: 41px;
+  transition: all .3s ease-in-out;
 }
 
 .locations__link {
   margin-bottom: 31px;
-  transition: all .3s ease-in-out;
 }
 
 .contacts__icon {
@@ -594,12 +599,11 @@ body {
   transition: all .3s ease-in-out;
 }
 
-.pets-list__item:hover .pets-list__button
-
-
-.contacts__link-text:hover .contacts__icon {
+.contacts__link-text:hover {
   color: var(--color-primary-light);
-  fill: var(--color-primary-light);
+}
+
+.contacts__link:hover .contacts__icon {
   stroke: var(--color-primary-light);
 }
 

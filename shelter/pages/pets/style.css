@@ -292,7 +292,7 @@ body {
 
 .footer {
   background-image: url('../../assets/images/noise_transparent@2x.png'),
-  radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);
+  linear-gradient(#513D2F, #1A1A1C);
 }
 
 .footer__container {
@@ -327,6 +327,7 @@ body {
   display: flex;
   align-items:center;
   margin-bottom: 41px;
+  transition: all .3s ease-in-out;
 }
 
 .locations__link {
@@ -335,6 +336,7 @@ body {
 
 .contacts__icon {
   margin-right: 20px;
+  transition: all .3s ease-in-out;
 }
 
 .contacts__link-text {
@@ -344,6 +346,15 @@ body {
   line-height: 115%;
   letter-spacing: 1.2px;
   color: var(--color-primary);
+  transition: all .3s ease-in-out;
+}
+
+.contacts__link-text:hover {
+  color: var(--color-primary-light);
+}
+
+.contacts__link:hover .contacts__icon {
+  stroke: var(--color-primary-light);
 }
 
 .footer__image {
