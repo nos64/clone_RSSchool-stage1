@@ -72,13 +72,8 @@ body {
   justify-content: space-between;
 }
 
-.header {
-
-}
-
 .header__container {
   position:relative;
-
 }
 
 .container {
@@ -113,6 +108,7 @@ body {
   padding-top: 60px;
   padding-bottom: 10px;
   text-align: center;
+  transition: color .3s ease-in-out;
 }
 
 .header__logo-subtitle {
@@ -124,6 +120,15 @@ body {
   color: var(--color-light-xl);
   padding-bottom: 60px;
   text-align: center;
+  transition: color .3s ease-in-out;
+}
+
+.header__logo:hover .header__logo-title {
+  color: var(--color-primary-light);
+}
+
+.header__logo:hover .header__logo-subtitle {
+  color: var(--color-light-l);
 }
 
 .navigation__list {
@@ -304,7 +309,7 @@ body {
   border-radius: 9px;
 }
 
-.pets__item:hover {
+.pets-list__item:hover {
   cursor:pointer;
 }
 
