@@ -290,6 +290,12 @@ body {
   cursor: auto;
 }
 
+.pagination__num:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  cursor: auto;
+}
+
 .footer {
   background-image: url('../../assets/images/noise_transparent@2x.png'),
   linear-gradient(#513D2F, #1A1A1C);
