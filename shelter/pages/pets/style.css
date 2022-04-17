@@ -509,7 +509,7 @@ body {
     height: 100vh;
     gap: 40px;
     padding-top: 248px;
-    background-color: var(--color-dark-3xl);
+    background-color: var(--color-dark-m);
     transition: all .3s ease-in-out;
   }
 
