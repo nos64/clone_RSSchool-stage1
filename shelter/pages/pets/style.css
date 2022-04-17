@@ -423,6 +423,118 @@ body {
 }
 
 
+.page__overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+  bottom: 0;
+  background-color: rgba(41, 41, 41, 0.6);
+  overflow: auto;
+  padding: 15px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 999;
+}
+
+.page__overlay_modal {
+  display: none;
+
+}
+
+.page__overlay_modal_open {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  background-color: var(--color-light-s);
+  border-radius: 9px;
+  margin: auto;
+	z-index: 999;
+  width: 900px;
+  height: 500px;
+}
+
+.modal__close {
+  position: absolute;
+	top: -45px;
+	right: -45px;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color .3s ease-in-out;
+}
+
+.modal__close:hover {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary-light);
+}
+
+.modal__image {
+  border-radius: 9px;
+}
+
+.modal__text-wapper {
+  padding: 50px 20px 89px 30px;
+}
+
+.modal__text-name {
+  padding-bottom: 10px;
+  font-family: 'Georgia';
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+}
+
+.modal__text-type {
+  padding-bottom: 40px;
+  font-family: 'Georgia';
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+}
+
+.modal__text-story {
+  padding-bottom: 40px;
+  font-family: 'Georgia';
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+}
+
+.modal__text-list {
+  display: grid;
+  gap: 11px;
+  color: var(--color-primary);
+}
+
+.text-item__text {
+  color: #000;
+}
+
+.modal__text-item {
+  list-style:disc;
+}
+
+
 @media (max-width: 1279px) {
   .container {
     padding: 0 30px;
