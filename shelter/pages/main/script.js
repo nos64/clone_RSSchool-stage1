@@ -15,3 +15,4 @@ const closeMenu = () => {
 navigation.addEventListener('click', e => {
   if (e.target.classList.contains('navigation__link')) closeMenu()
 });
+
