@@ -50,12 +50,12 @@ const hideModal = (elem, param) => {
 
 petsList.addEventListener('click', e => {
   if (e.target.classList.contains('pets__button')) {
-    pageOverlayModal.style.display = 'block';
+    pageOverlayModal.classList.add('page__overlay_modal_open');
     showModal(modal, 0.03)
   }
 });
 
 modalClose.addEventListener('click', () => {
   hideModal(modal, 0.03)
-  pageOverlayModal.style.display = 'none';
+  pageOverlayModal.classList.remove('page__overlay_modal_open');
 })

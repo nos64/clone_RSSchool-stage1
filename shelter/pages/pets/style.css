@@ -522,6 +522,7 @@ body {
 
 .modal__text-list {
   display: grid;
+  margin-left: 20px;
   gap: 11px;
   color: var(--color-primary);
 }
@@ -556,8 +557,6 @@ body {
     margin-top: 0px; 
   }
   
- 
-
   .pets__item:nth-child(7),
   .pets__item:nth-child(8) {
     display: none;
@@ -593,8 +592,31 @@ body {
     margin-left: 0;
     padding-top: 20px;
   }
-}
 
+  .modal {
+    width: 630px;
+    height: 350px;
+  }
+  
+  .modal__text-wapper {
+    padding: 10px 9px 38px 10px;
+  }
+  
+  .modal__text-type {
+    padding-bottom: 20px;
+  }
+  
+  .modal__text-story {
+    padding-bottom: 20px;
+    font-size: 13px;
+  }
+  
+  .modal__text-list {
+    margin-left: 20px;
+    gap: 6px;
+  }
+  
+}
 
 @media (max-width: 767px) {
 
@@ -702,6 +724,39 @@ body {
     width: 260px;
     margin-left: 0;
     padding-top: 5px;
+  }
+
+  .modal {
+    width: 240px;
+    /* height: 341px; */
+  }
+
+  .modal__image {
+    display: none;
+  }
+  
+  .modal__text-wapper {
+    padding: 10px 10px 11px;
+  }
+  
+  .modal__text-name {
+    text-align: center;
+  }
+
+  .modal__text-type {
+    padding-bottom: 20px;
+    text-align: center;
+  }
+  
+  .modal__text-story {
+    padding-bottom: 24px;
+    font-size: 13px;
+    text-align: justify;
+  }
+  
+  .modal__text-list {
+    margin-left: 20px;
+    gap: 6px;
   }
 
 }
