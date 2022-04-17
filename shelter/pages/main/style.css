@@ -822,11 +822,10 @@ body {
     margin-left: 0;
     padding-top: 20px;
   }
-
 }
 
 @media (max-width: 767px) {
-
+  
   .container {
     padding: 0 7px;
     max-width: 320px;
@@ -865,7 +864,6 @@ body {
     font-size: 32px;
     line-height: 160%;
   }
-
 
   .not-only {
     display: flex;
@@ -1069,8 +1067,6 @@ body {
   .locations__title {
     padding-bottom: 37px;
   }
-  
- 
   
   .contacts__icon {
     margin-right: 20px;
