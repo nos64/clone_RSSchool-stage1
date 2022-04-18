@@ -1,6 +1,13 @@
-/**Burger-menu */
+
 const burger = document.querySelector('.burger');
 const navigation = document.querySelector('.navigation__list');
+
+const petsList = document.querySelector('.pets-list__list');
+const pageOverlayModal = document.querySelector('.page__overlay_modal');
+const modalClose = document.querySelector('.modal__close');
+const modal = document.querySelector('.modal');
+
+/**Burger-menu */
 
 burger.addEventListener('click', () => {
   burger.classList.toggle('burger_active');
@@ -18,11 +25,6 @@ navigation.addEventListener('click', e => {
 
 
 /**Modal-window */
-
-const petsList = document.querySelector('.pets-list__list');
-const pageOverlayModal = document.querySelector('.page__overlay_modal');
-const modalClose = document.querySelector('.modal__close');
-const modal = document.querySelector('.modal');
 
 const showModal = (elem, param) => {
   let opacity = 0;
