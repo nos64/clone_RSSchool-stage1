@@ -305,6 +305,10 @@ body {
   display: flex;
 }
 
+.footer-contacts__wrapper {
+  display: flex;
+}
+
 .footer-contacts:nth-child(1) {
   padding-top: 56px;
   margin-right: 138px;
@@ -342,7 +346,6 @@ body {
 
 .contacts__icon {
   margin-right: 20px;
-  transition: all .3s ease-in-out;
 }
 
 .contacts__link-text {
