@@ -675,7 +675,7 @@ body {
   bottom: 0;
   background-color: rgba(41, 41, 41, 0.6);
   overflow: auto;
-  padding: 15px;
+  padding: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -942,7 +942,7 @@ body {
   .burger {
     display: flex;
     flex-direction: column;
-    z-index: 999;
+    z-index: 1000;
   }
   
   .navigation__list {
@@ -966,6 +966,7 @@ body {
     flex-direction: column;
     right: 0;
     opacity: 1;
+    z-index: 1000;
   }
 
   .navigation__link {
