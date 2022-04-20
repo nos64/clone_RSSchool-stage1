@@ -59,3 +59,5 @@ modalClose.addEventListener('click', () => {
   hideModal(modal, 0.03)
   pageOverlayModal.classList.remove('page__overlay_modal_open');
 })
+
+
