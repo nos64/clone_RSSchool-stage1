@@ -298,7 +298,7 @@ body {
 
 .footer {
   background-image: url('../../assets/images/noise_transparent@2x.png'),
-  linear-gradient(#513D2F, #1A1A1C);
+  radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%);;
 }
 
 .footer__container {
