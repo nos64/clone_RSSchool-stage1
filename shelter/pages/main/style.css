@@ -668,20 +668,21 @@ body {
 }
 
 .page__overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
   background-color: rgba(41, 41, 41, 0.6);
   overflow: auto;
-  padding: 0;
+  padding: 15px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   z-index: 999;
+  cursor: pointer;
 }
 
 .page__overlay_modal {
@@ -705,7 +706,11 @@ body {
   margin-top: auto;
   background-color: var(--color-light-s);
   border-radius: 9px;
-	z-index: 999;
+	z-index: 1000;
+}
+
+.modal__container {
+  display: flex;
 }
 
 .modal__close {
@@ -724,10 +729,13 @@ body {
   transition: background-color .3s ease-in-out;
 }
 
+.page__overlay:hover .modal:not(:hover) .modal__close,
 .modal__close:hover {
   background-color: var(--color-primary-light);
   border-color: var(--color-primary-light);
 }
+
+
 
 .modal__image {
   border-radius: 9px;

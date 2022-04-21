@@ -4,16 +4,12 @@ const navigation = document.querySelector('.navigation__list');
 const wrapper = document.querySelector('.wrapper');
 
 const petsList = document.querySelector('.pets-list__list');
-const pageOverlayModal = document.querySelector('.page__overlay_modal');
-
-// const modal = document.querySelector('.modal');
-
-
+const petsListWrapper = document.querySelector('.pets-list');
 const screenWidth = screen.width;
-// const screenWidth = document.body.clientWidth * window.devicePixelRatio
-// console.log(document.body.clientHeight * window.devicePixelRatio)
+
 
 const disableScroll = () => {
+  const scrollY = document.body.style.top;
   const widthScroll = window.innerWidth - document.body.offsetWidth;
   document.body.scrollPosition = window.scrollY;
   document.documentElement.style.cssText = `
@@ -22,27 +18,20 @@ const disableScroll = () => {
   `;
 
   document.body.style.cssText = `
-overflow: hidden;
-position: fixed;
-top: -${document.body.scrollPosition}px;
-left: 0;
-height: 100vh;
-width: 100vw;
-padding-right: ${widthScroll}px;
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  overflow: hidden;
+  padding-right: ${widthScroll}px;
+  top:-${window.scrollY}px;
 `;
 };
 
 const enableScroll = () => {
-  console.log(1)
   document.documentElement.style.cssText = ``;
   document.body.style.cssText = `position: relative`;
   window.scroll({ top: document.body.scrollPosition });
-  
 };
-
-
-
-
 
 const showElem = (elem, param) => {
   let opacity = 0;
@@ -54,7 +43,7 @@ const showElem = (elem, param) => {
     elem.style.opacity = opacity;
     if (opacity < 1) requestAnimationFrame(animation);
   }
-  requestAnimationFrame(animation)
+  requestAnimationFrame(animation);
 };
 
 const hideElem = (elem, param) => {
@@ -63,7 +52,10 @@ const hideElem = (elem, param) => {
     opacity -= param;
     elem.style.opacity = opacity;
     if (opacity > 0) requestAnimationFrame(animation);
-    else elem.style.display = 'none';
+    else {
+      elem.style.display = 'none';
+      opacity = 0;
+    } 
   }
   requestAnimationFrame(animation);
 };
@@ -82,14 +74,16 @@ const closeMenu = () => {
   burger.classList.remove('burger_active');
   navigation.classList.remove('navigation__list-active');
   wrapper.classList.remove('page__overlay');
-  enableScroll()
+  enableScroll();
 };
 
 navigation.addEventListener('click', e => {
-  if (e.target.classList.contains('navigation__link')) closeMenu()
+  if (e.target.classList.contains('navigation__link')) closeMenu();
 });
 
-
+wrapper.addEventListener('click', () => {
+  closeMenu();
+});
 
 
 
@@ -136,7 +130,7 @@ const renderCard = data => {
     // petsList.append(li);
     li.append(img, h4, button);
 
-    cardsArray.push(li)
+    cardsArray.push(li);
   }
   return cardsArray;
 }
@@ -151,6 +145,15 @@ const showCard = (array) => {
     petsList.append(shuffleArray[i]);
   }
 }
+
+const paginationBtn = document.querySelector('.pets-list__pagination-button')
+
+petsListWrapper.addEventListener('click', e => {
+  if (e.target.classList.contains('pets-list__pagination-button')) {
+ 
+  }
+})
+
 
 
 /* <div class="page__overlay page__overlay_modal">
@@ -177,14 +180,17 @@ const showCard = (array) => {
 </div>
 </div> */
 
-
 const renderModal = (data) => {
   let modals = [];
-  const modal = document.createElement('div')
-  modal.className = 'modal';
+  const pageOverlayModal = document.createElement('div');
+  pageOverlayModal.classList.add('page__overlay')
+  pageOverlayModal.classList.add('page__overlay_modal')
+
   for (let i = 0; i < data.length; i++) {
-    modal.dataset.name = data[i].name
-    modal.innerHTML = `
+    pageOverlayModal.dataset.name = data[i].name
+    pageOverlayModal.innerHTML = `
+    <div class="modal">
+    <div class="modal__container">
       <img class="modal__image" src="${data[i].img}" alt="">
       <div class="modal__text-wapper">
         <h3 class="modal__text-name">${data[i].name}</h3>
@@ -205,10 +211,11 @@ const renderModal = (data) => {
           </svg>
       </button>
     </div>
+    </div>
     `;
 
-  pageOverlayModal.append(modal);
-    modals.push(modal);
+    document.body.append(pageOverlayModal);
+    modals.push(pageOverlayModal);
   }
   // console.log(modals)
 
@@ -216,10 +223,7 @@ const renderModal = (data) => {
 }
 
 
-
-
 // const renderModal = (data) => {
-
 //   const modalTextName = document.querySelector('.modal__text-name');
 //   const modalImage = document.querySelector('.modal__image');
 //   const modalType = document.querySelector('.type');
@@ -236,19 +240,14 @@ const renderModal = (data) => {
 //     modalDescription.textContent = data[i].description;
 //     modalAge.textContent = data[i].age;
 //     modalInoculations.textContent = data[i].inoculations;
-
+    
 //   }
+// return data;
 // }
 
-const showModal = popup => {
-  const openModal = document.createElement('div');
-  openModal.classList.add('page__overlay_modal_open');
-  // showElem(openModal);
-  document.body.append(openModal);
-}
 
 const modalClick = (modals) => {
-  // console.log(modals)
+  console.log(modals)
   let dataSet ='';
   // modals.forEach(modal => {
     // console.log(modal)
@@ -263,7 +262,7 @@ const modalClick = (modals) => {
           item.name === e.target.dataset.name
         } )
         console.log(popup)
-        showModal(popup)
+        // showModal(popup)
 
         // pageOverlayModal.classList.add('page__overlay_modal_open');
         // showElem(modal, 0.03);
@@ -281,22 +280,8 @@ const modalClick = (modals) => {
 
 
 
-// petsList.addEventListener('click', e => {
-//   if (e.target.closest('.pets-list__item')) {
-//     let dataSet = e.target.dataset.name;
-    
-//     // renderModal(dataSet)
-//     pageOverlayModal.classList.add('page__overlay_modal_open');
-//     showElem(modal, 0.03);
-//   }
-// });
 
-const modalClose = document.querySelector('.modal__close');
-/**Modal-window close */
-modalClose.addEventListener('click', () => {
-  hideElem(modal, 0.03)
-  pageOverlayModal.classList.remove('page__overlay_modal_open');
-});
+
 
 
 /**Start page */
@@ -311,3 +296,39 @@ modalClose.addEventListener('click', () => {
   }
 
   initPage();
+
+
+/**Modal-window */
+const pageOverlayModal = document.querySelector(".page__overlay_modal");
+const modalClose = document.querySelector('.modal__close');
+const modal = document.querySelector('.modal');
+
+const openModal = () => {
+  disableScroll();
+  showElem(pageOverlayModal, 0.03);
+  pageOverlayModal.classList.add('page__overlay_modal_open');
+};
+
+const closeModal = () => {
+  hideElem(pageOverlayModal, 0.05);
+  pageOverlayModal.classList.remove('page__overlay_modal_open');
+  enableScroll();
+};
+
+petsList.addEventListener('click', e => {
+if (e.target.closest('.pets-list__item')) {
+  let dataSet = e.target.dataset.name;
+  openModal();
+  pageOverlayModal.classList.add('page__overlay_modal_open');
+}
+});
+
+/**Modal-window close */
+// modalClose.addEventListener('click', () => {
+// enableScroll();
+// closeModal();
+// });
+
+// pageOverlayModal.addEventListener('click', closeModal);
+
+
