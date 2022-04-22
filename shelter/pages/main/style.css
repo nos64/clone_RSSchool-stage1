@@ -1201,7 +1201,7 @@ body {
 
   .modal {
     width: 240px;
-    /* height: 341px; */
+    height: 341px;
   }
 
   .modal__image {
