@@ -134,6 +134,15 @@ body {
   text-align: center;
 }
 
+.logo {
+  opacity: 1;
+  transition: opacity .5s ease-in-out;
+}
+
+.logo-invisible {
+  opacity: 0;
+}
+
 .navigation__list {
   display: flex;
   gap: 35px;
@@ -436,6 +445,10 @@ body {
   transform:  rotate(90deg);
 }
 
+.logo-nav {
+  display: none;
+}
+
 .page__overlay {
   position: fixed;
   top: 0;
@@ -639,7 +652,7 @@ body {
 
   .container {
     padding: 0 10px;
-    max-width: 320px;
+    min-width: 320px;
   }
 
   .burger {
@@ -659,9 +672,13 @@ body {
     width: 320px;
     height: 100vh;
     gap: 40px;
-    padding-top: 248px;
+    padding-top: 0;
     background-color: var(--color-dark-m);
     transition: all .3s ease-in-out;
+  }
+
+  .logo-nav {
+    margin-right: 100px;
   }
 
   .navigation__list-active {
@@ -676,7 +693,6 @@ body {
     font-size: 32px;
     line-height: 160%;
   }
-  
   
   .our-friends__title {
     padding: 42px 0;

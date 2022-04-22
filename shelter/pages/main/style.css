@@ -94,6 +94,15 @@ body {
   max-width: 1200px;
 }
 
+.logo {
+  opacity: 1;
+  transition: opacity .5s ease-in-out;
+}
+
+.logo-invisible {
+  opacity: 0;
+}
+
 .header__logo-title {
   font-family: 'Georgia';
   font-weight: 400;
@@ -132,6 +141,7 @@ body {
   display: flex;
   gap: 35px;
 }
+
 
 .navigation__link {
   font-family: 'Arial';
@@ -666,7 +676,10 @@ body {
 
 .burger_active {
   transform:  rotate(90deg);
+}
 
+.logo-nav {
+  display: none;
 }
 
 .page__overlay {
@@ -944,7 +957,7 @@ body {
   
   .container {
     padding: 0 7px;
-    max-width: 320px;
+    min-width: 320px;
   }
 
   .burger {
@@ -964,9 +977,13 @@ body {
     width: 320px;
     height: 100vh;
     gap: 40px;
-    padding-top: 248px;
+    padding-top: 0;
     background-color: var(--color-dark-3xl);
     transition: all .3s ease-in-out;
+  }
+
+  .logo-nav {
+    margin-right: 100px;
   }
 
   .navigation__list-active {
@@ -976,6 +993,7 @@ body {
     opacity: 1;
     z-index: 1000;
   }
+
 
   .navigation__link {
     font-size: 32px;
@@ -992,6 +1010,7 @@ body {
     font-size: 25px;
     letter-spacing: 0.06em;
     text-align: center;
+    margin: 0 auto;
     padding: 150px 30px 42px; 
   }
   
@@ -1043,6 +1062,8 @@ body {
   }
   
   .our-friends {
+    max-width: 320px;
+    margin: 0 auto;
     padding: 42px 0;
   }
   
