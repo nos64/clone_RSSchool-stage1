@@ -9,14 +9,18 @@ export const disableScroll = () => {
   `;
 
   document.body.style.cssText = `
+  overflow: hidden;
   position: fixed;
   left: 0;
   width: 100vw;
   overflow: hidden;
   padding-right: ${widthScroll}px;
   top:-${window.scrollY}px;
+
 `;
 };
+
+
 
 export const enableScroll = () => {
   

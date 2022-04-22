@@ -1,6 +1,6 @@
 export const disableScroll = () => {
 
-  const scrollY = document.body.style.top;
+  // const scrollY = document.body.style.top;
   const widthScroll = window.innerWidth - document.body.offsetWidth;
   document.body.scrollPosition = window.scrollY;
   document.documentElement.style.cssText = `
@@ -9,14 +9,16 @@ export const disableScroll = () => {
   `;
 
   document.body.style.cssText = `
-  position: fixed;
-  left: 0;
-  width: 100vw;
-  overflow: hidden;
-  padding-right: ${widthScroll}px;
- 
+overflow: hidden;
+position: fixed;
+left: 0;
+width: 100vw;
+padding-right: ${widthScroll}px;
 `;
 };
+//top:-${window.scrollY}px;
+
+
 
 export const enableScroll = () => {
   
