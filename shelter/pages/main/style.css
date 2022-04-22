@@ -983,7 +983,7 @@ body {
   }
 
   .logo-nav {
-    margin-right: 100px;
+    margin-right: 110px;
   }
 
   .navigation__list-active {
@@ -994,6 +994,10 @@ body {
     z-index: 1000;
   }
 
+  .navigation__item:nth-child(2) {
+    padding-top: 125px;
+    
+  }
 
   .navigation__link {
     font-size: 32px;
@@ -1222,7 +1226,7 @@ body {
 
   .modal {
     width: 240px;
-    height: 341px;
+    height: auto;
   }
 
   .modal__image {
@@ -1238,6 +1242,7 @@ body {
   }
 
   .modal__text-type {
+   
     padding-bottom: 20px;
     text-align: center;
   }
