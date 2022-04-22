@@ -78,7 +78,7 @@ body {
 .header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 5;
   background-color: var(--color-light-xl);
 }
 
@@ -93,7 +93,18 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* position: relative; */
 }
+
+/* .header__wrapper {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+} */
 
 .header__logo-title {
   font-family: 'Georgia';
@@ -425,12 +436,11 @@ body {
   transform:  rotate(90deg);
 }
 
-
 .page__overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
   background-color: rgba(41, 41, 41, 0.6);
   overflow: auto;
@@ -440,12 +450,12 @@ body {
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
-  z-index: 999;
+  z-index: 700;
+  cursor: pointer;
 }
 
 .page__overlay_modal {
   display: none;
-
 }
 
 .page__overlay_modal_open {
@@ -459,12 +469,17 @@ body {
 .modal {
   position: relative;
   display: flex;
-  background-color: var(--color-light-s);
-  border-radius: 9px;
-  margin: auto;
-	z-index: 999;
   width: 900px;
   height: 500px;
+  margin: auto;
+  margin-top: auto;
+  background-color: var(--color-light-s);
+  border-radius: 9px;
+	z-index: 1000;
+}
+
+.modal__container {
+  display: flex;
 }
 
 .modal__close {
@@ -483,6 +498,7 @@ body {
   transition: background-color .3s ease-in-out;
 }
 
+.page__overlay:hover .modal:not(:hover) .modal__close,
 .modal__close:hover {
   background-color: var(--color-primary-light);
   border-color: var(--color-primary-light);
@@ -538,7 +554,6 @@ body {
   list-style:disc;
 }
 
-
 @media (max-width: 1279px) {
   .container {
     padding: 0 30px;
@@ -546,7 +561,6 @@ body {
 
   .header__logo-title {
     padding-top: 30px;
-    
   }
   
   .our-friends__title {
@@ -631,7 +645,7 @@ body {
   .burger {
     display: flex;
     flex-direction: column;
-    z-index: 999;
+    z-index: 1000;
   }
   
   .navigation__list {
@@ -655,6 +669,7 @@ body {
     flex-direction: column;
     right: 0;
     opacity: 1;
+    z-index: 1000;
   }
 
   .navigation__link {

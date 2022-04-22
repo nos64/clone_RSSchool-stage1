@@ -18,8 +18,6 @@ const closeModal = () => {
 };
 
 
-
-
 const renderModal = modal => {
   const modalTextName = document.querySelector('.modal__text-name');
   const modalImage = document.querySelector('.modal__image');
@@ -44,7 +42,7 @@ const renderModal = modal => {
 
 export const getModal = data => {
   petsList.addEventListener('click', e => {
-    if (e.target.closest('.pets-list__item')) {
+    if (e.target.closest('.pets__item')) {
       const modal = data.find(item => item.name === e.target.dataset.name);
       renderModal(modal);
       openModal();
