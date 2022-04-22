@@ -20,7 +20,9 @@ burger.addEventListener('click', () => {
 });
 
 const closeMenu = () => {
-  header.style.position = 'sticky';
+  // header.style.position = 'sticky';
+  logo.classList.remove('logo-invisible');
+  logoNav.style.display = 'none';
   burger.classList.remove('burger_active');
   navigation.classList.remove('navigation__list-active');
   wrapper.classList.remove('page__overlay');

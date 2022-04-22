@@ -19,6 +19,8 @@ burger.addEventListener('click', () => {
 });
 
 const closeMenu = () => {
+  logo.classList.remove('logo-invisible');
+  logoNav.style.display = 'none';
   burger.classList.remove('burger_active');
   navigation.classList.remove('navigation__list-active');
   wrapper.classList.remove('page__overlay');
