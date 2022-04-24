@@ -293,11 +293,30 @@ body {
   align-items:center;
 }
 
+.pets-list__carousel {
+  display: flex;
+  overflow: hidden;
+  width: 1096px;
+}
+
 .pets-list__list {
+  display: flex;
+  /* gap: 90px; */
+  /* padding: 60px 53px; */
+  position: relative;
+  left: -1096px;
+}
+
+.pets-list__left,
+.pets-list__visible,
+.pets-list__right {
   display: flex;
   gap: 90px;
   padding: 60px 53px;
+  /* position: relative; */
+  left: -1080px;
 }
+
 
 .pets-list__item {
   background-color: var(--color-light-s);
@@ -306,6 +325,27 @@ body {
   align-items: center;
   border-radius: 9px;
   transition: all .3s ease-in-out;
+  min-width: 270px;
+}
+
+@keyframes move-left {
+  from {left: -1080px;}
+  to {left: -2190px;}
+}
+
+.transition-left {
+  animation-name: move-left;
+  animation-duration: 2s;
+}
+
+@keyframes move-right {
+  from {left: -1080px;}
+to {left: 0px;}
+}
+
+.transition-right {
+  animation-name: move-right;
+  animation-duration: 2s;
 }
 
 .pets-list__item:hover {
@@ -838,12 +878,10 @@ body {
     padding-right: 0px;
     margin-bottom: 100px;
   }
-
   
   .not-only__title { 
     padding: 150px 0px 42px; 
   }
-  
   
   .not-only__button {
     width: 207px;
@@ -870,11 +908,39 @@ body {
     padding-right: 0;
   }
   
+  .pets-list {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+
+  .pets-list__carousel {
+    width: 604px;
+  }
+
   .pets-list__list {
     gap: 40px;
     padding: 60px 0;
+    left: -610px; 
   }
   
+  .pets-list__left,
+  .pets-list__visible,
+  .pets-list__right {
+    gap: 40px;
+    padding: 60px 0;
+  }
+
+  @keyframes move-left {
+    from {left: -610px;}
+    to {left: -1230px;}
+  }
+  
+  @keyframes move-right {
+    from {left: -610px;}
+  to {left: 10px;}
+  }
+
+
   .pets-list__item {
     width: 270px;
     height: 435px;
@@ -1076,10 +1142,32 @@ body {
     justify-content: center;
   }
   
+
+  .pets-list__carousel {
+    width: 270px;
+  }
+
   .pets-list__list {
     padding: 42px 0 20px;
+    left: -310px;
   }
   
+  .pets-list__left,
+  .pets-list__visible,
+  .pets-list__right {
+  
+  }
+
+  @keyframes move-left {
+    from {left: -310px;}
+    to {left: -620px;}
+  }
+  
+  @keyframes move-right {
+    from {left: -310px;}
+  to {left: 0px;}
+  }
+
   .pets-list__item {
     width: 270px;
     height: 435px;
