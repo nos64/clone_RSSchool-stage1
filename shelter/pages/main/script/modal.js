@@ -18,8 +18,6 @@ const closeModal = () => {
 };
 
 
-
-
 const renderModal = modal => {
   const modalTextName = document.querySelector('.modal__text-name');
   const modalImage = document.querySelector('.modal__image');
