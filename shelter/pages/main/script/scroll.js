@@ -16,14 +16,10 @@ export const disableScroll = () => {
   overflow: hidden;
   padding-right: ${widthScroll}px;
   top:-${window.scrollY}px;
-
-`;
+  `;
 };
 
-
-
 export const enableScroll = () => {
-  
   document.documentElement.style.cssText = ``;
   document.body.style.cssText = `position: relative`;
   window.scroll({ top: document.body.scrollPosition });
