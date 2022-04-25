@@ -7,7 +7,6 @@ const logo = document.querySelector('.logo');
 const logoNav = document.querySelector('.logo-nav');
 
 burger.addEventListener('click', () => {
-  // logo.classList.toggle('logo-invisible');
   logoNav.style.display = 'block';
   burger.classList.toggle('burger_active');
   navigation.classList.toggle('navigation__list-active');
@@ -19,8 +18,6 @@ burger.addEventListener('click', () => {
 });
 
 const closeMenu = () => {
-  // header.style.position = 'sticky';
-  // logo.classList.remove('logo-invisible');
   logoNav.style.display = 'none';
   burger.classList.remove('burger_active');
   navigation.classList.remove('navigation__list-active');

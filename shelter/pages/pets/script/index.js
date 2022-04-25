@@ -4,16 +4,15 @@ import './modal.js';
 import './cards.js';
 import getData  from './getData.js';
 import {getModal} from './modal.js';
-import {renderCard, showCard} from './cards.js';
 
+import { loadPage, getAllCards } from './cards.js';
 
   const initPage = async () => {
     const data = await getData();
-    const cards = renderCard(data);
 
+    getAllCards(data)
+    loadPage(data);
     getModal(data);
-    showCard(cards);
-
   }
 
   initPage();
