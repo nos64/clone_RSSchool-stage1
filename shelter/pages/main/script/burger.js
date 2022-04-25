@@ -3,7 +3,6 @@ import  {disableScroll, enableScroll}  from "./scroll.js";
 const burger = document.querySelector('.burger');
 const navigation = document.querySelector('.navigation__list');
 const wrapper = document.querySelector('.wrapper');
-const logo = document.querySelector('.logo');
 const logoNav = document.querySelector('.logo-nav');
 
 burger.addEventListener('click', () => {

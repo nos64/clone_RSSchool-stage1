@@ -4,7 +4,6 @@ import { petsList } from "./cards.js";
 
 const pageOverlayModal = document.querySelector(".page__overlay_modal");
 const modalClose = document.querySelector('.modal__close');
-// const modal = document.querySelector('.modal');
 
 const openModal = () => {
   disableScroll();
@@ -16,7 +15,6 @@ const closeModal = () => {
   hideElem(pageOverlayModal, 0.05);
   enableScroll();
 };
-
 
 const renderModal = modal => {
   const modalTextName = document.querySelector('.modal__text-name');
