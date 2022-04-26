@@ -239,7 +239,7 @@ const getNextPage = () => {
       disableStyle(nextPage);
     } 
   }
-   else if (screenWidth >= 1280) {
+  else if (screenWidth >= 1280) {
     if (currentPage.textContent === '1') {
       petsList.innerHTML = '';
       newArray8[1].forEach(item => petsList.append(createCard(item)));
