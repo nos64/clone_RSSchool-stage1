@@ -60,7 +60,7 @@ const moveLeft = () => {
   petsList.classList.add('transition-left');
   leftBtn.removeEventListener('click', moveLeft);
   rightBtn.removeEventListener('click', moveRight);
-  sliderRight.innerHTML = "";
+  sliderRight.innerHTML = '';
   getUnicalVisibleArray();
   insertLeftCards(); 
 };
@@ -69,7 +69,7 @@ const moveRight = () => {
   petsList.classList.add('transition-right');
   leftBtn.removeEventListener('click', moveLeft);
   rightBtn.removeEventListener('click', moveRight); 
-  sliderLeft.innerHTML = "";
+  sliderLeft.innerHTML = '';
   getUnicalVisibleArray();
   insertRightCards();
 };
