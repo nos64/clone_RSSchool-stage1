@@ -10,7 +10,7 @@ import { loadPage, getAllCards } from './cards.js';
   const initPage = async () => {
     const data = await getData();
 
-    getAllCards(data)
+    getAllCards(data);
     loadPage(data);
     getModal(data);
   }
