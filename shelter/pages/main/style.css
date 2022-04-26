@@ -1049,6 +1049,8 @@ to {left: 0px;}
   }
 
   .logo-nav {
+    position: absolute;
+    top: 1px;
     margin-right: 110px;
   }
 
@@ -1058,11 +1060,11 @@ to {left: 0px;}
     right: 0;
     opacity: 1;
     z-index: 1000;
+    justify-content: center;
   }
 
   .navigation__item:nth-child(2) {
-    padding-top: 125px;
-    
+    /* padding-top: 93px; */
   }
 
   .navigation__link {
@@ -1348,7 +1350,36 @@ to {left: 0px;}
   
 }
 
+@media (max-height: 500px) {
+  .navigation__list {
+    gap: 0px;
+  }
 
+  .navigation__list-active {
+ 
+    justify-content: center;
+  }
+
+  .navigation__link {
+    font-size: 25px;
+    line-height: 160%;
+  }
+}
+
+@media (max-height: 340px) {
+  .navigation__list {
+    gap: 0px;
+    padding-bottom: 20px;
+  }
+
+  .navigation__list-active {
+    justify-content: end;
+  }
+
+  .navigation__link {
+    font-size: 25px;
+  }
+}
 
 
 
