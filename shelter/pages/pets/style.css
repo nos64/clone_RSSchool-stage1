@@ -679,7 +679,7 @@ body {
     height: 100vh;
     gap: 40px;
     padding-top: 0;
-    background-color: var(--color-dark-m);
+    background-color: var(--color-light-s);
     transition: all .3s ease-in-out;
     
   }
