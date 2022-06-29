@@ -1,13 +1,23 @@
-export interface Sources {
+export interface Headlines {
     status: string;
-    sources: Array<string>;
-    id: string;
-    name: string;
+    totalResults: number;
+    articles: Article;
+}
+
+export interface Article {
+    source: Source;
+    author: string;
+    title: string;
     description: string;
     url: string;
-    category: string;
-    language: string;
-    country: string;
+    urlToImage: string;
+    publishedAt: string;
+    content: string;
+}
+
+export interface Source {
+    id: string;
+    name: string;
 }
 
 export interface Errors {
