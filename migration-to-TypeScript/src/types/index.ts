@@ -1,18 +1,21 @@
 export interface Headlines {
     status: string;
     totalResults: number;
-    articles: Article;
+    articles: [];
 }
 
 export interface Article {
-    source: Source;
     author: string;
-    title: string;
+    content: string;
     description: string;
+    publishedAt: string;
+    source: {
+        id: string;
+        name: string;
+    };
+    title: string;
     url: string;
     urlToImage: string;
-    publishedAt: string;
-    content: string;
 }
 
 export interface Source {
