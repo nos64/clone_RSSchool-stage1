@@ -8,7 +8,7 @@ class News {
         const fragment: DocumentFragment = document.createDocumentFragment();
         const newsItemTemp: HTMLTemplateElement | null = document.querySelector('#newsItemTemp');
 
-        news.forEach((item, idx) => {
+        news.forEach((item, idx): void => {
             if (newsItemTemp) {
                 const newsClone = newsItemTemp.content.cloneNode(true) as DocumentFragment;
                 console.log('newsClone: ', newsClone);
@@ -32,7 +32,7 @@ class News {
                 (newsClone.querySelector('.news__read-more a') as HTMLElement).setAttribute('href', item.url);
 
                 fragment.append(newsClone);
-            }
+            } else throw new Error('News is not found');
         });
 
         (document.querySelector('.news') as HTMLElement).innerHTML = '';
