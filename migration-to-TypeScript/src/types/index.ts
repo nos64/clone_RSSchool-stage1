@@ -10,12 +10,12 @@ export interface Article {
     title: string;
     url: string;
     urlToImage: string;
-};
+}
 
 export interface Source {
     id: string;
     name: string;
-};
+}
 
 export interface Headlines {
     status: string;
@@ -33,9 +33,9 @@ export interface Headlines {
             title: string;
             url: string;
             urlToImage: string;
-        },
+        }
     ];
-};
+}
 
 export interface ResponseObj {
     status: string;
@@ -50,10 +50,53 @@ export interface ResponseObj {
             country: string;
         }
     ];
-};
+}
+
+export interface Everything {
+    status: string;
+    totalResults: number;
+    articles: [
+        {
+            source: {
+                id: string;
+                name: string;
+            };
+            author: string;
+            title: string;
+            description: string;
+            url: string;
+            urlToImage: string;
+            publishedAt: string;
+            content: string;
+        }
+    ];
+}
+
+export interface LoadClass {
+    baseLink: string;
+    options?: {
+        apiKey?: string;
+    };
+}
 
 export interface Errors {
-    status: string;
+    status: number;
     code: string;
     message: string;
+}
+
+export type Callback<T> = (data?: T) => void;
+
+export interface Options {
+    sources?: string;
+    apiKey?: string | never;
+}
+
+export interface Responce {
+    ok: boolean;
+    redirected: boolean;
+    status: number;
+    statusText: string;
+    type: string;
+    url: string;
 }
