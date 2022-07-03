@@ -45,13 +45,13 @@
   .sources {
     display: flex;
     flex-direction: row;
-    height: 70px;
+    height: 80px;
     margin-bottom: 20px;
     border: none;
   }
 
   .sourses-open {
-    height: 70px;
+    height: 80px;
   }
 
   .source__item {
