@@ -10,7 +10,7 @@ class News {
 
     news.forEach((item, idx): void => {
       if (newsItemTemp) {
-        const newsClone = newsItemTemp.content.cloneNode(true) as DocumentFragment;
+        const newsClone = newsItemTemp.content.cloneNode(true) as Element;
 
         if (idx % 2) (newsClone.querySelector('.news__item') as HTMLElement).classList.add('alt');
         (newsClone.querySelector('.news__meta-photo') as HTMLElement).style.backgroundImage = `url(${
@@ -27,6 +27,7 @@ class News {
         (newsClone.querySelector('.news__description-source') as HTMLElement).textContent = item.source.name;
         (newsClone.querySelector('.news__description-content') as HTMLElement).textContent = item.description;
         (newsClone.querySelector('.news__read-more a') as HTMLElement).setAttribute('href', item.url);
+        (newsClone.querySelector('.news__read-more a') as HTMLElement).setAttribute('target', '_blank');
 
         fragment.append(newsClone);
       } else throw new Error('News is not found');

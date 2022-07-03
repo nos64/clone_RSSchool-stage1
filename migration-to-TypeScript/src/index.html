@@ -16,8 +16,10 @@
   </header>
   <main class="main">
     <div class="container">
-      <div class="sources buttons"></div>
-      <div class="news"></div>
+      <div class="main__wrapper">
+        <div class="sources buttons"></div>
+        <div class="news"></div>
+      </div>
     </div>
   </main>
   <footer>
@@ -43,13 +45,9 @@
   </footer>
 
   <template id="sourceItemTemp">
-    <select class="source__item" name="" id="">
-      <option disabled>Выберите героя</option>
-      <option class="source__item-name" value=""></option>
-    </select>
-    <!-- <div class="source__item">
-                <span class="source__item-name"></span>
-            </div> -->
+    <div class="source__item">
+      <span class="source__item-name"></span>
+    </div>
   </template>
 
   <template id="newsItemTemp">

@@ -15,6 +15,7 @@ class App {
       this.controller.getNews(e, (data) => {
         if (data !== undefined) {
           this.view.drawNews(data);
+          sourceElem.classList.add('sourses-open');
         }
       })
     );

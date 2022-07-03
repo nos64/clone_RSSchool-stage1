@@ -12,7 +12,6 @@ class Sources {
 
         (sourceClone.querySelector('.source__item-name') as HTMLElement).textContent = item.name;
         (sourceClone.querySelector('.source__item') as HTMLElement).setAttribute('data-source-id', item.id);
-
         fragment.append(sourceClone);
       } else throw new Error('Source is not found');
     });
