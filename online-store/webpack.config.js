@@ -6,14 +6,14 @@ const EslingPlugin = require('eslint-webpack-plugin');
 const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
 const target = devMode ? 'web' : 'browserslist';
-const devtool = devMode ? 'inline-source-map' : undefined;
+const devtool = devMode ? 'source-map' : undefined;
 
 module.exports = {
   mode,
   target,
   devtool,
   devServer: {
-    port: 8080,
+    port: 3000,
     open: true,
     hot: true,
   },
@@ -25,12 +25,13 @@ module.exports = {
     assetModuleFilename: 'assets/[hash][ext]'
   },
   plugins:
-    [new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'index.html')
-    }),
-    new MiniCssExtractPlugin({
-      filename: 'index.[contenthash].css',
-    }),
+    [
+      new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, 'src', 'index.html'),
+      }),
+      new MiniCssExtractPlugin({
+        filename: '[name].[contenthash].css',
+      }),
     new EslingPlugin({ 
       extensions: 'ts' 
     }),
@@ -43,63 +44,80 @@ module.exports = {
       },
       {
         test: /\.html$/i,
-        loader: "html-loader",
+        loader: 'html-loader',
       },
+      // {
+      //   test: /\.(sa|sc|c)ss$/,
+      //   use: [
+      //     devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+      //     "css-loader",
+      //     "postcss-loader",
+      //     "sass-loader",
+      //   ],
+      // },
       {
         test: /\.(c|sa|sc)ss$/i,
         use: [
-          devMode ? "style-loader" :  MiniCssExtractPlugin.loader,
-          "css-loader",
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
           {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [require('postcss-preset-env')]
+                plugins: [require('postcss-preset-env')],
               },
             },
           },
-          'sass-loader'
+          'sass-loader',
         ],
       },
       {
-        test: /\.woff2?$/i,
+        test: /\.(ttf|otf|eot|woff2?|svg)$/,
         type: 'asset/resource',
         generator: {
           filename: 'fonts/[name][ext]'
         }
       },
       {
-        test: /\.(jpe?g|png|webp|gif|svg)$/i,
-        use: [
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              mozjpeg: {
-                progressive: true,
-              },
-              // optipng.enabled: false will disable optipng
-              optipng: {
-                enabled: false,
-              },
-              pngquant: {
-                quality: [0.65, 0.90],
-                speed: 4
-              },
-              gifsicle: {
-                interlaced: false,
-              },
-              // the webp option will enable WEBP
-              webp: {
-                quality: 75
-              },
-            }
-          }
-        ],
+        test: /\.(gif|png|jpe?g|svg)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'img/[name][ext]'
+        }
       },
+      // {
+      //   test: /\.(gif|png|jpe?g|svg)$/i,
+      //       type: 'asset/resource',
+      //   use: [
+      //     'file-loader',
+      //     {
+      //       loader: 'image-webpack-loader',
+      //       options: {
+      //         mozjpeg: {
+      //           progressive: true,
+      //         },
+      //         // optipng.enabled: false will disable optipng
+      //         optipng: {
+      //           enabled: false,
+      //         },
+      //         pngquant: {
+      //           quality: [0.65, 0.90],
+      //           speed: 4
+      //         },
+      //         gifsicle: {
+      //           interlaced: false,
+      //         },
+      //         // the webp option will enable WEBP
+      //         webp: {
+      //           quality: 75
+      //         },
+      //       }
+      //     }
+      //   ],
+      // },
     ],
   },
   resolve: {
     extensions: ['.ts', '.js'],
   },
-}
+};
