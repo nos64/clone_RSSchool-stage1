@@ -69,11 +69,22 @@ body {
   height: 100%;
 }
 
+.main-container {
+  display: flex;
+  gap: 20px;
+}
+
+.filter-title {
+  font-family: 'Roboto Serif';
+  font-style: italic;
+  font-size: 18px;
+  padding: 5px;
+}
 
 .search-form__search-field {
   position: relative;
   margin-right: 10px;
-  max-width: 300px;
+  max-width: 200px;
   padding: 5px 15px;
   border-radius: 25px;
   outline: none;
@@ -107,40 +118,78 @@ body {
   cursor: pointer;
 }
 
+.range-filters,
+.filters-value {
+  border: solid 1px #999;
+}
 
 // Ползунок
 .quantity-container,
-.range-filters__year {
+.year-container {
   position: relative;
   pointer-events: none;
 }
 
-.quantity-container input[type="range"]{
+.quantity-container input[type="range"],
+.year-container input[type="range"] {
   height: 2em;
   display: block;
   margin: 0;
 }
 
-.quantity-container input[type="range"]:last-child{
+.quantity-container input[type="range"]:last-child,
+.year-container input[type="range"]:last-child {
   margin-top: -2em;
 }
 
 input[type="range"]::-webkit-slider-thumb {
   pointer-events: all;
 }
+
 input[type="range"]::-moz-range-thumb {
   pointer-events: all;
 }
+
 input[type="range"]::-ms-thumb {
   pointer-events: all;
 }
 
+.filter-field {
+  max-width: 70px;
+  padding: 5px 15px;
+  border-radius: 25px;
+  outline: none;
+  border: 1px solid var(--text-color);
+  transition: all .3s ease-in-out;
+}
 
+.checkbox-wrapper {
+  display: flex;
+  gap: 10px;
+}
 
+.checkbox {
+  display: flex;
+  flex-direction: column;
+}
 
+.card {
+  max-width: 250px;
+  justify-content: center;
+  align-items:center;
+}
 
+.content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 
-
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 
 
