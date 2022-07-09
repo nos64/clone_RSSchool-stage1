@@ -40,21 +40,21 @@
     <div class="range-filters">
       <div class="range-filters__quantity">
         <h2 class="filter-title">Количество на складе</h2>
-        <input class="filter-field quantity-start" type="text">
-        <div class="quantity-container">
-          <input type="range" min="0" step="1" max="10" value="3">
-          <input type="range" min="0" step="1" max="10" value="7">
+        <div class="range-wrapper">
+          <input class="filter-field quantity-min" type="text">
+          <div id="quantity-slider"></div>
+          <input class="filter-field quantity-max" type="text">
         </div>
-        <input class="filter-field quantity-end" type="text">
       </div>
       <div class="range-filters__year">
         <h2 class="filter-title">Год выпуска</h2>
-        <input class="filter-field year-start" type="text">
-        <div class="year-container">
-          <input type="range" min="1890" step="1" max="2000" value="1950">
-          <input type="range" min="1890" step="1" max="2000" value="1985">
+        <div class="range-wrapper">
+          <!-- <input class="filter-field year-min" type="text"> -->
+          <span class="year-min"></span>
+          <div id="year-slider"></div>
+          <!-- <input class="filter-field year-max" type="text"> -->
+          <span class="year-max"></span>
         </div>
-        <input class="filter-field year-start" type="text">
       </div>
     </div>
       <div class="filters-value">

@@ -46,7 +46,7 @@ body {
   font-family: "Roboto Serif";
   background-color: $bgColor;
   color: $textColor;
-  color: #ff0404;
+  // color: #ff0404;
   overflow-x: hidden;
   max-width: 100%;
 }
@@ -123,36 +123,11 @@ body {
   border: solid 1px #999;
 }
 
-// Ползунок
-.quantity-container,
-.year-container {
-  position: relative;
-  pointer-events: none;
+.range-wrapper {
+  display: flex;
+  justify-content: space-between;
 }
 
-.quantity-container input[type="range"],
-.year-container input[type="range"] {
-  height: 2em;
-  display: block;
-  margin: 0;
-}
-
-.quantity-container input[type="range"]:last-child,
-.year-container input[type="range"]:last-child {
-  margin-top: -2em;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  pointer-events: all;
-}
-
-input[type="range"]::-moz-range-thumb {
-  pointer-events: all;
-}
-
-input[type="range"]::-ms-thumb {
-  pointer-events: all;
-}
 
 .filter-field {
   max-width: 70px;
