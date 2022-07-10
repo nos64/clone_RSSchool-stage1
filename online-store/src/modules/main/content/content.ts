@@ -28,6 +28,9 @@ dataBase.forEach(item => {
   cardImage.alt = `${item.brand} ${item.model}`;
   cardImageWrapper.append(cardImage);
 
+  const descriptionWrapper = document.createElement('div');
+
+
   const cardYear: HTMLParagraphElement = document.createElement('p');
   cardYear.className = 'card__description';
   cardYear.textContent = 'Год выпуска: ';
@@ -82,8 +85,10 @@ dataBase.forEach(item => {
   dataPopular.textContent = item.favorite ? 'Да' : 'Нет';
   cardPopular.append(dataPopular);
 
-  card.append(cardTitle, cardSubtitle, cardImageWrapper, cardYear, cardColor, cardDoor, cardVolume, cardQuantity, cardPopular);
-  
+
+  descriptionWrapper.append(cardYear, cardColor, cardDoor, cardVolume, cardQuantity, cardPopular);
+  card.append(cardTitle, cardSubtitle, cardImageWrapper, descriptionWrapper)
+
   contentWrapper.append(card);
 })
 

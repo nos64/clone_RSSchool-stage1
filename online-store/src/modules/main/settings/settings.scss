@@ -4,7 +4,7 @@
   background-color: $contrastColor;
   padding: 0px 5px 20px;
   margin-bottom: 40px;
-  width: 400px;
+  min-width: 380px;
   text-align: center;
 }
 
@@ -162,10 +162,12 @@
     margin-right: 10px;
     padding: 5px 15px;
     border-radius: 25px;
+    border: 1px solid transparent;
     outline: none;
     transition: all .3s ease-in-out;
   }
   
   .settings-btn:hover {
     box-shadow: 0 0 5px 5px $borderColor;
+    border-color: $borderColor;
   }
