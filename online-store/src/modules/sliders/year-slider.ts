@@ -1,8 +1,6 @@
 import * as noUiSlider from 'nouislider';
-// import noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
-import './year-slider.scss';
-
+import './sliders.scss';
 
 
 

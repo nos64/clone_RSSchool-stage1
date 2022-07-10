@@ -12,7 +12,7 @@
 </head>
 <body>
   <!-- https://www.classic-trader.com/uk/cars -->
-<header>
+<header class="header">
   <div class="container header__container">
     <h1 class="header__title">Retro cars online store</h1>
     <img class="header__basket" src="img/basket.svg" alt="Basket icon">
@@ -26,6 +26,11 @@
         <input class="search-form__search-field" type="search" placeholder="Введите текст"
             autofocus autocomplete="off">
         <img class="search-form__search-btn" src="img/search.svg" alt="Search button">
+    </div>
+    <div class="popularity">
+      <label class="popularity-lbl">
+        <input class="popularity-check" type="checkbox">Показать только популярные
+      </label>
     </div>
     <div class="sort">
       <h2 class="filter-title">Сортировка</h2>
@@ -41,19 +46,17 @@
       <div class="range-filters__quantity">
         <h2 class="filter-title">Количество на складе</h2>
         <div class="range-wrapper">
-          <input class="filter-field quantity-min" type="text">
+          <span class="range-field quantity-min"></span>
           <div id="quantity-slider"></div>
-          <input class="filter-field quantity-max" type="text">
+          <span class="range-field quantity-max"></span>
         </div>
       </div>
       <div class="range-filters__year">
         <h2 class="filter-title">Год выпуска</h2>
         <div class="range-wrapper">
-          <!-- <input class="filter-field year-min" type="text"> -->
-          <span class="year-min"></span>
+          <span class="range-field year-min"></span>
           <div id="year-slider"></div>
-          <!-- <input class="filter-field year-max" type="text"> -->
-          <span class="year-max"></span>
+          <span class="range-field year-max"></span>
         </div>
       </div>
     </div>
@@ -61,35 +64,47 @@
         <div class="filters-value__brand">
           <h2 class="filter-title">Марка</h2>
           <div class="checkbox-wrapper">
-            <label class="checkbox brand-checkbox"><input type="checkbox" value="Audi">Audi</label>
-            <label class="checkbox brand-checkbox"><input type="checkbox" value="Audi">Audi</label>
-            <label class="checkbox brand-checkbox"><input type="checkbox" value="Audi">Audi</label>
-            <label class="checkbox brand-checkbox"><input type="checkbox" value="Audi">Audi</label>
-            <label class="checkbox brand-checkbox"><input type="checkbox" value="Audi">Audi</label>
-            <label class="checkbox brand-checkbox"><input type="checkbox" value="Audi">Audi</label>
-            <label class="checkbox brand-checkbox"><input type="checkbox" value="Audi">Audi</label>
-            <label class="checkbox brand-checkbox"><input type="checkbox" value="Audi">Audi</label>
+            <label class="checkbox-lbl brand-checkbox"><input class="check" type="checkbox" value="FIAT">FIAT</label>
+            <label class="checkbox-lbl brand-checkbox"><input class="check" type="checkbox" value="Austin-Healey">Austin-Healey</label>
+            <label class="checkbox-lbl brand-checkbox"><input class="check" type="checkbox" value="Rolls-Royce">Rolls-Royce</label>
+            <label class="checkbox-lbl brand-checkbox"><input class="check" type="checkbox" value="Porsche">Porsche</label>
+            <label class="checkbox-lbl brand-checkbox"><input class="check" type="checkbox" value="CADILLAC">CADILLAC</label>
+            <label class="checkbox-lbl brand-checkbox"><input class="check" type="checkbox" value="Chevrolet">Chevrolet</label>
+            <label class="checkbox-lbl brand-checkbox"><input class="check" type="checkbox" value="Jaguar">Jaguar</label>
+            <label class="checkbox-lbl brand-checkbox"><input class="check" type="checkbox" value="Mercedes-Benz">Mercedes-Benz</label>
+            <label class="checkbox-lbl brand-checkbox"><input class="check" type="checkbox" value="BMW">BMW</label>
+            <label class="checkbox-lbl brand-checkbox"><input class="check" type="checkbox" value="Alfa Romeo">Alfa Romeo</label>
+            <label class="checkbox-lbl brand-checkbox"><input class="check" type="checkbox" value="AC Cars">AC Cars</label>
+            <label class="checkbox-lbl brand-checkbox"><input class="check" type="checkbox" value="Ferrari">Ferrari</label>
+            <label class="checkbox-lbl brand-checkbox"><input class="check" type="checkbox" value="Volkswagen">Volkswagen</label>
+            <label class="checkbox-lbl brand-checkbox"><input class="check" type="checkbox" value="Aston Martin">Aston Martin</label>
+            <label class="checkbox-lbl brand-checkbox"><input class="check" type="checkbox" value="Ford Shelby">Ford Shelby</label>
+            <label class="checkbox-lbl brand-checkbox"><input class="check" type="checkbox" value="Lamborghini">Lamborghini</label>
+
           </div>
         </div>
         <div class="filters-value__color">
           <h2 class="filter-title">Цвет</h2>
           <div class="checkbox-wrapper">
-            <label class="checkbox color-checkbox">White<input type="checkbox"></label>
-            <label class="checkbox color-checkbox">White<input type="checkbox"></label>
-            <label class="checkbox color-checkbox">White<input type="checkbox"></label>
-            <label class="checkbox color-checkbox">White<input type="checkbox"></label>
-            <label class="checkbox color-checkbox">White<input type="checkbox"></label>
+            <label class="checkbox-lbl color-checkbox"><input class="check" type="checkbox">grey</label>
+            <label class="checkbox-lbl color-checkbox"><input class="check" type="checkbox">green</label>
+            <label class="checkbox-lbl color-checkbox"><input class="check" type="checkbox">black</label>
+            <label class="checkbox-lbl color-checkbox"><input class="check" type="checkbox">red</label>
+            <label class="checkbox-lbl color-checkbox"><input class="check" type="checkbox">white</label>
+            <label class="checkbox-lbl color-checkbox"><input class="check" type="checkbox">blue</label>
           </div>
         </div>
       </div>
-      <button class="reset-filters">Сброс фильтров</button>
-      <button class="classreset-settings">Сброс настроек</button>
+      <button class="settings-btn reset-filters">Сброс фильтров</button>
+      <button class="settings-btn classreset-settings">Сброс настроек</button>
     </div>
   <div class="content-wrapper">
     <div class="card">
       <h3 class="card__title">FIAT</h3>
       <p class="card__subtitle">Topolino 500 A</p>
-      <img class="card__image" src="img/FIAT-500topolino.jpg" alt="Fiat Topolino 500 A">
+      <div class="card__image-wrapper">
+        <img class="card__image" src="img/FIAT-500topolino.jpg" alt="Fiat Topolino 500 A">
+      </div>
       <p class="card__description">Год выпуска: <span class="year">1940</span></p>
       <p class="card__description">Цвет: <span class="color">Серый</span></p>
       <p class="card__description">Количество дверей: <span class="doors">2</span></p>
@@ -98,10 +113,12 @@
       <p class="card__description">Популярный: <span class="popular">Нет</span></p>
     </div>
 
-    <div class="card">
+    <div class="card card-active">
       <h3 class="card__title">FIAT</h3>
       <p class="card__subtitle">Topolino 500 A</p>
-      <img class="card__image" src="img/FIAT-500topolino.jpg" alt="Fiat Topolino 500 A">
+      <div class="card__image-wrapper">
+        <img class="card__image" src="img/FIAT-500topolino.jpg" alt="Fiat Topolino 500 A">
+      </div>
       <p class="card__description">Год выпуска: <span class="year">1940</span></p>
       <p class="card__description">Цвет: <span class="color">Серый</span></p>
       <p class="card__description">Количество дверей: <span class="doors">2</span></p>
@@ -110,29 +127,9 @@
       <p class="card__description">Популярный: <span class="popular">Нет</span></p>
     </div>
 
-    <div class="card">
-      <h3 class="card__title">FIAT</h3>
-      <p class="card__subtitle">Topolino 500 A</p>
-      <img class="card__image" src="img/FIAT-500topolino.jpg" alt="Fiat Topolino 500 A">
-      <p class="card__description">Год выпуска: <span class="year">1940</span></p>
-      <p class="card__description">Цвет: <span class="color">Серый</span></p>
-      <p class="card__description">Количество дверей: <span class="doors">2</span></p>
-      <p class="card__description">Мощность двигателя: <span class="volume">13</span></p>
-      <p class="card__description">Количество на складе: <span class="quantity">1</span></p>
-      <p class="card__description">Популярный: <span class="popular">Нет</span></p>
-    </div>
 
-    <div class="card">
-      <h3 class="card__title">FIAT</h3>
-      <p class="card__subtitle">Topolino 500 A</p>
-      <img class="card__image" src="img/FIAT-500topolino.jpg" alt="Fiat Topolino 500 A">
-      <p class="card__description">Год выпуска: <span class="year">1940</span></p>
-      <p class="card__description">Цвет: <span class="color">Серый</span></p>
-      <p class="card__description">Количество дверей: <span class="doors">2</span></p>
-      <p class="card__description">Мощность двигателя: <span class="volume">13</span></p>
-      <p class="card__description">Количество на складе: <span class="quantity">1</span></p>
-      <p class="card__description">Популярный: <span class="popular">Нет</span></p>
-    </div>
+
+    
   </div>
 </div>
 </main>
