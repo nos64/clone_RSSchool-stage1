@@ -5,7 +5,7 @@ import './sliders.scss';
 
 
 
-const rangeSliderInit = () => { // создаем функцию инициализации слайдера
+export const rangeSliderInit = () => { // создаем функцию инициализации слайдера
 	const slider: noUiSlider.target | null = document.getElementById('quantity-slider'); // Ищем слайдер
 	const inputMin = document.querySelector<HTMLElement>('.quantity-min'); // Ищем input с меньшим значнием
 	const inputMax = document.querySelector<HTMLElement>('.quantity-max'); // Ищем input с большим значнием
@@ -30,7 +30,8 @@ const rangeSliderInit = () => { // создаем функцию инициал�
 	});
 
 }
+
 rangeSliderInit()
-window.addEventListener('DOMContentLoaded', rangeSliderInit);
+// window.addEventListener('DOMContentLoaded', rangeSliderInit);
 
 

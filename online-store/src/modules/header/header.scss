@@ -1,0 +1,18 @@
+@import '../../style/var';
+
+.header {
+  border-bottom: 3px solid $borderColor;
+  box-shadow: 0 10px 15px $borderColor;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.header__basket {
+  width: 32px;
+  height: 100%;
+}

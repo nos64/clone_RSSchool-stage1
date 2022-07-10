@@ -1,0 +1,48 @@
+.range-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .noUi-base, .noUi-connect{
+   width: 160px;
+   cursor: pointer;
+  }
+  
+  .noUi-connect {
+    background: #026363;
+  }
+  .noUi-target {
+    box-shadow: 0 0 10px #026363;
+    border: none;
+    background: #ebfdfc;
+  
+  }
+  .noUi-handle {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.24);
+    border: none;
+    border-radius: 50%;
+    background: #ebfdfc;
+    
+  }
+  .noUi-handle:before,
+  .noUi-handle:after {
+    display: none;
+  }
+  .noUi-handle-lower {
+    background: #026363;
+    box-shadow: 0 0 16px #026363;
+
+  }
+  .noUi-handle-upper {
+    background: #026363;
+    box-shadow: 0 0 16px #026363;
+  }
+  .noUi-horizontal {
+    height: 5px;
+  }
+  .noUi-horizontal .noUi-handle {
+    width: 15px;
+    height: 15px;
+    right: -8px;
+
+  }
