@@ -65,54 +65,5 @@ body {
 
 
 
-.footer {
-  box-shadow: 0 -10px 15px $borderColor;
-}
 
-.footer__container {
-  font-size: 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items:center;
-  padding: 10px ;
-}
 
-.footer__left {
-  display: flex;
-  gap: 15px;
-}
-
-.footer__link {
-  transition: color .3s ease-in;
-}
-
-.footer__link:hover {
-  color: $contrastColor;
-}
-
-.footer__logo-course {
-  width: 135px;
-  height: auto;
-  transition: fill .3s ease-in;
-}
-
-.footer__logo-course:hover {
-  fill: $contrastColor;
-}
-
-.topbutton {
-  width: 30px;
-  height: 20px;
-  border:none;
-  position:fixed;
-  bottom:100px;
-  right: 5px;
-  fill: var(--text-color);
-  opacity: .5;
-  transition: all .3s ease-in;
-}
-
-.topbutton:hover {
-  fill: var(--color-hover);
-  opacity: 1;
-}

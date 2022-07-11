@@ -9,5 +9,5 @@ export interface Card {
     "doors":  string,
     "volume": string,
     "quantity": string,
-    "inBasket": boolean
+    "inBasket?": boolean
 }

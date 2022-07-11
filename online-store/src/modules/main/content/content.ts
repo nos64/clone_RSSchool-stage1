@@ -7,9 +7,10 @@ contentWrapper.className = 'content-wrapper';
 container.append(contentWrapper);
 
 dataBase.forEach(item => {
-  console.log(item.image)
+
   const card: HTMLDivElement = document.createElement('div');
   card.className = 'card';
+  card.dataset.id = item.id;
 
   const cardTitle: HTMLHeadingElement = document.createElement('h3');
   cardTitle.className = 'card__title';
