@@ -2,6 +2,7 @@ import './settings.scss';
 import * as noUiSlider from 'nouislider'
 import 'nouislider/dist/nouislider.css';
 import './sliders.scss';
+import {dataBase} from '../../../db/db';
 
 export const range = () => {
   const rangeDiv = document.createElement('div');
@@ -13,7 +14,7 @@ export const range = () => {
 
     const quantityTitle = document.createElement('h2');
     quantityTitle.className = 'filter-title';
-    quantityTitle.textContent = 'Количество на складе';
+    quantityTitle.textContent = 'Мощность двигателя (л.с.)';
 
     const quantityFieldWrapper: HTMLDivElement = document.createElement('div');
     quantityFieldWrapper.className = 'range-wrapper';
@@ -31,14 +32,18 @@ export const range = () => {
 
     if (!slider || !minSpan || !maxSpan) return console.log(slider)// если этих элементов нет, прекращаем выполнение функции, чтобы не было ошибок
   
+    const arrQuantity: number[] = [];
+    dataBase.forEach(item => arrQuantity.push(+item.volume));
+    arrQuantity.sort((a, b) => a - b);
+
     const inputs = [minSpan, maxSpan];
     if (slider) {
       noUiSlider.create(slider, {
-        start: [1, 10],
+        start: [arrQuantity[0], arrQuantity[arrQuantity.length - 1]],
         connect: true, // указываем что нужно показывать выбранный диапазон
         range: { 
-          'min': 1,
-          'max': 12
+          'min': arrQuantity[0],
+          'max': arrQuantity[arrQuantity.length - 1]
         },
         step: 1,
       });
@@ -78,14 +83,18 @@ export const range = () => {
 
     if (!slider || !minSpan || !maxSpan) return console.log(slider)// если этих элементов нет, прекращаем выполнение функции, чтобы не было ошибок
   
+    const arrYear: number[] = [];
+    dataBase.forEach(item => arrYear.push(+item.year));
+    arrYear.sort((a, b) => a - b);
+
     const inputs = [minSpan, maxSpan];
     if (slider) {
       noUiSlider.create(slider, {
-        start: [ 1900, 1990], // устанавливаем начальные значения
+        start: [ arrYear[0], arrYear[arrYear.length - 1]], // устанавливаем начальные значения
         connect: true, // указываем что нужно показывать выбранный диапазон
         range: { // устанавливаем минимальное и максимальное значения
-          'min': 1850,
-          'max': 2000
+          'min': arrYear[0],
+          'max': arrYear[arrYear.length - 1]
         },
         step: 1, // шаг изменения значений
       });

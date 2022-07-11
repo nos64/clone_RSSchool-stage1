@@ -16,7 +16,7 @@ export const header = (): void => {
 
   const basket: HTMLImageElement = document.createElement('img');
   basket.className = 'header__basket';
-  basket.src = '/img/basket.svg';
+  basket.src = 'img/basket.svg';
   basket.alt = 'Basket icon';
 
   container.append(h1, basket)
