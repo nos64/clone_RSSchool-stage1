@@ -10,17 +10,20 @@ class App {
   }
 
   start(): void {
-    const sourceElem = <HTMLElement>document.querySelector('.sources');
-    sourceElem.addEventListener('click', (e) =>
-      this.controller.getNews(e, (data) => {
-        if (data !== undefined) {
-          this.view.drawNews(data);
-          sourceElem.classList.add('sourses-open');
-        }
-      })
-    );
+    const sourceElem: HTMLElement | null = document.querySelector('.sources');
+    if (sourceElem) {
+      sourceElem.addEventListener('click', (e) =>
+        this.controller.getNews(e, (data) => {
+          if (data) {
+            this.view.drawNews(data);
+            sourceElem.classList.add('sourses-open');
+          }
+        })
+      );
+    }
+
     this.controller.getSources((data) => {
-      if (data !== undefined) {
+      if (data) {
         this.view.drawSources(data);
       }
     });
