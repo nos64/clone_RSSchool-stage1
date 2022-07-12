@@ -14,12 +14,20 @@ export const header = (): void => {
   h1.className = 'header__title';
   h1.textContent = 'Retro cars online store';
 
+  const basketWrapper: HTMLDivElement = document.createElement('div');
+  basketWrapper.className = 'header__basket-wrapper';
+
   const basket: HTMLImageElement = document.createElement('img');
   basket.className = 'header__basket';
   basket.src = 'img/basket.svg';
   basket.alt = 'Basket icon';
 
-  container.append(h1, basket)
+  const basketCount: HTMLSpanElement = document.createElement('span');
+  basketCount.className = 'header_basket-count';
+  basketCount.textContent = '0';
+
+  basketWrapper.append(basket, basketCount);
+  container.append(h1, basketWrapper);
 }
 
 header()
