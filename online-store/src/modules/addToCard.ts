@@ -13,19 +13,29 @@ const changeBasketCount = () => {
   }
 }
 
+const showWarningMessage = () => {
+    alert('Извините все слоты')
+}
+
 const addToCart = () => {
   Array.from(cards).forEach(card => {
     card.addEventListener('click', () => {
       if (!card.classList.contains('card-active')) {
-        card.classList.add('card-active');
-        basketCount++;
+        if (basketCount < 20) {
+          card.classList.add('card-active');
+          basketCount++;
+        } else {
+          showWarningMessage();
+        }
       } else {
         card.classList.remove('card-active');
         basketCount--;
       }
       changeBasketCount();
+      
     })
   });
 }
 
 addToCart();
+
