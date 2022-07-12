@@ -1,4 +1,4 @@
-import { ResponseObj, Errors, LoadClass, Callback, Options } from '../../types/index';
+import { ResponseObj, Errors, LoadClass, Callback, Options, responseStatus, URLOpt } from '../../types/index';
 
 class Loader implements LoadClass {
   baseLink: string;
@@ -14,13 +14,12 @@ class Loader implements LoadClass {
       console.error('No callback for GET response');
     }
   ) {
-    this.load('GET', endpoint, callback, options);
+    this.loadSourcesNews('GET', endpoint, callback, options);
   }
 
   errorHandler<T extends Response>(res: T) {
     if (!res.ok) {
-      if (res.status === 401 || res.status === 404)
-        console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
+      if (res.status === responseStatus) console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
       throw Error(res.statusText);
     }
 
@@ -28,7 +27,7 @@ class Loader implements LoadClass {
   }
 
   makeUrl(options: Options, endpoint: string): string {
-    const urlOptions: { [index: string]: string } = { ...this.options, ...options };
+    const urlOptions: URLOpt = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
     Object.keys(urlOptions).forEach((key) => {
@@ -38,8 +37,8 @@ class Loader implements LoadClass {
     return url.slice(0, -1);
   }
 
-  load(method: 'GET', endpoint: string, callback: Callback<ResponseObj>, options: Options) {
-    fetch(this.makeUrl(options, endpoint), { method })
+  async loadSourcesNews(method: 'GET', endpoint: string, callback: Callback<ResponseObj>, options: Options) {
+    await fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())
       .then((data: ResponseObj) => callback(data))

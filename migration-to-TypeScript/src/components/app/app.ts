@@ -1,6 +1,5 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
-
 class App {
   public controller: AppController;
   public view: AppView;
@@ -12,14 +11,14 @@ class App {
   start(): void {
     const sourceElem: HTMLElement | null = document.querySelector('.sources');
     if (sourceElem) {
-      sourceElem.addEventListener('click', (e) =>
+      sourceElem.addEventListener('click', (e: MouseEvent) => {
         this.controller.getNews(e, (data) => {
           if (data) {
             this.view.drawNews(data);
             sourceElem.classList.add('sourses-open');
           }
-        })
-      );
+        });
+      });
     }
 
     this.controller.getSources((data) => {

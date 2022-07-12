@@ -11,28 +11,34 @@ class AppController extends AppLoader {
     );
   }
 
-  getNews(e: Event, callback: Callback<Headlines>) {
-    let target = e.target as HTMLElement;
-    const newsContainer = e.currentTarget as HTMLElement;
+  getNews(e: MouseEvent, callback: Callback<Headlines>) {
+    let target = e.target;
+    const newsContainer = e.currentTarget;
 
-    while (target !== newsContainer) {
-      if (target?.classList.contains('source__item')) {
-        const sourceId = target.getAttribute('data-source-id') as string;
-        if (newsContainer?.getAttribute('data-source') !== sourceId) {
-          newsContainer?.setAttribute('data-source', sourceId as string);
-          super.getResp(
-            {
-              endpoint: 'everything',
-              options: {
-                sources: sourceId,
-              },
-            },
-            callback
-          );
+    while (target !== newsContainer && target instanceof HTMLElement && newsContainer instanceof HTMLElement) {
+      if (target.classList) {
+        if (target.classList.contains('source__item')) {
+          const sourceId = target.getAttribute('data-source-id');
+          if (newsContainer?.getAttribute('data-source') !== sourceId) {
+            if (sourceId) {
+              newsContainer?.setAttribute('data-source', sourceId);
+              super.getResp(
+                {
+                  endpoint: 'everything',
+                  options: {
+                    sources: sourceId,
+                  },
+                },
+                callback
+              );
+            }
+          }
+          return;
         }
-        return;
+        if (target.parentNode) {
+          target = target?.parentNode;
+        }
       }
-      target = <HTMLElement>target.parentNode;
     }
   }
 }
