@@ -68,11 +68,12 @@ export const checkboxFilters = () => {
       // label.append(input);
       // checkboxWrapper.append(label);
 
-      const colorBtn = document.createElement('button');
+      const colorBtn: HTMLButtonElement = document.createElement('button');
       colorBtn.className = 'button-color';
       colorBtn.classList.add(`button-${item}`);
       colorBtn.title = item;
-      colorBtn.textContent = '✔'
+      colorBtn.textContent = '✔';
+      colorBtn.dataset.color = item;
 
       checkboxWrapper.append(colorBtn);
     })

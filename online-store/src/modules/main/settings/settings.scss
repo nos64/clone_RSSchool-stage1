@@ -211,10 +211,16 @@
   background-color: blue;
   }
 
+.button-yellow {
+  background-color: yellow;
+}
+
   .button-color-active {
     color: $bgColor;
+    opacity: 1;
   }
 
   .button-color-active-negative {
     color: $textColor;
+    opacity: 1;
   }

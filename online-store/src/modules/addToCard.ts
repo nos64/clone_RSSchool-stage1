@@ -2,7 +2,7 @@ const cards: HTMLCollectionOf<Element> = document.getElementsByClassName('card')
 const elemBasketCount: HTMLElement | null = document.querySelector('.header_basket-count');
 let basketCount = 0;
 // const basketArray:[]Element = [];
-console.log(Array.from(cards))
+// console.log(Array.from(cards))
 const changeBasketCount = () => {
   if (elemBasketCount) {
     if (basketCount > 0) {

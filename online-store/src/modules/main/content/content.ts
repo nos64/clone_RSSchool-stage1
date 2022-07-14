@@ -1,14 +1,17 @@
 import './content.scss';
 import { container } from '../main';
 import {dataBase} from '../../../db/db';
+import { Card } from '../../types/types';
+
+export const variableBase = dataBase.slice();
 
 const contentWrapper: HTMLDivElement = document.createElement('div');
 contentWrapper.className = 'content-wrapper';
 container.append(contentWrapper);
 
 
-const createCard = () => {
-  dataBase.forEach(item => {
+export const createCard = (dataArr: Card[]) => {
+  dataArr.forEach(item => {
 
     const card: HTMLDivElement = document.createElement('div');
     card.className = 'card';
@@ -94,7 +97,7 @@ const createCard = () => {
     contentWrapper.append(card);
   })
 }
-createCard()
+createCard(variableBase)
 
 
 

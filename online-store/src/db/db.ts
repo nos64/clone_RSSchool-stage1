@@ -193,8 +193,8 @@ export const dataBase = [
   {
     "id": "car13",
     "image": "img/pontiac-GTO.jpg",
-    "brand": "AC Cars",
-    "model": "Shelby Cobra 427",
+    "brand": "Pontiac",
+    "model": "GTO",
     "year": "1967",
     "color": "Черный",
     "colorID": "black",

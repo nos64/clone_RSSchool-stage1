@@ -19,12 +19,12 @@ export const sort = () => {
       label: 'По году выпуска, по убыванию',
     },
     {
-      value: 'quantity_asc',
-      label: 'По количеству, по возрастанию',
+      value: 'volume_asc',
+      label: 'По мощности, по возрастанию',
     },
     {
-      value: 'quantity_desc',
-      label: 'По количеству, по убыванию',
+      value: 'volume_desc',
+      label: 'По мощностиу, по убыванию',
     },
   ]
 
@@ -35,7 +35,7 @@ export const sort = () => {
   sortTitle.className = 'filter-title';
   sortTitle.textContent = 'Сортировка';
 
-  const sortSelect = document.createElement('select');
+  const sortSelect: HTMLSelectElement = document.createElement('select');
   sortSelect.className = 'sort-field';
 
   options.forEach(item => {
