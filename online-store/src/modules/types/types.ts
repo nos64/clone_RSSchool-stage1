@@ -12,3 +12,9 @@ export interface Card {
     quantity: string,
     inBasket?: boolean
 }
+
+// export type HTMLInput<T extends HTMLElement> = HTMLInputElement & {
+//     type: string;
+//     value: string;
+//     dataset: T | string;
+// }

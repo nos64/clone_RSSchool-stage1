@@ -1,6 +1,6 @@
 import './settings.scss';
 import {dataBase} from '../../../db/db';
-
+// import { HTMLInput } from '../../types/types';
 
 export const checkboxFilters = () => {
   const filterWrapper: HTMLDivElement = document.createElement('div');

@@ -12,10 +12,14 @@ container.append(contentWrapper);
 
 export const createCard = (dataArr: Card[]) => {
   dataArr.forEach(item => {
-
+    
     const card: HTMLDivElement = document.createElement('div');
     card.className = 'card';
-    card.dataset.id = item.id;
+    card.dataset.brand = item.brand;
+    card.dataset.color = item.colorID;
+    card.dataset.year = item.year;
+    card.dataset.volume = item.volume;
+    card.dataset.favorite = item.favorite ? 'yes' : 'no';
   
     const cardTitle: HTMLHeadingElement = document.createElement('h3');
     cardTitle.className = 'card__title';

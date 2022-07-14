@@ -2,7 +2,7 @@
 
 .content-wrapper {
   display: flex;
-  align-items:flex-start;
+  align-self: flex-start;
   flex-wrap: wrap;
   gap: 20px;
 }
@@ -12,10 +12,11 @@
   flex-direction: column;
   justify-content: center;
   max-width: 250px;
-  min-height: 350px;
+  height: 350px;
   padding: 10px 0;
   justify-content: space-between;
   align-items:center;
+  text-align: center;
   border: 2px solid transparent;
   border-radius: 2px;
   transition: all .3s ease-in-out;
@@ -62,4 +63,8 @@ font-size: 14px;
 
 .card-active:hover .card__image {
   transform: scale(1);
+}
+
+.hide {
+  display: none;
 }

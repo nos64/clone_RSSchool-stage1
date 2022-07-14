@@ -4,7 +4,7 @@ import {search} from './searchField';
 import {popular} from './showPopular';
 import {sort} from './sortSelect';
 import {range} from './rangeWrapper';
-import {checkboxFilters} from './checkboxFilters';
+import {checkboxFilters} from './checkbox&colors';
 
 
 const settingsWrapper: HTMLDivElement = document.createElement('div');
