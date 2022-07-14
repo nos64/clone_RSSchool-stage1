@@ -1,5 +1,5 @@
 import './news.css';
-import { Article } from '../../../types/index';
+import { Article } from '../../../types/response';
 
 class News {
   draw(data: Array<Article>) {
@@ -10,7 +10,7 @@ class News {
 
     news.forEach((item, idx): void => {
       if (newsItemTemp) {
-        const newsClone = newsItemTemp.content.cloneNode(true) as HTMLElement;
+        const newsClone = <HTMLElement>newsItemTemp.content.cloneNode(true);
 
         if (newsClone !== null) {
           if (idx % 2) {

@@ -1,5 +1,5 @@
 import './sources.css';
-import { Source } from '../../../types/index';
+import { Source } from '../../../types/response';
 
 class Sources {
   draw(data: Array<Source>) {
@@ -8,15 +8,20 @@ class Sources {
 
     data.forEach((item): void => {
       if (sourceItemTemp) {
-        const sourceClone = sourceItemTemp.content.cloneNode(true) as DocumentFragment;
+        const sourceClone = <HTMLElement>sourceItemTemp.content.cloneNode(true);
 
-        (sourceClone.querySelector('.source__item-name') as HTMLElement).textContent = item.name;
-        (sourceClone.querySelector('.source__item') as HTMLElement).setAttribute('data-source-id', item.id);
+        const sourceItemName: HTMLElement | null = sourceClone.querySelector('.source__item-name');
+        if (sourceItemName) sourceItemName.textContent = item.name;
+
+        const souceItem: HTMLElement | null = sourceClone.querySelector('.source__item');
+        if (souceItem) souceItem.setAttribute('data-source-id', item.id);
+
         fragment.append(sourceClone);
       } else throw new Error('Source is not found');
     });
 
-    (document.querySelector('.sources') as HTMLElement).append(fragment);
+    const sources: Element | null = document.querySelector('.sources');
+    if (sources) sources.append(fragment);
   }
 }
 

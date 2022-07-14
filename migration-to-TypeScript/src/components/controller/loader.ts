@@ -1,15 +1,15 @@
-import { ResponseObj, Errors, LoadClass, Callback, Options, responseStatus, URLOpt } from '../../types/index';
-
+import { LoadClass, Callback, Options, responseStatus, URLOpt } from '../../types/utilityTypes';
+import { ResponseSourse, Errors } from '../../types/response';
 class Loader implements LoadClass {
   baseLink: string;
-  options?: Options;
-  constructor(baseLink: string, options?: Options) {
+  options?: Partial<Options>;
+  constructor(baseLink: string, options?: Partial<Options>) {
     this.baseLink = baseLink;
     this.options = options;
   }
 
   getResp(
-    { endpoint, options = {} }: { endpoint: string; options?: Options },
+    { endpoint, options = {} }: { endpoint: string; options?: Partial<Options> },
     callback = () => {
       console.error('No callback for GET response');
     }
@@ -26,7 +26,7 @@ class Loader implements LoadClass {
     return res;
   }
 
-  makeUrl(options: Options, endpoint: string): string {
+  makeUrl(options: Partial<Options>, endpoint: string): string {
     const urlOptions: URLOpt = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
@@ -37,12 +37,17 @@ class Loader implements LoadClass {
     return url.slice(0, -1);
   }
 
-  async loadSourcesNews(method: 'GET', endpoint: string, callback: Callback<ResponseObj>, options: Options) {
+  async loadSourcesNews(
+    method: 'GET',
+    endpoint: string,
+    callback: Callback<ResponseSourse>,
+    options: Partial<Options>
+  ) {
     await fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())
-      .then((data: ResponseObj) => callback(data))
-      .catch((err: Errors) => console.error(err));
+      .then((data: ResponseSourse) => callback(data))
+      .catch((err: Omit<Errors, 'testPartial'>) => console.error(err));
   }
 }
 
