@@ -50,22 +50,31 @@ export const checkboxFilters = () => {
     const checkboxWrapper: HTMLDivElement = document.createElement('div');
     checkboxWrapper.className = 'checkbox-wrapper';
 
-    const markSet: Set<string> = new Set(); 
-    dataBase.forEach(item => markSet.add(item.color));
+    const colorSet: Set<string> = new Set(); 
+    // dataBase.forEach(item => colorSet.add(item.color));
+    dataBase.forEach(item => colorSet.add(item.colorID));
+    const colorArray = Array.from(colorSet);
 
-    const markArray = Array.from(markSet)
-    markArray.forEach(item => {
-      const label: HTMLLabelElement = document.createElement('label');
-      label.classList.add('checkbox-lbl', 'brand-checkbox');
-      label.textContent = item;
+    colorArray.forEach(item => {
+      // const label: HTMLLabelElement = document.createElement('label');
+      // label.classList.add('checkbox-lbl', 'brand-checkbox');
+      // label.textContent = item;
 
-      const input: HTMLInputElement = document.createElement('input');
-      input.className = 'check';
-      input.type = 'checkbox';
-      input.value = item; 
+      // const input: HTMLInputElement = document.createElement('input');
+      // input.className = 'check';
+      // input.type = 'checkbox';
+      // input.value = item; 
 
-      label.append(input);
-      checkboxWrapper.appendChild(label);
+      // label.append(input);
+      // checkboxWrapper.append(label);
+
+      const colorBtn = document.createElement('button');
+      colorBtn.className = 'button-color';
+      colorBtn.classList.add(`button-${item}`);
+      colorBtn.title = item;
+      colorBtn.textContent = '✔'
+
+      checkboxWrapper.append(colorBtn);
     })
 
     byColorWrapper.append(byBrandTitle, checkboxWrapper);

@@ -9,4 +9,4 @@ import '../src/modules/footer/footer';
 
 
 import '../src/modules/addToCard';
-
+import '../src/modules/filterByColor';

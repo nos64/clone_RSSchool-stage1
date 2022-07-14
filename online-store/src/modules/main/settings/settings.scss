@@ -170,3 +170,51 @@
     box-shadow: 0 0 5px 5px $borderColor;
     border-color: $borderColor;
   }
+
+.button-color {
+  width: 30px;
+  height: 30px;
+  border: 1px solid $borderColor;
+  border-radius: 20px;
+  outline: none;
+  opacity: .7;
+  color: transparent;
+  font-size: 20px;
+  transition: all .3s ease-in-out;
+}
+
+.button-color:hover {
+  opacity: 1;
+}
+
+.button-grey {
+  background-color: grey;
+}
+
+.button-green {
+  background-color: green;
+}
+
+.button-black {
+  background-color: black;
+}
+
+.button-red {
+  background-color: red;
+}
+
+.button-white {
+  background-color: white;
+}
+
+.button-blue {
+  background-color: blue;
+  }
+
+  .button-color-active {
+    color: $bgColor;
+  }
+
+  .button-color-active-negative {
+    color: $textColor;
+  }

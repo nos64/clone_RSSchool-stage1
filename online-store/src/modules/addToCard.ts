@@ -1,7 +1,8 @@
 const cards: HTMLCollectionOf<Element> = document.getElementsByClassName('card');
 const elemBasketCount: HTMLElement | null = document.querySelector('.header_basket-count');
 let basketCount = 0;
-
+// const basketArray:[]Element = [];
+console.log(Array.from(cards))
 const changeBasketCount = () => {
   if (elemBasketCount) {
     if (basketCount > 0) {
@@ -14,7 +15,7 @@ const changeBasketCount = () => {
 }
 
 const showWarningMessage = () => {
-    alert('Извините все слоты')
+    alert('Извините все слоты заняты')
 }
 
 const addToCart = () => {
@@ -24,6 +25,7 @@ const addToCart = () => {
         if (basketCount < 20) {
           card.classList.add('card-active');
           basketCount++;
+          // basketArray.push(card)
         } else {
           showWarningMessage();
         }
@@ -32,10 +34,21 @@ const addToCart = () => {
         basketCount--;
       }
       changeBasketCount();
-      
+      setLocalStorage()
     })
   });
 }
 
 addToCart();
+
+const setLocalStorage = () => {
+  localStorage.setItem('cart', String(basketCount));
+}
+setLocalStorage()
+
+const getLocalStorage = () => {
+  localStorage.getItem(String(basketCount));
+}
+window.addEventListener('DOMContentLoaded', getLocalStorage);
+
 
