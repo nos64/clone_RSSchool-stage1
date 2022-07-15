@@ -78,22 +78,32 @@ function addClickColorBtn() {
 }
 
 function showFiltered () {
-  
-  allCards.forEach(card => {
-    let canShow = true;
-    Object.keys(appliedFilters).forEach(key => {
-      let dataCard = key.split('-').splice(0, 1).join();
-      let dataObj = key.split('-').splice(1, 1).join();
-      if (card.getAttribute(`data-${dataCard}`) !== appliedFilters[`color-${dataObj}`]) {
-        canShow = false;
-      }
-    })
-    if (!canShow) {
-      card.classList.add('hide');
-    } else {
-      card.classList.remove('hide');
+  Object.keys(appliedFilters).forEach(key => {
+    let dataCard = key.split('-').splice(0, 1).join();
+    let dataObj = key.split('-').splice(1, 1).join();
+
+    function filt() {
+      
     }
-  })
+    const arr = allCards.filter(card => card.getAttribute(`data-${dataCard}`) === appliedFilters[`color-${dataObj}`])
+    console.log(arr)
+  });
+
+  // allCards.forEach(card => {
+  //   let canShow = true;
+  //   Object.keys(appliedFilters).forEach(key => {
+  //     let dataCard = key.split('-').splice(0, 1).join();
+  //     let dataObj = key.split('-').splice(1, 1).join();
+  //     if (card.getAttribute(`data-${dataCard}`) !== appliedFilters[`color-${dataObj}`]) {
+  //       canShow = false;
+  //     }
+  //   })
+  //   if (!canShow) {
+  //     card.classList.add('hide');
+  //   } else {
+  //     card.classList.remove('hide');
+  //   }
+  // })
 }
 
 addClickColorBtn()

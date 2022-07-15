@@ -24,7 +24,7 @@ export const sort = () => {
     },
     {
       value: 'volume_desc',
-      label: 'По мощностиу, по убыванию',
+      label: 'По мощности, по убыванию',
     },
   ]
 

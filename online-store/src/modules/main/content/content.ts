@@ -11,6 +11,8 @@ container.append(contentWrapper);
 
 
 export const createCard = (dataArr: Card[]) => {
+  contentWrapper.textContent = '';
+
   dataArr.forEach(item => {
     
     const card: HTMLDivElement = document.createElement('div');

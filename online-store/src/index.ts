@@ -7,6 +7,8 @@ import '../src/modules/main/settings/settings';
 import '../src/modules/main/content/content';
 import '../src/modules/footer/footer';
 
-import '../src/modules/sorting';
+import '../src/modules/filters';
+
+
 import '../src/modules/addToCard';
 import './modules/filterByColor';
