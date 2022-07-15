@@ -30,9 +30,14 @@ let brandAuto: Card[];
 const checkboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.check');
 checkboxes.forEach(checkbox => {
   checkbox.addEventListener('click', () => {
-    filtersObj.brand = checkbox.value;
-    // console.log('filtersObj: ', filtersObj);
-    brandAuto = variableBase.filter(item => item.brand === filtersObj.brand);
+    
+    if (checkbox.checked) {
+      filtersObj.brand = checkbox.value;
+      brandAuto = variableBase.filter(item => item.brand === filtersObj.brand);
+    } else {
+      brandAuto = variableBase;
+    }
+    
     createCard(brandAuto);
   })
 })
@@ -40,9 +45,13 @@ checkboxes.forEach(checkbox => {
 const colorBtns: NodeListOf<HTMLButtonElement> = document.querySelectorAll('.button-color');
 colorBtns.forEach(btn => {
   btn.addEventListener('click', () => {
+  if (!btn.classList.contains('button-color-active')) {
     filtersObj.colorID = btn.getAttribute('data-color');
-    
     brandAuto = variableBase.filter(item => item.colorID === filtersObj.colorID);
+  } else {
+    brandAuto = variableBase;
+  } 
+    
     createCard(brandAuto);
   })
 })
