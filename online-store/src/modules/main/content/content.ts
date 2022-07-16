@@ -17,6 +17,7 @@ export const createCard = (dataArr: Card[]) => {
     
     const card: HTMLDivElement = document.createElement('div');
     card.className = 'card';
+    item.inBasket ? card.classList.add('card-active') : card.classList.remove('card-active');
     card.dataset.brand = item.brand;
     card.dataset.color = item.colorID;
     card.dataset.year = item.year;

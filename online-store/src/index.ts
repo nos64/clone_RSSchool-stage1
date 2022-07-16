@@ -10,5 +10,5 @@ import '../src/modules/footer/footer';
 import '../src/modules/filters';
 
 
-import '../src/modules/addToCard';
+import './modules/addToCart';
 import './modules/filterByColor';

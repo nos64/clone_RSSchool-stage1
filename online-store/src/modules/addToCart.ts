@@ -34,21 +34,11 @@ const addToCart = () => {
         basketCount--;
       }
       changeBasketCount();
-      setLocalStorage()
     })
   });
 }
 
 addToCart();
 
-const setLocalStorage = () => {
-  localStorage.setItem('cart', String(basketCount));
-}
-setLocalStorage()
-
-const getLocalStorage = () => {
-  localStorage.getItem(String(basketCount));
-}
-window.addEventListener('DOMContentLoaded', getLocalStorage);
 
 
