@@ -4,11 +4,11 @@ export const sort = () => {
   const options: {value: string; label: string;}[] = [
     {
       value: 'name_a-z',
-      label: 'По названию, от А до Я',
+      label: 'По марке, от А до Я',
     },
     {
       value: 'name_z-a',
-      label: 'По названию, от Я до А',
+      label: 'По марке, от Я до А',
     },
     {
       value: 'year_asc',

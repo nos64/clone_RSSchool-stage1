@@ -3,7 +3,7 @@ import { container } from '../main';
 import {dataBase} from '../../../db/db';
 import { Card } from '../../types/types';
 
-export const variableBase = dataBase.slice();
+export const variableBase: Card[] = dataBase.slice();
 
 const contentWrapper: HTMLDivElement = document.createElement('div');
 contentWrapper.className = 'content-wrapper';

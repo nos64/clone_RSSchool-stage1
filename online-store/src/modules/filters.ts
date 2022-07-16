@@ -3,68 +3,65 @@ import { createCard } from '../modules/main/content/content';
 import { Card } from '../modules/types/types';
 
 
-const brandSet: Set<string> = new Set(); 
-variableBase.forEach(item => brandSet.add(item.brand));
-const brandArray = Array.from(brandSet);
-console.log('brandArray: ', brandArray);
+const prevArray: Card[] = JSON.parse(JSON.stringify(variableBase));
+let sortedArray: Card[] = Object.assign(variableBase);
 
 interface filterTypes {
-  brand?: string;
-  colorID?: string | null | undefined;
+  valueMin?: string[];
+  valueMax?: string[];
+  yearMin?: string[];
+  yearMax?: string[];
+  brand?: string[];
+  colorID?: string[] | null;
 }
 
-const filtersObj:filterTypes = {}
-let brandAuto: Card[];
-// const colorSet: Set<string> = new Set(); 
-// variableBase.forEach(item => colorSet.add(item.colorID));
-// const colorArray = Array.from(colorSet);
+const filtersObj:filterTypes = {
+  brand: [],
+  colorID: [],
+}
 
-// const yearSet: Set<string> = new Set(); 
-// variableBase.forEach(item => yearSet.add(item.year));
-// const yearArray = Array.from(yearSet);
-
-// const volumeSet: Set<string> = new Set(); 
-// variableBase.forEach(item => volumeSet.add(item.volume));
-// const volumeArray = Array.from(volumeSet);
-
+/**Чекбоксы по брендам */
 const checkboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.check');
 checkboxes.forEach(checkbox => {
   checkbox.addEventListener('click', () => {
-    
     if (checkbox.checked) {
-      filtersObj.brand = checkbox.value;
-      brandAuto = variableBase.filter(item => item.brand === filtersObj.brand);
+      if (!filtersObj.brand?.includes(checkbox.value)) filtersObj.brand?.push(checkbox.value);
+      sortedArray = prevArray.filter(obj => filtersObj.brand?.includes(obj.brand));
     } else {
-      brandAuto = variableBase;
+      filtersObj.brand?.splice(filtersObj.brand?.indexOf(checkbox.value), 1)
+        sortedArray = prevArray.filter(obj => filtersObj.brand?.includes(obj.brand));
+      if (filtersObj.brand?.length === 0) sortedArray = prevArray;
     }
-    
-    createCard(brandAuto);
+    createCard(sortedArray);
   })
 })
 
+/**Фильтр по цвету */
 const colorBtns: NodeListOf<HTMLButtonElement> = document.querySelectorAll('.button-color');
 colorBtns.forEach(btn => {
   btn.addEventListener('click', () => {
-  if (!btn.classList.contains('button-color-active')) {
-    filtersObj.colorID = btn.getAttribute('data-color');
-    brandAuto = variableBase.filter(item => item.colorID === filtersObj.colorID);
-  } else {
-    brandAuto = variableBase;
-  } 
+    const attr: string | null = btn.getAttribute('data-color');
+    if (attr) {
+      if (!btn.classList.contains('button-color-active')) {
+        if (!filtersObj.colorID?.includes(attr)) filtersObj.colorID?.push(attr);
+        sortedArray = prevArray.filter(obj => filtersObj.colorID?.includes(obj.colorID));
+      } else {
+        filtersObj.colorID?.splice(filtersObj.colorID?.indexOf(attr), 1)
+          sortedArray = prevArray.filter(obj => filtersObj.colorID?.includes(obj.colorID));
+        if (filtersObj.colorID?.length === 0) sortedArray = prevArray;
+      }
+      createCard(sortedArray);
+    }
     
-    createCard(brandAuto);
   })
 })
 
-
-
-
+/**Сортировка */
 const sortField: HTMLSelectElement | null = document.querySelector('.sort-field');
-let sortedArray: Card[];
 
 sortField?.addEventListener("change", () => {
   if (sortField?.value ===  'name_a-z') {
-    sortedArray = variableBase.sort((obj1, obj2) => {
+    sortedArray.sort((obj1, obj2) => {
       if (obj1.brand > obj2.brand) {
           return 1;
       }
@@ -74,7 +71,7 @@ sortField?.addEventListener("change", () => {
       return 0;
     });
   } else if (sortField?.value ===  'name_z-a') {
-    sortedArray = variableBase.sort((obj1, obj2) => {
+    sortedArray.sort((obj1, obj2) => {
       if (obj1.brand < obj2.brand) {
           return 1;
       }
@@ -84,7 +81,7 @@ sortField?.addEventListener("change", () => {
       return 0;
     });
   } else if (sortField?.value ===  'year_asc') {
-    sortedArray = variableBase.sort((obj1, obj2) => {
+    sortedArray.sort((obj1, obj2) => {
       if (obj1.year > obj2.year) {
           return 1;
       }
@@ -94,7 +91,7 @@ sortField?.addEventListener("change", () => {
       return 0;
     });
   } else if (sortField?.value ===  'year_desc') {
-    sortedArray = variableBase.sort((obj1, obj2) => {
+    sortedArray.sort((obj1, obj2) => {
       if (+obj1.year < +obj2.year) {
           return 1;
       }
@@ -104,7 +101,7 @@ sortField?.addEventListener("change", () => {
       return 0;
     }); 
   } else if (sortField?.value ===  'volume_asc') {
-    sortedArray = variableBase.sort((obj1, obj2) => {
+    sortedArray.sort((obj1, obj2) => {
       if (+obj1.volume > +obj2.volume) {
           return 1;
       }
@@ -114,7 +111,7 @@ sortField?.addEventListener("change", () => {
       return 0;
     });
   } else if (sortField?.value ===  'volume_desc') {
-    sortedArray = variableBase.sort((obj1, obj2) => {
+    sortedArray.sort((obj1, obj2) => {
       if (+obj1.volume < +obj2.volume) {
           return 1;
       }
@@ -124,5 +121,33 @@ sortField?.addEventListener("change", () => {
       return 0;
     });
   }
-  createCard(sortedArray)
+  createCard(sortedArray);
 })
+
+
+/**Показать популярные */
+const popularCheck: HTMLInputElement | null = document.querySelector('.popularity-check');
+
+popularCheck?.addEventListener('click', () => {
+  if (popularCheck.checked) {
+    sortedArray = sortedArray.filter(item => item.favorite === true)
+  } else {
+    sortedArray = prevArray;
+  }
+  createCard(sortedArray);
+})
+
+/**Поиск */
+const searchField: HTMLInputElement | null = document.querySelector('.search-form__search-field');
+
+  searchField?.addEventListener('input', () => {
+    const searchValue = searchField.value.toLowerCase().trim();
+    if (searchValue !== '') {
+      sortedArray = sortedArray.filter(item => item.brand.toLowerCase().search(searchValue) !== -1)
+    } else {
+      sortedArray = prevArray;
+    }
+    createCard(sortedArray);
+  })
+
+
