@@ -3,6 +3,10 @@ import './settings.scss';
 export const sort = () => {
   const options: {value: string; label: string;}[] = [
     {
+      value: 'all',
+      label: 'Выберете значение',
+    },
+    {
       value: 'name_a-z',
       label: 'По марке, от А до Я',
     },

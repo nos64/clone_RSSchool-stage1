@@ -1,5 +1,6 @@
 import './settings.scss';
 import * as noUiSlider from 'nouislider'
+// import * as wNumb from 'nouislider'
 import 'nouislider/dist/nouislider.css';
 import './sliders.scss';
 import {dataBase} from '../../../db/db';
@@ -19,14 +20,20 @@ export const range = () => {
     const quantityFieldWrapper: HTMLDivElement = document.createElement('div');
     quantityFieldWrapper.className = 'range-wrapper';
 
-    const minSpan: HTMLSpanElement = document.createElement('span');
+    const minSpan: HTMLInputElement = document.createElement('input');
+    // const minSpan: HTMLSpanElement = document.createElement('span');
     minSpan.classList.add('range-field', 'quantity-min');
+    minSpan.type = 'text';
+    minSpan.value = '';
 
     const quantitySlider = document.createElement('div');
     quantitySlider.id = 'quantity-slider';
 
-    const maxSpan: HTMLSpanElement = document.createElement('span');
+    const maxSpan: HTMLInputElement = document.createElement('input');
+    // const maxSpan: HTMLSpanElement = document.createElement('span');
     maxSpan.classList.add('range-field', 'quantity-max');
+    maxSpan.type = 'text';
+    maxSpan.value = '';
 
     const slider: noUiSlider.target | null = quantitySlider; // Ищем слайдер
 
@@ -46,11 +53,26 @@ export const range = () => {
           'max': arrQuantity[arrQuantity.length - 1]
         },
         step: 1,
+        // tooltips:true
+        //  format: wNumb( { decimals: 0 })
+        
       });
     }
   
-    slider.noUiSlider?.on('update', function (values: (number | string)[], handle: number): void {
-      inputs[handle].innerHTML = String(values[handle]);
+    slider.noUiSlider?.on('update', function (values: (string | number)[], handle: number): void {
+      if (values) {
+        inputs[handle].value = String(values[handle]);
+        // inputs[handle].setAttribute('value', String(values[handle]));
+
+      } 
+    });
+
+    minSpan.addEventListener('change', function(){
+      slider.noUiSlider?.set([minSpan.value, 'null']);
+    });
+
+    maxSpan.addEventListener('change', function(){
+      slider.noUiSlider?.set(['null', maxSpan.value]);
     });
 
     quantityFieldWrapper.append(minSpan, quantitySlider, maxSpan);
@@ -70,14 +92,20 @@ export const range = () => {
     const yearFieldWrapper: HTMLDivElement = document.createElement('div');
     yearFieldWrapper.className = 'range-wrapper';
 
-    const minSpan: HTMLSpanElement = document.createElement('span');
+    // const minSpan: HTMLSpanElement = document.createElement('span');
+    const minSpan: HTMLInputElement = document.createElement('input');
     minSpan.classList.add('range-field', 'year-min');
+    minSpan.type = 'text';
+    minSpan.value = '';
 
     const yearSlider = document.createElement('div');
     yearSlider.id = 'year-slider';
 
-    const maxSpan: HTMLSpanElement = document.createElement('span');
+    // const maxSpan: HTMLSpanElement = document.createElement('span');
+    const maxSpan: HTMLInputElement = document.createElement('input');
     maxSpan.classList.add('range-field', 'year-max');
+    minSpan.type = 'text';
+    minSpan.value = '';
 
     const slider: noUiSlider.target | null = yearSlider; // Ищем слайдер
 
@@ -101,7 +129,15 @@ export const range = () => {
     }
   
     slider.noUiSlider?.on('update', function (values: (number | string)[], handle: number): void {
-      inputs[handle].innerHTML = String(values[handle]);
+      inputs[handle].value = String(values[handle]);
+    });
+
+    minSpan.addEventListener('change', function(){
+      slider.noUiSlider?.set([minSpan.value, 'null']);
+    });
+
+    maxSpan.addEventListener('change', function(){
+      slider.noUiSlider?.set(['null', maxSpan.value]);
     });
 
     yearFieldWrapper.append(minSpan, yearSlider, maxSpan);
