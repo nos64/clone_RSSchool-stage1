@@ -34,7 +34,7 @@ export const dataBase = [
     "doors":  "2",
     "volume": "13",
     "quantity": "1",
-    "inBasket": true
+    "inBasket": false
   },
   {
     "id": "car02",

@@ -1,6 +1,6 @@
 import './settings.scss';
 
-export const sort = () => {
+export const createSortField = () => {
   const options: {value: string; label: string;}[] = [
     {
       value: 'all',

@@ -1,7 +1,7 @@
 import './header.scss';
 import '../../img/basket.svg';
 
-export const header = (): void => {
+export const createHeader = (): void => {
   const header: HTMLElement = document.createElement('header');
   header.className = 'header';
   document.body.append(header);
@@ -30,4 +30,4 @@ export const header = (): void => {
   container.append(h1, basketWrapper);
 }
 
-header()
+createHeader();

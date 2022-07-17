@@ -1,7 +1,7 @@
 import './settings.scss';
 
 
-export const search = () => {
+export const createSearchField = () => {
   const searchForm: HTMLDivElement = document.createElement('div');
   searchForm.className = 'search-form';
   

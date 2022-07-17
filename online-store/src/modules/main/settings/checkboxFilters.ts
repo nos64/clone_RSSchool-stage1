@@ -1,12 +1,11 @@
 import './settings.scss';
 import {dataBase} from '../../../db/db';
-// import { HTMLInput } from '../../types/types';
 
-export const checkboxFilters = () => {
+export const createCheckboxFilters = () => {
   const filterWrapper: HTMLDivElement = document.createElement('div');
   filterWrapper.className = 'filters-value';
 
-  const filterByBrand = () => {
+  const createFilterByBrand = () => {
     const byBrandWrapper: HTMLDivElement = document.createElement('div');
     byBrandWrapper.className = 'filters-value__brand';
 
@@ -39,7 +38,7 @@ export const checkboxFilters = () => {
     filterWrapper.append(byBrandWrapper);
   }
 
-  const filterByColor = () => {
+  const createFilterByColor = () => {
     const byColorWrapper: HTMLDivElement = document.createElement('div');
     byColorWrapper.className = 'filters-value__color';
 
@@ -52,13 +51,12 @@ export const checkboxFilters = () => {
 
     const colorSet: Set<string> = new Set(); 
     dataBase.forEach(item => colorSet.add(item.color));
-    // dataBase.forEach(item => colorSet.add(item.colorID));
+    
     const colorArray = Array.from(colorSet);
 
     colorArray.forEach(item => {
       const label: HTMLLabelElement = document.createElement('label');
       label.classList.add('checkbox-lbl');
-      // label.classList.add(`button-${item}`);
       label.textContent = item;
 
       const input: HTMLInputElement = document.createElement('input');
@@ -68,23 +66,14 @@ export const checkboxFilters = () => {
 
       label.append(input);
       checkboxWrapper.append(label);
-
-      // const colorBtn: HTMLButtonElement = document.createElement('button');
-      // colorBtn.className = 'button-color';
-      // colorBtn.classList.add(`button-${item}`);
-      // colorBtn.title = item;
-      // colorBtn.textContent = '✔';
-      // colorBtn.dataset.color = item;
-
-      // checkboxWrapper.append(colorBtn);
     })
 
     byColorWrapper.append(byBrandTitle, checkboxWrapper);
     filterWrapper.append(byColorWrapper);
   }
   
-  filterByBrand();
-  filterByColor();
+  createFilterByBrand();
+  createFilterByColor();
 
   return filterWrapper;
 }

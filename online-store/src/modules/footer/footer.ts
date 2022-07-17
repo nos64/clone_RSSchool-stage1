@@ -2,7 +2,7 @@ import './footer.scss';
 import '../../img/rs_school_js.svg';
 import '../../img/arrow-top.svg';
 
-export const footer = (): void => {
+export const createFooter = (): void => {
   const footer: HTMLElement = document.createElement('footer');
   footer.className = 'footer';
 
@@ -51,4 +51,4 @@ export const footer = (): void => {
   document.body.append(footer, topLink);
 }
 
-footer()
+createFooter();

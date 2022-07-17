@@ -120,9 +120,18 @@
 
 .range-field {
   width: 75px;
-  background-color: $bgColor;
+  background-color: $contrastColor;
+  color: $bgColor;
   padding: 10px;
   border-radius: 25px;
+  text-align: center;
+  outline: none;
+}
+
+.range-field::-webkit-outer-spin-button,
+.range-field::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 
@@ -176,57 +185,58 @@
     border-color: $borderColor;
   }
 
-.button-color {
-  width: 30px;
-  height: 30px;
-  border: 1px solid $borderColor;
-  border-radius: 20px;
-  outline: none;
-  opacity: .7;
-  color: transparent;
-  font-size: 20px;
-  transition: all .3s ease-in-out;
-}
+// .button-color {
+//   width: 30px;
+//   height: 30px;
+//   border: 1px solid $borderColor;
+//   border-radius: 20px;
+//   outline: none;
+//   opacity: .7;
+//   color: transparent;
+//   font-size: 20px;
+//   cursor: pointer;
+//   transition: all .3s ease-in-out;
+// }
 
-.button-color:hover {
-  opacity: 1;
-}
+// .button-color:hover {
+//   opacity: 1;
+// }
 
-.button-grey {
-  color: grey;
-}
+// .button-grey {
+//   background-color: grey;
+// }
 
-.button-green {
-  color: green;
-}
+// .button-green {
+//   background-color: green;
+// }
 
-.button-black {
-  color: black;
-}
+// .button-black {
+//   background-color: black;
+// }
 
-.button-red {
-  color: red;
-}
+// .button-red {
+//   background-color: red;
+// }
 
-.button-white {
-  color: white;
-}
+// .button-white {
+//   background-color: white;
+// }
 
-.button-blue {
-  color: blue;
-  }
+// .button-blue {
+//   background-color: blue;
+// }
 
-.button-yellow {
-  color: yellow;
-}
+// .button-yellow {
+//   background-color: yellow;
+// }
 
-  .button-color-active {
-    color: $bgColor;
-    opacity: 1;
-  }
+//   .button-color-active {
+//     color: $bgColor;
+//     opacity: 1;
+//   }
 
-  .button-color-active-negative {
-    color: $textColor;
-    opacity: 1;
-  }
+//   .button-color-active-negative {
+//     color: $textColor;
+//     opacity: 1;
+//   }
 

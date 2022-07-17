@@ -1,11 +1,11 @@
 import './settings.scss';
 import * as noUiSlider from 'nouislider'
-// import * as wNumb from 'nouislider'
 import 'nouislider/dist/nouislider.css';
 import './sliders.scss';
 import {dataBase} from '../../../db/db';
+// import {filterGoods} from '../../filters'
 
-export const range = () => {
+export const createRangesBlock = () => {
   const rangeDiv = document.createElement('div');
   rangeDiv.className = 'range-filters';
 
@@ -21,64 +21,66 @@ export const range = () => {
     quantityFieldWrapper.className = 'range-wrapper';
 
     const minSpan: HTMLInputElement = document.createElement('input');
-    // const minSpan: HTMLSpanElement = document.createElement('span');
     minSpan.classList.add('range-field', 'quantity-min');
-    minSpan.type = 'text';
+    minSpan.type = 'number';
     minSpan.value = '';
 
-    const quantitySlider = document.createElement('div');
-    quantitySlider.id = 'quantity-slider';
+    const volumeSlider = document.createElement('div');
+    volumeSlider.id = 'quantity-slider';
 
     const maxSpan: HTMLInputElement = document.createElement('input');
-    // const maxSpan: HTMLSpanElement = document.createElement('span');
     maxSpan.classList.add('range-field', 'quantity-max');
-    maxSpan.type = 'text';
+    maxSpan.type = 'number';
     maxSpan.value = '';
 
-    const slider: noUiSlider.target | null = quantitySlider; // Ищем слайдер
+    const sliderVolume: noUiSlider.target | null = volumeSlider;
 
-    if (!slider || !minSpan || !maxSpan) return console.log(slider)// если этих элементов нет, прекращаем выполнение функции, чтобы не было ошибок
+    if (!sliderVolume || !minSpan || !maxSpan) return console.log(sliderVolume);
   
     const arrQuantity: number[] = [];
     dataBase.forEach(item => arrQuantity.push(+item.volume));
     arrQuantity.sort((a, b) => a - b);
 
     const inputs = [minSpan, maxSpan];
-    if (slider) {
-      noUiSlider.create(slider, {
+    if (sliderVolume) {
+      noUiSlider.create(sliderVolume, {
         start: [arrQuantity[0], arrQuantity[arrQuantity.length - 1]],
-        connect: true, // указываем что нужно показывать выбранный диапазон
+        connect: true,
         range: { 
           'min': arrQuantity[0],
           'max': arrQuantity[arrQuantity.length - 1]
         },
         step: 1,
-        // tooltips:true
-        //  format: wNumb( { decimals: 0 })
-        
+        format: {
+          to: function (value) {
+              return  Math.round(value);
+          },
+          from: function (value) {
+              return Number((value));
+          }
+        }
       });
     }
   
-    slider.noUiSlider?.on('update', function (values: (string | number)[], handle: number): void {
+    sliderVolume.noUiSlider?.on('update', function (values: (string | number)[], handle: number): void {
       if (values) {
         inputs[handle].value = String(values[handle]);
-        // inputs[handle].setAttribute('value', String(values[handle]));
-
+      
       } 
+      // filterGoods();
     });
 
     minSpan.addEventListener('change', function(){
-      slider.noUiSlider?.set([minSpan.value, 'null']);
+      sliderVolume.noUiSlider?.set([minSpan.value, 'null']);
     });
 
     maxSpan.addEventListener('change', function(){
-      slider.noUiSlider?.set(['null', maxSpan.value]);
+      sliderVolume.noUiSlider?.set(['null', maxSpan.value]);
     });
 
-    quantityFieldWrapper.append(minSpan, quantitySlider, maxSpan);
+    quantityFieldWrapper.append(minSpan, volumeSlider, maxSpan);
     quantityWrapper.append(quantityTitle, quantityFieldWrapper);
     rangeDiv.append(quantityWrapper);
-
   }
 
   const rangeYear =() => {
@@ -92,52 +94,62 @@ export const range = () => {
     const yearFieldWrapper: HTMLDivElement = document.createElement('div');
     yearFieldWrapper.className = 'range-wrapper';
 
-    // const minSpan: HTMLSpanElement = document.createElement('span');
     const minSpan: HTMLInputElement = document.createElement('input');
     minSpan.classList.add('range-field', 'year-min');
-    minSpan.type = 'text';
+    minSpan.type = 'number';
     minSpan.value = '';
 
     const yearSlider = document.createElement('div');
     yearSlider.id = 'year-slider';
 
-    // const maxSpan: HTMLSpanElement = document.createElement('span');
     const maxSpan: HTMLInputElement = document.createElement('input');
     maxSpan.classList.add('range-field', 'year-max');
-    minSpan.type = 'text';
+    minSpan.type = 'number';
     minSpan.value = '';
 
-    const slider: noUiSlider.target | null = yearSlider; // Ищем слайдер
+    const sliderYear: noUiSlider.target | null = yearSlider;
 
-    if (!slider || !minSpan || !maxSpan) return console.log(slider)// если этих элементов нет, прекращаем выполнение функции, чтобы не было ошибок
+    if (!sliderYear || !minSpan || !maxSpan) return console.log(sliderYear);
   
     const arrYear: number[] = [];
     dataBase.forEach(item => arrYear.push(+item.year));
     arrYear.sort((a, b) => a - b);
 
     const inputs = [minSpan, maxSpan];
-    if (slider) {
-      noUiSlider.create(slider, {
-        start: [ arrYear[0], arrYear[arrYear.length - 1]], // устанавливаем начальные значения
-        connect: true, // указываем что нужно показывать выбранный диапазон
-        range: { // устанавливаем минимальное и максимальное значения
+    if (sliderYear) {
+      noUiSlider.create(sliderYear, {
+        start: [ arrYear[0], arrYear[arrYear.length - 1]],
+        connect: true,
+        range: {
           'min': arrYear[0],
           'max': arrYear[arrYear.length - 1]
         },
-        step: 1, // шаг изменения значений
+        step: 1,
+        format: {
+          to: function (value) {
+              return  Math.round(value);
+          },
+          from: function (value) {
+              return Number((value));
+          }
+        }
       });
     }
   
-    slider.noUiSlider?.on('update', function (values: (number | string)[], handle: number): void {
+    sliderYear.noUiSlider?.on('update', (values: (number | string)[], handle: number): void => {
       inputs[handle].value = String(values[handle]);
+      // if (handle) {
+        // maxSpan.value = String(values[handle]);
+      // } 
+      // else minSpan.value = String(values[handle])
     });
 
-    minSpan.addEventListener('change', function(){
-      slider.noUiSlider?.set([minSpan.value, 'null']);
+    minSpan.addEventListener('change', (): void => {
+      sliderYear.noUiSlider?.set([minSpan.value, 'null']);
     });
 
-    maxSpan.addEventListener('change', function(){
-      slider.noUiSlider?.set(['null', maxSpan.value]);
+    maxSpan.addEventListener('change', (): void => {
+      sliderYear.noUiSlider?.set(['null', maxSpan.value]);
     });
 
     yearFieldWrapper.append(minSpan, yearSlider, maxSpan);

@@ -1,33 +1,36 @@
 import './settings.scss';
 import { container } from '../main';
-import {search} from './searchField';
-import {popular} from './showPopular';
-import {sort} from './sortSelect';
-import {range} from './rangeWrapper';
-import {checkboxFilters} from './checkbox&colors';
+import { createSearchField } from './searchField';
+import { createShowPopularField } from './showPopular';
+import { createSortField } from './sortSelect';
+import { createRangesBlock } from './rangeWrapper';
+import { createCheckboxFilters } from './checkboxFilters';
+// import '../../filters';
 
+export const createSettingsArea = () => {
+  const settingsWrapper: HTMLDivElement = document.createElement('div');
+  settingsWrapper.className = 'settings-wrapper';
+  container.append(settingsWrapper);
 
-const settingsWrapper: HTMLDivElement = document.createElement('div');
-settingsWrapper.className = 'settings-wrapper';
-container.append(settingsWrapper);
+  const searchForm = createSearchField()
+  const showPopular = createShowPopularField();
+  const sortSelect = createSortField();
+  const rangeWrapper = createRangesBlock();
+  const checkboxWrapper = createCheckboxFilters();
 
-const searchForm = search()
-const showPopular = popular();
-const sortSelect = sort();
-const rangeWrapper = range();
-const checkboxWrapper = checkboxFilters();
+  const resetFiltersBtn = document.createElement('button');
+  resetFiltersBtn.classList.add('settings-btn', 'reset-filters');
+  resetFiltersBtn.textContent = 'Сброс фильтров';
 
-const resetFiltersBtn = document.createElement('button');
-resetFiltersBtn. classList.add('settings-btn', 'reset-filters');
-resetFiltersBtn.textContent = 'Сброс фильтров';
+  const resetSettingsBtn = document.createElement('button');
+  resetSettingsBtn.classList.add('settings-btn', 'reset-settings');
+  resetSettingsBtn.textContent = 'Сброс настроек';
 
-const resetSettingsBtn = document.createElement('button');
-resetSettingsBtn. classList.add('settings-btn', 'reset-settings');
-resetSettingsBtn.textContent = 'Сброс настроек';
+  settingsWrapper.append(searchForm, showPopular, sortSelect, rangeWrapper,
+    checkboxWrapper, resetFiltersBtn, resetSettingsBtn);
+}
 
-
-settingsWrapper.append(searchForm, showPopular, sortSelect, rangeWrapper, 
-      checkboxWrapper, resetFiltersBtn, resetSettingsBtn);  
+createSettingsArea()
 
 
 

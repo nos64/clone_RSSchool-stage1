@@ -1,6 +1,6 @@
 import './settings.scss';
 
-export const popular = () => {
+export const createShowPopularField = () => {
   const popularityDiv: HTMLDivElement = document.createElement('div');
   popularityDiv.className = 'search-form';
 
