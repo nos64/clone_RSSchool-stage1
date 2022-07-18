@@ -33,7 +33,7 @@ export const dataBase = [
     "favorite": false,
     "doors":  "2",
     "volume": "13",
-    "quantity": "1",
+    "owners": "4",
     "inBasket": false
   },
   {
@@ -47,7 +47,7 @@ export const dataBase = [
     "favorite": true,
     "doors":  "2",
     "volume": "102",
-    "quantity": "1",
+    "owners": "4",
     "inBasket": false
   },
   {
@@ -61,7 +61,7 @@ export const dataBase = [
     "favorite": true,
     "doors":  "2",
     "volume": "92",
-    "quantity": "1",
+    "owners": "1",
     "inBasket": false
   },
   {
@@ -75,7 +75,7 @@ export const dataBase = [
     "favorite": true,
     "doors":  "2",
     "volume": "100",
-    "quantity": "1",
+    "owners": "2",
     "inBasket": false
   },
   {
@@ -89,7 +89,7 @@ export const dataBase = [
     "favorite": true,
     "doors":  "2",
     "volume": "249",
-    "quantity": "1",
+    "owners": "3",
     "inBasket": false
   },
   {
@@ -103,7 +103,7 @@ export const dataBase = [
     "favorite": false,
     "doors":  "4",
     "volume": "330",
-    "quantity": "1",
+    "owners": "3",
     "inBasket": false
   },
   {
@@ -117,7 +117,7 @@ export const dataBase = [
     "favorite": true,
     "doors":  "2",
     "volume": "360",
-    "quantity": "1",
+    "owners": "1",
     "inBasket": false
   },
   {
@@ -131,7 +131,7 @@ export const dataBase = [
     "favorite": false,
     "doors":  "2",
     "volume": "55",
-    "quantity": "1",
+    "owners": "2",
     "inBasket": false
   },
   {
@@ -145,7 +145,7 @@ export const dataBase = [
     "favorite": true,
     "doors":  "2",
     "volume": "223",
-    "quantity": "1",
+    "owners": "5",
     "inBasket": false
   },
   {
@@ -159,7 +159,7 @@ export const dataBase = [
     "favorite": true,
     "doors":  "2",
     "volume": "215",
-    "quantity": "1",
+    "owners": "1",
     "inBasket": false
   },
   {
@@ -173,7 +173,7 @@ export const dataBase = [
     "favorite": true,
     "doors":  "2",
     "volume": "105",
-    "quantity": "1",
+    "owners": "2",
     "inBasket": false
   },
   {
@@ -187,7 +187,7 @@ export const dataBase = [
     "favorite": false,
     "doors":  "2",
     "volume": "145",
-    "quantity": "1",
+    "owners": "4",
     "inBasket": false
   },
   {
@@ -201,7 +201,7 @@ export const dataBase = [
     "favorite": true,
     "doors":  "2",
     "volume": "360",
-    "quantity": "1",
+    "owners": "2",
     "inBasket": false
   },
   {
@@ -215,7 +215,7 @@ export const dataBase = [
     "favorite": false,
     "doors":  "2",
     "volume": "320",
-    "quantity": "1",
+    "owners": "1",
     "inBasket": false
   },
   {
@@ -229,7 +229,7 @@ export const dataBase = [
     "favorite": true,
     "doors":  "4",
     "volume": "40",
-    "quantity": "1",
+    "owners": "3",
     "inBasket": false
   },
   {
@@ -243,7 +243,7 @@ export const dataBase = [
     "favorite": true,
     "doors":  "2",
     "volume": "30",
-    "quantity": "1",
+    "owners": "4",
     "inBasket": false
   },
   {
@@ -257,7 +257,7 @@ export const dataBase = [
     "favorite": false,
     "doors":  "2",
     "volume": "140",
-    "quantity": "1",
+    "owners": "1",
     "inBasket": false
   },
   {
@@ -271,7 +271,7 @@ export const dataBase = [
     "favorite": true,
     "doors":  "2",
     "volume": "60",
-    "quantity": "1",
+    "owners": "1",
     "inBasket": false
   },
   {
@@ -285,7 +285,7 @@ export const dataBase = [
     "favorite": true,
     "doors":  "2",
     "volume": "335",
-    "quantity": "1",
+    "owners": "2",
     "inBasket": false
   },
   {
@@ -299,7 +299,7 @@ export const dataBase = [
     "favorite": false,
     "doors":  "2",
     "volume": "360",
-    "quantity": "1",
+    "owners": "1",
     "inBasket": false
   },
   {
@@ -313,7 +313,7 @@ export const dataBase = [
     "favorite": true,
     "doors":  "2",
     "volume": "131",
-    "quantity": "1",
+    "owners": "3",
     "inBasket": false
   },
   {
@@ -327,7 +327,7 @@ export const dataBase = [
     "favorite": true,
     "doors":  "2",
     "volume": "350",
-    "quantity": "1",
+    "owners": "1",
     "inBasket": false
   }
 ]

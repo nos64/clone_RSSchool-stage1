@@ -68,3 +68,10 @@ font-size: 14px;
 .hide {
   display: none;
 }
+
+@media (max-width: 720px) {
+  .content-wrapper {
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -110,7 +110,6 @@
   box-shadow: 0 0 5px 5px $borderColor;
 }
 
-
 .range-wrapper {
   display: flex;
   justify-content: space-between;
@@ -139,51 +138,48 @@
   padding-bottom: 20px;
   }
   
-  .checkbox-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .checkbox-wrapper {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .checkbox-lbl {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 10px;
-    transition: all .3s ease-in-out;
-    cursor: pointer;
-  }
-  
-  .checkbox-lbl:hover {
-    transform: scale(1.1);
-    text-shadow: 0 0 5px $bgColor;
-  }
-  
-  .check {
-    margin: 5px 0 0 0;
-    transform:scale(1.4);
-    opacity:0.9;
-    cursor:pointer;
-  }
 
-  .settings-btn {
-    margin-right: 10px;
-    padding: 5px 15px;
-    border-radius: 25px;
-    border: 1px solid transparent;
-    outline: none;
-    transition: all .3s ease-in-out;
-  }
-  
-  .settings-btn:hover {
-    box-shadow: 0 0 5px 5px $borderColor;
-    border-color: $borderColor;
-  }
+.checkbox-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-lbl {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+}
+
+.checkbox-lbl:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 5px $bgColor;
+}
+
+.check {
+  margin: 5px 0 0 0;
+  transform:scale(1.4);
+  opacity:0.9;
+  cursor:pointer;
+}
+
+.settings-btn {
+  margin-right: 10px;
+  padding: 5px 15px;
+  border-radius: 25px;
+  border: 1px solid transparent;
+  outline: none;
+  transition: all .3s ease-in-out;
+}
+
+.settings-btn:hover {
+  box-shadow: 0 0 5px 5px $borderColor;
+  border-color: $borderColor;
+}
 
 // .button-color {
 //   width: 30px;
