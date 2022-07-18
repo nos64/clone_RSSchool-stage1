@@ -27,7 +27,6 @@ import '../src/modules/main/content/createCard';
 import '../src/modules/footer/footer';
 
 import '../src/modules/filters';
-
-
 import './modules/addToCart';
-// import './modules/filterByColor';
+
+import '../src/modules/main/content/modal'

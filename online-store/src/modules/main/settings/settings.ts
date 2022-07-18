@@ -5,9 +5,9 @@ import { createShowPopularField } from './showPopular';
 import { createSortField } from './sortSelect';
 import { createRangesBlock } from './rangeWrapper';
 import { createCheckboxFilters } from './checkboxFilters';
-// import '../../filters';
 
-export const createSettingsArea = () => {
+
+// export const createSettingsArea = () => {
   const settingsWrapper: HTMLDivElement = document.createElement('div');
   settingsWrapper.className = 'settings-wrapper';
   container.append(settingsWrapper);
@@ -15,9 +15,10 @@ export const createSettingsArea = () => {
   const searchForm = createSearchField()
   const showPopular = createShowPopularField();
   const sortSelect = createSortField();
-  const rangeWrapper = createRangesBlock();
+ 
   const checkboxWrapper = createCheckboxFilters();
-
+  const rangeWrapper = createRangesBlock();
+  
   const resetFiltersBtn = document.createElement('button');
   resetFiltersBtn.classList.add('settings-btn', 'reset-filters');
   resetFiltersBtn.textContent = 'Сброс фильтров';
@@ -28,9 +29,9 @@ export const createSettingsArea = () => {
 
   settingsWrapper.append(searchForm, showPopular, sortSelect, rangeWrapper,
     checkboxWrapper, resetFiltersBtn, resetSettingsBtn);
-}
+// }
 
-createSettingsArea()
+// createSettingsArea()
 
 
 

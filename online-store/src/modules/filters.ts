@@ -1,7 +1,7 @@
 import { variableBase } from './main/content/createCard';
 import { createCard } from './main/content/createCard';
 import { Card } from '../modules/types/types';
-
+import './addToCart';
 const prevArray: Card[] = JSON.parse(JSON.stringify(variableBase));
 let sortedArray: Card[] = Object.assign(variableBase);
 
@@ -120,19 +120,20 @@ export function filterGoods() {
     (!yearMin || +yearMin?.value <= +item.year) &&
     (!yearMax || +yearMax?.value >= +item.year)
   ));
+  if(modifyArr.length === 0) alert('Совпадений не найдено')
   sorting(modifyArr)
   createCard(modifyArr)
 }
 
 
+const resetFiltersBtn = document.querySelector('.reset-filters');
+console.log('reset-filters: ', resetFiltersBtn);
+resetFiltersBtn?.addEventListener('click', () => {
+  document.location.reload();
+})
 
-
-
-
-
-
-
-
+localStorage.setItem('test', '1');
+alert( localStorage.getItem('test') ); // 1
 
 
 // interface FilterTypes {

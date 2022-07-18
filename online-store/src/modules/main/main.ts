@@ -1,5 +1,5 @@
 // import {createSettingsArea} from '../main/settings/settings';
-// // import '../main/content/createCard';
+// import '../main/content/createCard';
 
 // const main: HTMLElement = document.createElement('main');
 
@@ -16,4 +16,5 @@ container.classList.add('container', 'main-container');
 
 main.append(container);
 document.body.append(main);
+
 
