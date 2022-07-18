@@ -77,15 +77,25 @@ const sortField: HTMLSelectElement | null = document.querySelector('.sort-field'
 
 /**Показать популярные */
 const popularCheck: HTMLInputElement | null = document.querySelector('.popularity-check');
-popularCheck?.addEventListener('click', () => {
-  if (popularCheck.checked) {
-    console.log('popular')
-    sortData = data.filter(item => item.favorite === true)
+// popularCheck?.addEventListener('click', () => {
+//   if (popularCheck.checked) {
+//     console.log('popular')
+//     sortData = data.filter(item => item.favorite === true)
+//   } else {
+//     sortData = data;
+//   }
+//   createCards(sortData);
+// });
+// popularCheck?.addEventListener('click', showPopular)
+
+function showPopular(arr: Card[]) {
+  if (popularCheck?.checked) {
+    arr = data.filter(item => item.favorite === true)
   } else {
-    sortData = data;
+    arr = data;
   }
-  createCards(sortData);
-});
+  createCards(arr);
+}
 
 /**Поиск */
 const searchField: HTMLInputElement | null = document.querySelector('.search-form__search-field');
@@ -110,7 +120,7 @@ function filterGoods() {
   
   const colors: NodeListOf<HTMLInputElement> = document.querySelectorAll('.color-checkbox:checked');
   const colorsArr = Array.from(colors).map(color => color.value);
- 
+
   const owners: NodeListOf<HTMLInputElement> = document.querySelectorAll('.owners-checkbox:checked');
   const ownersArr = Array.from(owners).map(owner => owner.value);
 
@@ -132,6 +142,7 @@ function filterGoods() {
   // if(modifyArr.length === 0) alert('Совпадений не найдено')
   sorting(modifyArr)
   createCards(modifyArr)
+  showPopular(modifyArr);
 }
 
 
@@ -242,7 +253,8 @@ function createYearSlider () {
 createYearSlider()
 
 
-/**Добавление в корзину */
+
+
 const cards: HTMLCollectionOf<Element> = document.getElementsByClassName('card');
 const elemBasketCount: HTMLElement | null = document.querySelector('.header_basket-count');
 let basketCount = 0;
