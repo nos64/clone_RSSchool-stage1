@@ -6,13 +6,13 @@ import { data } from '../main/main';
 import { Card } from '../types/types';
 import { createCards } from '../main/content/content';
 
-let sortData: Card[] = data.slice();
+// let sortData: Card[] = data.slice();
 
 /**Сортировка */
 const sortField: HTMLSelectElement | null = document.querySelector('.sort-field');
-  function sorting(arr: Card[]) {
+  function sorting(sortData: Card[]) {
   if (sortField?.value === 'name_a-z') {
-    arr.sort((obj1, obj2) => {
+    sortData.sort((obj1, obj2) => {
       if (obj1.brand > obj2.brand) {
         return 1;
       }
@@ -22,7 +22,7 @@ const sortField: HTMLSelectElement | null = document.querySelector('.sort-field'
       return 0;
     });
   } else if (sortField?.value === 'name_z-a') {
-    arr.sort((obj1, obj2) => {
+    sortData.sort((obj1, obj2) => {
       if (obj1.brand < obj2.brand) {
         return 1;
       }
@@ -32,7 +32,7 @@ const sortField: HTMLSelectElement | null = document.querySelector('.sort-field'
       return 0;
     });
   } else if (sortField?.value === 'year_asc') {
-    arr.sort((obj1, obj2) => {
+    sortData.sort((obj1, obj2) => {
       if (obj1.year > obj2.year) {
         return 1;
       }
@@ -42,7 +42,7 @@ const sortField: HTMLSelectElement | null = document.querySelector('.sort-field'
       return 0;
     });
   } else if (sortField?.value === 'year_desc') {
-    arr.sort((obj1, obj2) => {
+    sortData.sort((obj1, obj2) => {
       if (+obj1.year < +obj2.year) {
         return 1;
       }
@@ -52,7 +52,7 @@ const sortField: HTMLSelectElement | null = document.querySelector('.sort-field'
       return 0;
     });
   } else if (sortField?.value === 'volume_asc') {
-    arr.sort((obj1, obj2) => {
+    sortData.sort((obj1, obj2) => {
       if (+obj1.volume > +obj2.volume) {
         return 1;
       }
@@ -62,7 +62,7 @@ const sortField: HTMLSelectElement | null = document.querySelector('.sort-field'
       return 0;
     });
   } else if (sortField?.value === 'volume_desc') {
-    arr.sort((obj1, obj2) => {
+    sortData.sort((obj1, obj2) => {
       if (+obj1.volume < +obj2.volume) {
         return 1;
       }
@@ -72,42 +72,26 @@ const sortField: HTMLSelectElement | null = document.querySelector('.sort-field'
       return 0;
     });
   }
-  createCards(arr);
+  createCards(sortData);
 }
 
-/**Показать популярные */
-const popularCheck: HTMLInputElement | null = document.querySelector('.popularity-check');
-// popularCheck?.addEventListener('click', () => {
-//   if (popularCheck.checked) {
-//     console.log('popular')
-//     sortData = data.filter(item => item.favorite === true)
-//   } else {
-//     sortData = data;
-//   }
-//   createCards(sortData);
-// });
-// popularCheck?.addEventListener('click', showPopular)
-
-function showPopular(arr: Card[]) {
-  if (popularCheck?.checked) {
-    arr = data.filter(item => item.favorite === true)
-  } else {
-    arr = data;
-  }
-  createCards(arr);
-}
 
 /**Поиск */
 const searchField: HTMLInputElement | null = document.querySelector('.search-form__search-field');
 searchField?.addEventListener('input', () => {
   const searchValue = searchField.value.toLowerCase().trim();
   if (searchValue !== '') {
-    sortData = data.filter(item => item.brand.toLowerCase().search(searchValue) !== -1)
+    console.log(data.filter(item => item.brand.toLowerCase().search(searchValue) !== -1))
+    // sortData = sortData.filter(item => item.brand.toLowerCase().search(searchValue) !== -1)
   } else {
-    sortData = data;
+    // sortData = data;
   }
-  createCards(sortData);
+  // createCards(sortData);
 });
+
+// function search(arr: Card[], val: string | undefined) {
+//   arr = arr.filter(item => item.brand.toLowerCase().search(val) !== -1)
+// }
 
 /**Фильтры */
 const setingsWrapper: HTMLDivElement | null = document.querySelector('.settings-wrapper');
@@ -115,6 +99,10 @@ setingsWrapper?.addEventListener('input', filterGoods)
 
 function filterGoods() {
   let modifyArr: Card[] = [];
+  const popularCheck: HTMLInputElement | null = document.querySelector('.popularity-check');
+
+  const searchField: HTMLInputElement | null = document.querySelector('.search-form__search-field');
+
   const brands: NodeListOf<HTMLInputElement> = document.querySelectorAll('.brand-checkbox:checked');
   const brandsArr = Array.from(brands).map(brand => brand.value);
   
@@ -129,6 +117,7 @@ function filterGoods() {
   const minYear: HTMLInputElement | null = document.querySelector('.year-min');
   const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
 
+  
   modifyArr = data.filter(item => (
     (!brandsArr.length || brandsArr.includes(item.brand)) &&
     (!colorsArr.length || colorsArr.includes(item.color)) &&
@@ -138,11 +127,23 @@ function filterGoods() {
     (!minYear || +minYear?.value <= +item.year) &&
     (!maxYear || +maxYear?.value >= +item.year)
   ));
-  console.log(modifyArr)
+  /**Показать популярные */
+  if (popularCheck?.checked) {
+    modifyArr = modifyArr.filter(item => item.favorite === true);
+  }
+  /**Поиск */
+  const searchValue = searchField?.value.toLowerCase().trim();
+  if (searchValue) {
+    modifyArr = modifyArr.filter(item => item.brand.toLowerCase().search(searchValue) !== -1)
+    // console.log(searchValue)
+    // search(modifyArr, searchValue)
+    // modifyArr = modifyArr.filter(item => item.brand.toLowerCase().search(searchValue) !== -1)
+  } 
+
   // if(modifyArr.length === 0) alert('Совпадений не найдено')
   sorting(modifyArr)
   createCards(modifyArr)
-  showPopular(modifyArr);
+  // showPopular(modifyArr);
 }
 
 
