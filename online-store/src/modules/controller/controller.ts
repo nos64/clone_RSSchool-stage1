@@ -333,6 +333,7 @@ contentWrapper?.addEventListener('click', e => {
     } else {
       e.target.classList.remove('settings-btn-active');
       e.target.parentNode.classList.remove('card-active');
+      e.target.textContent = 'В корзину';
       basketCount--;
       inBasketArr.splice(inBasketArr.indexOf(e.target.parentNode.dataset.id), 1);
       delDatainBasket()
