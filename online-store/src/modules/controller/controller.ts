@@ -144,7 +144,11 @@ const allCheckboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.
 resetFiltersBtn?.addEventListener('click', e => {
   e.preventDefault()
   allCheckboxes.forEach(check => {
-    if (check.checked) check.checked = false;
+    if (check.checked) {
+      check.checked = false;
+      sorting(data);
+
+    } 
   })
 });
 
