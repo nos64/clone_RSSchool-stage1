@@ -15,12 +15,8 @@ export const createCards = (dataArr: Card[]) => {
     const card: HTMLDivElement = document.createElement('div');
     card.className = 'card';
     item.inBasket ? card.classList.add('card-active') : card.classList.remove('card-active');
-    card.dataset.basket = item.inBasket === true ? 'inBasket' : 'notBasket';
-    // card.dataset.brand = item.brand;
-    // card.dataset.color = item.colorID;
-    // card.dataset.year = item.year;
-    // card.dataset.volume = item.volume;
-    // card.dataset.favorite = item.favorite ? 'yes' : 'no';
+    // card.dataset.basket = item.inBasket === true ? 'inBasket' : 'notBasket';
+    card.dataset.id = item.id;
   
     const cardTitle: HTMLHeadingElement = document.createElement('h3');
     cardTitle.className = 'card__title';
@@ -98,7 +94,9 @@ export const createCards = (dataArr: Card[]) => {
     const addCartBtn = document.createElement('button');
     addCartBtn.classList.add('settings-btn');
     addCartBtn.textContent = 'В корзину';
-  
+    item.inBasket ? addCartBtn.textContent = 'В корзине' : 'В корзину';
+    item.inBasket ? addCartBtn.classList.add('settings-btn-active') : card.classList.remove('settings-btn=active');
+
     descriptionWrapper.append(cardYear, cardColor, cardDoor, cardVolume, cardOwners, cardPopular);
     card.append(cardTitle, cardSubtitle, cardImageWrapper, descriptionWrapper, addCartBtn)
   

@@ -7,7 +7,7 @@ export interface Card {
   color: string,
   colorID: string
   favorite: boolean,
-  doors:  string,
+  doors: string,
   volume: string,
   owners: string,
   inBasket?: boolean

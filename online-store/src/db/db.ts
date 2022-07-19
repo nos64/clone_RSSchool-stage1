@@ -31,7 +31,7 @@ export const dataBase = [
     "color": "Серый",
     "colorID": "grey",
     "favorite": false,
-    "doors":  "2",
+    "doors": "2",
     "volume": "13",
     "owners": "4",
     "inBasket": false
@@ -45,7 +45,7 @@ export const dataBase = [
     "color": "Зеленый",
     "colorID": "green",
     "favorite": true,
-    "doors":  "2",
+    "doors": "2",
     "volume": "102",
     "owners": "4",
     "inBasket": false
@@ -59,7 +59,7 @@ export const dataBase = [
     "color": "Черный",
     "colorID": "black",
     "favorite": true,
-    "doors":  "2",
+    "doors": "2",
     "volume": "92",
     "owners": "1",
     "inBasket": false
@@ -73,7 +73,7 @@ export const dataBase = [
     "color": "Красный",
     "colorID": "red",
     "favorite": true,
-    "doors":  "2",
+    "doors": "2",
     "volume": "100",
     "owners": "2",
     "inBasket": false
@@ -87,7 +87,7 @@ export const dataBase = [
     "color": "Черный",
     "colorID": "black",
     "favorite": true,
-    "doors":  "2",
+    "doors": "2",
     "volume": "249",
     "owners": "3",
     "inBasket": false
@@ -101,7 +101,7 @@ export const dataBase = [
     "color": "Красный",
     "colorID": "red",
     "favorite": false,
-    "doors":  "4",
+    "doors": "4",
     "volume": "330",
     "owners": "3",
     "inBasket": false
@@ -115,7 +115,7 @@ export const dataBase = [
     "color": "Черный",
     "colorID": "black",
     "favorite": true,
-    "doors":  "2",
+    "doors": "2",
     "volume": "360",
     "owners": "1",
     "inBasket": false
@@ -129,7 +129,7 @@ export const dataBase = [
     "color": "Белый",
     "colorID": "white",
     "favorite": false,
-    "doors":  "2",
+    "doors": "2",
     "volume": "55",
     "owners": "2",
     "inBasket": false
@@ -143,7 +143,7 @@ export const dataBase = [
     "color": "Черный",
     "colorID": "black",
     "favorite": true,
-    "doors":  "2",
+    "doors": "2",
     "volume": "223",
     "owners": "5",
     "inBasket": false
@@ -157,7 +157,7 @@ export const dataBase = [
     "color": "Серый",
     "colorID": "grey",
     "favorite": true,
-    "doors":  "2",
+    "doors": "2",
     "volume": "215",
     "owners": "1",
     "inBasket": false
@@ -171,7 +171,7 @@ export const dataBase = [
     "color": "Красный",
     "colorID": "red",
     "favorite": true,
-    "doors":  "2",
+    "doors": "2",
     "volume": "105",
     "owners": "2",
     "inBasket": false
@@ -185,7 +185,7 @@ export const dataBase = [
     "color": "Серый",
     "colorID": "grey",
     "favorite": false,
-    "doors":  "2",
+    "doors": "2",
     "volume": "145",
     "owners": "4",
     "inBasket": false
@@ -199,7 +199,7 @@ export const dataBase = [
     "color": "Черный",
     "colorID": "black",
     "favorite": true,
-    "doors":  "2",
+    "doors": "2",
     "volume": "360",
     "owners": "2",
     "inBasket": false
@@ -213,7 +213,7 @@ export const dataBase = [
     "color": "Красный",
     "colorID": "red",
     "favorite": false,
-    "doors":  "2",
+    "doors": "2",
     "volume": "320",
     "owners": "1",
     "inBasket": false
@@ -227,7 +227,7 @@ export const dataBase = [
     "color": "Красный",
     "colorID": "red",
     "favorite": true,
-    "doors":  "4",
+    "doors": "4",
     "volume": "40",
     "owners": "3",
     "inBasket": false
@@ -241,7 +241,7 @@ export const dataBase = [
     "color": "Серый",
     "colorID": "grey",
     "favorite": true,
-    "doors":  "2",
+    "doors": "2",
     "volume": "30",
     "owners": "4",
     "inBasket": false
@@ -255,7 +255,7 @@ export const dataBase = [
     "color": "Зеленый",
     "colorID": "green",
     "favorite": false,
-    "doors":  "2",
+    "doors": "2",
     "volume": "140",
     "owners": "1",
     "inBasket": false
@@ -269,7 +269,7 @@ export const dataBase = [
     "color": "Серый",
     "colorID": "grey",
     "favorite": true,
-    "doors":  "2",
+    "doors": "2",
     "volume": "60",
     "owners": "1",
     "inBasket": false
@@ -283,7 +283,7 @@ export const dataBase = [
     "color": "Серый",
     "colorID": "grey",
     "favorite": true,
-    "doors":  "2",
+    "doors": "2",
     "volume": "335",
     "owners": "2",
     "inBasket": false
@@ -297,7 +297,7 @@ export const dataBase = [
     "color": "Синий",
     "colorID": "blue",
     "favorite": false,
-    "doors":  "2",
+    "doors": "2",
     "volume": "360",
     "owners": "1",
     "inBasket": false
@@ -311,7 +311,7 @@ export const dataBase = [
     "color": "Красный",
     "colorID": "red",
     "favorite": true,
-    "doors":  "2",
+    "doors": "2",
     "volume": "131",
     "owners": "3",
     "inBasket": false
@@ -325,9 +325,9 @@ export const dataBase = [
     "color": "Красный",
     "colorID": "red",
     "favorite": true,
-    "doors":  "2",
+    "doors": "2",
     "volume": "350",
     "owners": "1",
-    "inBasket": false
-  }
-]
+    'inBasket': false,
+  },
+];
