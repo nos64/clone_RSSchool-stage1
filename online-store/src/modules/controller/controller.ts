@@ -196,7 +196,6 @@ function createVolumeSlider () {
     if (values) {
       inputs[handle].value = String(values[handle]);
     }
-    // filterGoods()
   });
 
   volumeSlider.noUiSlider?.on('slide', filterGoods)
@@ -255,7 +254,6 @@ function createYearSlider () {
     if (values) {
       inputs[handle].value = String(values[handle]);
     }
-    // filterGoods() 
   });
 
   yearSlider.noUiSlider?.on('slide', filterGoods)
@@ -276,7 +274,8 @@ function createYearSlider () {
 
 createYearSlider()
 
-const cards: HTMLCollectionOf<Element> = document.getElementsByClassName('card');
+
+const cards: NodeListOf<Element> = document.querySelectorAll('.card');
 const elemBasketCount: HTMLElement | null = document.querySelector('.header_basket-count');
 let basketCount = 0;
 // const basketArray:[]Element = [];
@@ -298,10 +297,13 @@ const showWarningMessage = () => {
 
 const addToCart = () => {
   Array.from(cards).forEach(card => {
+    console.log('card')
     card.addEventListener('click', () => {
       if (!card.classList.contains('card-active')) {
+        console.log(111)
         if (basketCount < 20) {
           card.classList.add('card-active');
+          card.setAttribute('basket', 'inBasket')
           basketCount++;
           // basketArray.push(card)
         } else {
@@ -310,10 +312,15 @@ const addToCart = () => {
       } else {
         card.classList.remove('card-active');
         basketCount--;
+        console.log(222)
       }
       changeBasketCount();
     })
   });
 }
-
 addToCart();
+
+// const contentWrapper = document.querySelector('.content-wrapper');
+// contentWrapper?.addEventListener('click', e: MouseEvent => {
+//   if (e.target.classList.contains('card'))
+// })
