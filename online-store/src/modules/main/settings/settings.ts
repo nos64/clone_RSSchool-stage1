@@ -253,11 +253,11 @@ export const createSettingsWrapper = () => {
     byOwnersWrapper.append(byOwnersTitle, checkboxOwnersWrapper);
     filterWrapper.append(byOwnersWrapper);
 
-    const resetFiltersBtn = document.createElement('button');
+    const resetFiltersBtn: HTMLButtonElement = document.createElement('button');
     resetFiltersBtn.classList.add('settings-btn', 'reset-filters');
     resetFiltersBtn.textContent = 'Сброс фильтров';
   
-    const resetSettingsBtn = document.createElement('button');
+    const resetSettingsBtn: HTMLButtonElement = document.createElement('button');
     resetSettingsBtn.classList.add('settings-btn', 'reset-settings');
     resetSettingsBtn.textContent = 'Сброс настроек';
     

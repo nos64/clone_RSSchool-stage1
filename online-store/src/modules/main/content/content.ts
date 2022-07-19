@@ -1,5 +1,5 @@
 import './content.scss';
-import { data } from '../main';
+// import { data } from '../main';
 import { Card } from '../../types/types';
 import {container } from '../main';
 
@@ -94,9 +94,12 @@ export const createCards = (dataArr: Card[]) => {
     dataPopular.textContent = item.favorite ? 'Да' : 'Нет';
     cardPopular.append(dataPopular);
   
+    const addCartBtn = document.createElement('button');
+    addCartBtn.classList.add('settings-btn');
+    addCartBtn.textContent = 'В корзину';
   
     descriptionWrapper.append(cardYear, cardColor, cardDoor, cardVolume, cardOwners, cardPopular);
-    card.append(cardTitle, cardSubtitle, cardImageWrapper, descriptionWrapper)
+    card.append(cardTitle, cardSubtitle, cardImageWrapper, descriptionWrapper, addCartBtn)
   
     contentWrapper.append(card);
   })
@@ -104,4 +107,4 @@ export const createCards = (dataArr: Card[]) => {
   if (contentWrapper.textContent === '') contentWrapper.textContent = 'Извините, совпадений не обнаружено';
 }
 
-createCards(data);
+// createCards(data);

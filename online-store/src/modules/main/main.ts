@@ -11,8 +11,8 @@ container.classList.add('container', 'main-container');
 const settings = createSettingsWrapper();
 // const cards = createCards(data);
 
-const contentWrapper: HTMLDivElement = document.createElement('div');
-contentWrapper.className = 'content-wrapper';
+// const contentWrapper: HTMLDivElement = document.createElement('div');
+// contentWrapper.className = 'content-wrapper';
 
 
 

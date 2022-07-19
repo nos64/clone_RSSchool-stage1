@@ -105,16 +105,16 @@ function filterGoods() {
   const minYear: HTMLInputElement | null = document.querySelector('.year-min');
   const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
 
-  
-  modifyArr = data.filter(item => (
-    (!brandsArr.length || brandsArr.includes(item.brand)) &&
-    (!colorsArr.length || colorsArr.includes(item.color)) &&
-    (!ownersArr.length || ownersArr.includes(item.owners)) &&
-    (!minVolume || +minVolume?.value <= +item.volume) &&
-    (!maxVolume || +maxVolume?.value >= +item.volume) &&
-    (!minYear || +minYear?.value <= +item.year) &&
-    (!maxYear || +maxYear?.value >= +item.year)
-  ));
+    modifyArr = data.filter(item => (
+      (!brandsArr.length || brandsArr.includes(item.brand)) &&
+      (!colorsArr.length || colorsArr.includes(item.color)) &&
+      (!ownersArr.length || ownersArr.includes(item.owners)) &&
+      (!minVolume || +minVolume?.value <= +item.volume) &&
+      (!maxVolume || +maxVolume?.value >= +item.volume) &&
+      (!minYear || +minYear?.value <= +item.year) &&
+      (!maxYear || +maxYear?.value >= +item.year)
+    ));
+
   /**Показать популярные */
   if (popularCheck?.checked) {
     modifyArr = modifyArr.filter(item => item.favorite === true);
@@ -125,21 +125,38 @@ function filterGoods() {
     modifyArr = modifyArr.filter(item => item.brand.toLowerCase().search(searchValue) !== -1)
   } 
   sorting(modifyArr)
+  localStorage.setItem('modifyArr', JSON.stringify(modifyArr));
   createCards(modifyArr)
 }
 
-const resetFiltersBtn = document.querySelector('.reset-filters');
+/**Получение данных из хранилища */
+function getFromStorage () {
+  const startData: Card[] =  JSON.parse(localStorage.getItem('modifyArr') as string);
+  if (startData && startData.length !== 0) createCards(startData);
+  else createCards(data);
+}
+
+window.addEventListener('load', getFromStorage);
+
+/**Сброс фильтров */
+const resetFiltersBtn: HTMLButtonElement | null = document.querySelector('.reset-filters');
 const allCheckboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.check');
-resetFiltersBtn?.addEventListener('click', () => {
+resetFiltersBtn?.addEventListener('click', e => {
+  e.preventDefault()
   allCheckboxes.forEach(check => {
     if (check.checked) check.checked = false;
   })
 });
 
-// function resetFilers () {
-  // if (minVolume) minVolume.value = '13';
-  // if (maxVolume) maxVolume.value = '360';
-// }
+/**Сброс настроек */
+const resetSettingsBtn: HTMLButtonElement | null = document.querySelector('.reset-settings');
+resetSettingsBtn?.addEventListener('click', e => {
+  e.preventDefault()
+  if (localStorage.getItem('modifyArr')) {
+    localStorage.removeItem('modifyArr');
+    createCards(data);
+  } 
+})
 
 function createVolumeSlider () {
 
@@ -179,8 +196,10 @@ function createVolumeSlider () {
     if (values) {
       inputs[handle].value = String(values[handle]);
     }
-    filterGoods()
+    // filterGoods()
   });
+
+  volumeSlider.noUiSlider?.on('slide', filterGoods)
 
   minVolume.addEventListener('change', function(){
     volumeSlider.noUiSlider?.set([minVolume.value, 'null']);
@@ -236,8 +255,10 @@ function createYearSlider () {
     if (values) {
       inputs[handle].value = String(values[handle]);
     }
-    filterGoods() 
+    // filterGoods() 
   });
+
+  yearSlider.noUiSlider?.on('slide', filterGoods)
 
   minYear.addEventListener('change', function(){
     yearSlider.noUiSlider?.set([minYear.value, 'null']);
