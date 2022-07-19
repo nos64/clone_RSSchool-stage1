@@ -183,6 +183,7 @@ function createVolumeSlider() {
   if (volumeSlider) {
     noUiSlider.create(volumeSlider, {
       start: [arrVolume[0], arrVolume[arrVolume.length - 1]],
+      tooltips: [true, true],
       connect: true,
       range: {
         min: arrVolume[0],
@@ -206,7 +207,7 @@ function createVolumeSlider() {
     }
   });
 
-  volumeSlider.noUiSlider?.on('slide', filterGoods)
+  volumeSlider.noUiSlider?.on('slide', filterGoods);
 
   minVolume.addEventListener('change', function () {
     volumeSlider.noUiSlider?.set([minVolume.value, 'null']);
@@ -218,12 +219,12 @@ function createVolumeSlider() {
 
   resetFiltersBtn?.addEventListener('click', () => {
     volumeSlider.noUiSlider?.set([arrVolume[0], arrVolume[arrVolume.length - 1]]);
-    filterGoods()
+    filterGoods();
   })
 
 }
 
-createVolumeSlider()
+createVolumeSlider();
 
 function createYearSlider() {
 
@@ -242,6 +243,7 @@ function createYearSlider() {
   if (yearSlider) {
     noUiSlider.create(yearSlider, {
       start: [arrYear[0], arrYear[arrYear.length - 1]],
+      tooltips: [true, true],
       connect: true,
       range: {
         'min': arrYear[0],
@@ -284,15 +286,6 @@ function createYearSlider() {
 
 createYearSlider();
 
-
-
-
-
-
-
-
-
-// const basketData: Card[] = data;
 
 const elemBasketCount: HTMLElement | null = document.querySelector('.header_basket-count');
 let basketCount = 0;

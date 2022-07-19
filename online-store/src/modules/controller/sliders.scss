@@ -1,42 +1,43 @@
+@import '../../style/var';
+
 .range-wrapper {
   display: flex;
   justify-content: space-between;
 }
 
-.noUi-base, .noUi-connect{
- width: 160px;
- cursor: pointer;
+.noUi-base, 
+.noUi-connect {
+  width: 160px;
+  cursor: pointer;
 }
 
 .noUi-connect {
-  background: #026363;
+  background: $borderColor;
 }
 .noUi-target {
-  box-shadow: 0 0 10px #026363;
+  box-shadow: 0 0 10px $borderColor;
   border: none;
-  background: #ebfdfc;
+  background: $bgColor;
 
 }
 .noUi-handle {
   box-shadow: 0 4px 16px rgba(0,0,0,0.24);
   border: none;
   border-radius: 50%;
-  background: #ebfdfc;
+  background: $bgColor;
   
 }
 .noUi-handle:before,
 .noUi-handle:after {
   display: none;
 }
-.noUi-handle-lower {
-  background: #026363;
-  box-shadow: 0 0 16px #026363;
-
-}
+.noUi-handle-lower,
 .noUi-handle-upper {
-  background: #026363;
-  box-shadow: 0 0 16px #026363;
+  background: $borderColor;
+  box-shadow: 0 0 16px $borderColor;
+  cursor: pointer;
 }
+
 .noUi-horizontal {
   height: 5px;
 }
@@ -44,5 +45,20 @@
   width: 15px;
   height: 15px;
   right: -8px;
+}
 
+.noUi-tooltip {
+  color: $bgColor;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.noUi-tooltip {
+  opacity: 0;
+  transition: all .5s ease-in-out;
+}
+.noUi-active .noUi-tooltip {
+  opacity: 1;
+  transition: all .3s ease-in-out;
 }
