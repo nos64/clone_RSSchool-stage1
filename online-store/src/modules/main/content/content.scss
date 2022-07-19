@@ -5,6 +5,9 @@
   align-self: flex-start;
   flex-wrap: wrap;
   gap: 20px;
+  text-align: center;
+  font-size: 60px;
+  color: $contrastColor;
 }
 
 .card {
@@ -17,6 +20,7 @@
   justify-content: space-between;
   align-items:center;
   text-align: center;
+  color: $textColor;
   border: 2px solid transparent;
   border-radius: 2px;
   transition: all .3s ease-in-out;

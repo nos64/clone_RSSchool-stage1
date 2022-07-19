@@ -6,7 +6,7 @@ import { data } from '../main/main';
 import { Card } from '../types/types';
 import { createCards } from '../main/content/content';
 
-// let sortData: Card[] = data.slice();
+let modifyArr: Card[] = [];
 
 /**Сортировка */
 const sortField: HTMLSelectElement | null = document.querySelector('.sort-field');
@@ -75,30 +75,18 @@ const sortField: HTMLSelectElement | null = document.querySelector('.sort-field'
   createCards(sortData);
 }
 
+const minVolume: HTMLInputElement | null = document.querySelector('.volume-min');
+const maxVolume: HTMLInputElement | null = document.querySelector('.volume-max');
+const minYear: HTMLInputElement | null = document.querySelector('.year-min');
+const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
 
-/**Поиск */
-const searchField: HTMLInputElement | null = document.querySelector('.search-form__search-field');
-searchField?.addEventListener('input', () => {
-  const searchValue = searchField.value.toLowerCase().trim();
-  if (searchValue !== '') {
-    console.log(data.filter(item => item.brand.toLowerCase().search(searchValue) !== -1))
-    // sortData = sortData.filter(item => item.brand.toLowerCase().search(searchValue) !== -1)
-  } else {
-    // sortData = data;
-  }
-  // createCards(sortData);
-});
-
-// function search(arr: Card[], val: string | undefined) {
-//   arr = arr.filter(item => item.brand.toLowerCase().search(val) !== -1)
-// }
 
 /**Фильтры */
 const setingsWrapper: HTMLDivElement | null = document.querySelector('.settings-wrapper');
 setingsWrapper?.addEventListener('input', filterGoods)
 
 function filterGoods() {
-  let modifyArr: Card[] = [];
+
   const popularCheck: HTMLInputElement | null = document.querySelector('.popularity-check');
 
   const searchField: HTMLInputElement | null = document.querySelector('.search-form__search-field');
@@ -112,10 +100,10 @@ function filterGoods() {
   const owners: NodeListOf<HTMLInputElement> = document.querySelectorAll('.owners-checkbox:checked');
   const ownersArr = Array.from(owners).map(owner => owner.value);
 
-  const minVolume: HTMLInputElement | null = document.querySelector('.volume-min');
-  const maxVolume: HTMLInputElement | null = document.querySelector('.volume-max');
-  const minYear: HTMLInputElement | null = document.querySelector('.year-min');
-  const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
+  // const minVolume: HTMLInputElement | null = document.querySelector('.volume-min');
+  // const maxVolume: HTMLInputElement | null = document.querySelector('.volume-max');
+  // const minYear: HTMLInputElement | null = document.querySelector('.year-min');
+  // const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
 
   
   modifyArr = data.filter(item => (
@@ -135,23 +123,16 @@ function filterGoods() {
   const searchValue = searchField?.value.toLowerCase().trim();
   if (searchValue) {
     modifyArr = modifyArr.filter(item => item.brand.toLowerCase().search(searchValue) !== -1)
-    // console.log(searchValue)
-    // search(modifyArr, searchValue)
-    // modifyArr = modifyArr.filter(item => item.brand.toLowerCase().search(searchValue) !== -1)
   } 
-
-  // if(modifyArr.length === 0) alert('Совпадений не найдено')
   sorting(modifyArr)
   createCards(modifyArr)
-  // showPopular(modifyArr);
 }
-
 
 function createVolumeSlider () {
 
   const volumeSlider: noUiSlider.target | null = document.getElementById('volume-slider');
-  const minVolume: HTMLInputElement | null = document.querySelector('.volume-min');
-  const maxVolume: HTMLInputElement | null = document.querySelector('.volume-max');
+  // const minVolume: HTMLInputElement | null = document.querySelector('.volume-min');
+  // const maxVolume: HTMLInputElement | null = document.querySelector('.volume-max');
 
   if (!volumeSlider || !minVolume || !maxVolume) return;
 
@@ -203,8 +184,8 @@ createVolumeSlider()
 function createYearSlider () {
 
   const yearSlider: noUiSlider.target | null = document.getElementById('year-slider');
-  const minYear: HTMLInputElement | null = document.querySelector('.year-min');
-  const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
+  // const minYear: HTMLInputElement | null = document.querySelector('.year-min');
+  // const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
 
   if (!yearSlider || !minYear || !maxYear) return;
 
@@ -252,7 +233,6 @@ function createYearSlider () {
 }
 
 createYearSlider()
-
 
 
 

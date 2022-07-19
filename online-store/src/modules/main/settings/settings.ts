@@ -236,7 +236,7 @@ export const createSettingsWrapper = () => {
     
     const ownersArray = Array.from(ownersSet);
 
-    ownersArray.forEach(item => {
+    ownersArray.sort((a: string, b: string) => +a - +b).forEach(item => {
       const label: HTMLLabelElement = document.createElement('label');
       label.classList.add('checkbox-lbl');
       label.textContent = item;
@@ -253,7 +253,15 @@ export const createSettingsWrapper = () => {
     byOwnersWrapper.append(byOwnersTitle, checkboxOwnersWrapper);
     filterWrapper.append(byOwnersWrapper);
 
-  settingsWrapper.append(searchForm, popularityDiv, sortDiv, rangeDiv, filterWrapper);
+    const resetFiltersBtn = document.createElement('button');
+    resetFiltersBtn.classList.add('settings-btn', 'reset-filters');
+    resetFiltersBtn.textContent = 'Сброс фильтров';
+  
+    const resetSettingsBtn = document.createElement('button');
+    resetSettingsBtn.classList.add('settings-btn', 'reset-settings');
+    resetSettingsBtn.textContent = 'Сброс настроек';
+    
+  settingsWrapper.append(searchForm, popularityDiv, sortDiv, rangeDiv, filterWrapper, resetFiltersBtn, resetSettingsBtn);
 
   return settingsWrapper;
 }
