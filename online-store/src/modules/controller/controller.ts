@@ -158,7 +158,7 @@ resetSettingsBtn?.addEventListener('click', e => {
   e.preventDefault()
   if (localStorage.getItem('modifyArr')) {
     localStorage.removeItem('modifyArr');
-    createCards(data);
+    document.location.reload();
   } 
 })
 
@@ -279,11 +279,10 @@ function createYearSlider () {
 createYearSlider()
 
 
-const cards: NodeListOf<Element> = document.querySelectorAll('.card');
 const elemBasketCount: HTMLElement | null = document.querySelector('.header_basket-count');
 let basketCount = 0;
-// const basketArray:[]Element = [];
-// console.log(Array.from(cards))
+
+
 const changeBasketCount = () => {
   if (elemBasketCount) {
     if (basketCount > 0) {
@@ -299,32 +298,31 @@ const showWarningMessage = () => {
     alert('Извините все слоты заняты')
 }
 
-const addToCart = () => {
-  Array.from(cards).forEach(card => {
-    console.log('card')
-    card.addEventListener('click', () => {
-      if (!card.classList.contains('card-active')) {
-        console.log(111)
+
+const contentWrapper = document.querySelector('.content-wrapper');
+contentWrapper?.addEventListener('click', e => {
+  if (e.target instanceof HTMLElement && e.target.classList.contains('settings-btn') 
+      && e.target.parentNode && e.target.parentNode instanceof HTMLElement) {
+    if (!e.target.classList.contains('settings-btn-active')) {
         if (basketCount < 20) {
-          card.classList.add('card-active');
-          card.setAttribute('basket', 'inBasket')
+          e.target.parentNode.classList.add('card-active');
+          e.target.parentNode.setAttribute('data-basket', 'inBasket');
+          e.target.classList.add('settings-btn-active')
+          e.target.textContent = 'В корзине';
           basketCount++;
-          // basketArray.push(card)
         } else {
           showWarningMessage();
-        }
-      } else {
-        card.classList.remove('card-active');
-        basketCount--;
-        console.log(222)
-      }
-      changeBasketCount();
-    })
-  });
-}
-addToCart();
+        } 
+    } else {
+      e.target.classList.remove('settings-btn-active');
+      e.target.parentNode.classList.remove('card-active');
+      e.target.parentNode.setAttribute('data-basket', 'notBasket');
+      basketCount--;
+    }
+  }
+  changeBasketCount();
+  console.log('basketCount: ', basketCount);
+})
 
-// const contentWrapper = document.querySelector('.content-wrapper');
-// contentWrapper?.addEventListener('click', e: MouseEvent => {
-//   if (e.target.classList.contains('card'))
-// })
+
+
