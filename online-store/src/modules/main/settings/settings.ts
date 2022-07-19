@@ -32,7 +32,7 @@ export const createSettingsWrapper = () => {
   popularityLbl.textContent = 'Показать только популярные';
 
   const popularityCheckbox: HTMLInputElement = document.createElement('input');
-  popularityCheckbox.className = 'popularity-check';
+  popularityCheckbox.classList.add('check', 'popularity-check');
   popularityCheckbox.type = 'checkbox';
 
   popularityLbl.append(popularityCheckbox);
@@ -261,7 +261,8 @@ export const createSettingsWrapper = () => {
     resetSettingsBtn.classList.add('settings-btn', 'reset-settings');
     resetSettingsBtn.textContent = 'Сброс настроек';
     
-  settingsWrapper.append(searchForm, popularityDiv, sortDiv, rangeDiv, filterWrapper, resetFiltersBtn, resetSettingsBtn);
+  settingsWrapper.append(searchForm, popularityDiv, sortDiv, rangeDiv, 
+        filterWrapper, resetFiltersBtn, resetSettingsBtn);
 
   return settingsWrapper;
 }

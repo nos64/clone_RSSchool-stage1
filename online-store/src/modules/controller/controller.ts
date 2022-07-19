@@ -75,10 +75,10 @@ const sortField: HTMLSelectElement | null = document.querySelector('.sort-field'
   createCards(sortData);
 }
 
-const minVolume: HTMLInputElement | null = document.querySelector('.volume-min');
-const maxVolume: HTMLInputElement | null = document.querySelector('.volume-max');
-const minYear: HTMLInputElement | null = document.querySelector('.year-min');
-const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
+// const minVolume: HTMLInputElement | null = document.querySelector('.volume-min');
+// const maxVolume: HTMLInputElement | null = document.querySelector('.volume-max');
+// const minYear: HTMLInputElement | null = document.querySelector('.year-min');
+// const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
 
 
 /**Фильтры */
@@ -100,10 +100,10 @@ function filterGoods() {
   const owners: NodeListOf<HTMLInputElement> = document.querySelectorAll('.owners-checkbox:checked');
   const ownersArr = Array.from(owners).map(owner => owner.value);
 
-  // const minVolume: HTMLInputElement | null = document.querySelector('.volume-min');
-  // const maxVolume: HTMLInputElement | null = document.querySelector('.volume-max');
-  // const minYear: HTMLInputElement | null = document.querySelector('.year-min');
-  // const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
+  const minVolume: HTMLInputElement | null = document.querySelector('.volume-min');
+  const maxVolume: HTMLInputElement | null = document.querySelector('.volume-max');
+  const minYear: HTMLInputElement | null = document.querySelector('.year-min');
+  const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
 
   
   modifyArr = data.filter(item => (
@@ -128,11 +128,24 @@ function filterGoods() {
   createCards(modifyArr)
 }
 
+const resetFiltersBtn = document.querySelector('.reset-filters');
+const allCheckboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.check');
+resetFiltersBtn?.addEventListener('click', () => {
+  allCheckboxes.forEach(check => {
+    if (check.checked) check.checked = false;
+  })
+});
+
+// function resetFilers () {
+  // if (minVolume) minVolume.value = '13';
+  // if (maxVolume) maxVolume.value = '360';
+// }
+
 function createVolumeSlider () {
 
   const volumeSlider: noUiSlider.target | null = document.getElementById('volume-slider');
-  // const minVolume: HTMLInputElement | null = document.querySelector('.volume-min');
-  // const maxVolume: HTMLInputElement | null = document.querySelector('.volume-max');
+  const minVolume: HTMLInputElement | null = document.querySelector('.volume-min');
+  const maxVolume: HTMLInputElement | null = document.querySelector('.volume-max');
 
   if (!volumeSlider || !minVolume || !maxVolume) return;
 
@@ -166,7 +179,7 @@ function createVolumeSlider () {
     if (values) {
       inputs[handle].value = String(values[handle]);
     }
-    filterGoods() 
+    filterGoods()
   });
 
   minVolume.addEventListener('change', function(){
@@ -177,6 +190,10 @@ function createVolumeSlider () {
     volumeSlider.noUiSlider?.set(['null', maxVolume.value]);
   });
 
+  resetFiltersBtn?.addEventListener('click', () => {
+    volumeSlider.noUiSlider?.set([arrVolume[0], arrVolume[arrVolume.length - 1]]);
+  })
+
 }
 
 createVolumeSlider()
@@ -184,8 +201,8 @@ createVolumeSlider()
 function createYearSlider () {
 
   const yearSlider: noUiSlider.target | null = document.getElementById('year-slider');
-  // const minYear: HTMLInputElement | null = document.querySelector('.year-min');
-  // const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
+  const minYear: HTMLInputElement | null = document.querySelector('.year-min');
+  const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
 
   if (!yearSlider || !minYear || !maxYear) return;
 
@@ -230,11 +247,13 @@ function createYearSlider () {
     yearSlider.noUiSlider?.set(['null', maxYear.value]);
   });
 
+  resetFiltersBtn?.addEventListener('click', () => {
+    yearSlider.noUiSlider?.set([arrYear[0], arrYear[arrYear.length - 1]]);
+  })
+
 }
 
 createYearSlider()
-
-
 
 const cards: HTMLCollectionOf<Element> = document.getElementsByClassName('card');
 const elemBasketCount: HTMLElement | null = document.querySelector('.header_basket-count');
