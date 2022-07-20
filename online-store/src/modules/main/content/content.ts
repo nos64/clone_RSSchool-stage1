@@ -105,5 +105,3 @@ export const createCards = (dataArr: Card[]) => {
 
   if (contentWrapper.textContent === '') contentWrapper.textContent = 'Извините, совпадений не обнаружено';
 }
-
-// createCards(data);

@@ -79,10 +79,9 @@ function sorting(sortData: Card[]) {
 // const minYear: HTMLInputElement | null = document.querySelector('.year-min');
 // const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
 
-
 /** Фильтры */
 const setingsWrapper: HTMLDivElement | null = document.querySelector('.settings-wrapper');
-setingsWrapper?.addEventListener('input', filterGoods)
+setingsWrapper?.addEventListener('input', filterGoods);
 
 function filterGoods() {
 
@@ -118,30 +117,31 @@ function filterGoods() {
   if (popularCheck?.checked) {
     modifyArr = modifyArr.filter(item => item.favorite === true);
   }
+
   /** Поиск */
   const searchValue = searchField?.value.toLowerCase().trim();
   if (searchValue) {
     modifyArr = modifyArr.filter(item => item.brand.toLowerCase().search(searchValue) !== -1)
   }
-  sorting(modifyArr)
-  createCards(modifyArr)
+
+  sorting(modifyArr);
+  createCards(modifyArr);
   localStorage.setItem('modifyArr', JSON.stringify(modifyArr));
 }
 
 /** Получение данных из хранилища */
 function getFromStorage() {
-  const startData: Card[] = JSON.parse(localStorage.getItem('modifyArr') as string);
-  const basketCnt = JSON.parse(localStorage.getItem('basketCount') as string);
-  const basketArr = JSON.parse(localStorage.getItem('inBasketArr') as string);
+  const startData: Card[] = JSON.parse(<string>localStorage.getItem('modifyArr'));
+  const basketCnt = JSON.parse(<string>localStorage.getItem('basketCount'));
+  const basketArr = JSON.parse(<string>localStorage.getItem('inBasketArr'));
   if (startData && startData.length !== 0) createCards(startData);
   else createCards(data);
   if (basketCnt) {
     basketCount = +basketCnt;
   }
-  if (basketArr) inBasketArr = basketArr
+  if (basketArr) inBasketArr = basketArr;
   changeBasketCount()
 }
-
 
 /** Сброс фильтров */
 const resetFiltersBtn: HTMLButtonElement | null = document.querySelector('.reset-filters');
@@ -154,7 +154,7 @@ resetFiltersBtn?.addEventListener('click', e => {
   });
     if (searchField) searchField.value = '';
 
-  getFromStorage()
+  getFromStorage();
 });
 
 /** Сброс настроек */
@@ -246,8 +246,8 @@ function createYearSlider() {
       tooltips: [true, true],
       connect: true,
       range: {
-        'min': arrYear[0],
-        'max': arrYear[arrYear.length - 1]
+        min: arrYear[0],
+        max: arrYear[arrYear.length - 1]
       },
       step: 1,
       format: {
@@ -267,7 +267,7 @@ function createYearSlider() {
     }
   });
 
-  yearSlider.noUiSlider?.on('slide', filterGoods)
+  yearSlider.noUiSlider?.on('slide', filterGoods);
 
   minYear.addEventListener('change', function () {
     yearSlider.noUiSlider?.set([minYear.value, 'null']);
@@ -279,13 +279,12 @@ function createYearSlider() {
 
   resetFiltersBtn?.addEventListener('click', () => {
     yearSlider.noUiSlider?.set([arrYear[0], arrYear[arrYear.length - 1]]);
-    filterGoods()
+    filterGoods();
   })
 
 }
 
 createYearSlider();
-
 
 const elemBasketCount: HTMLElement | null = document.querySelector('.header_basket-count');
 let basketCount = 0;
@@ -302,11 +301,22 @@ const changeBasketCount = () => {
 };
 
 const showWarningMessage = () => {
-  // eslint-disable-next-line no-alert
-  alert('Извините все слоты заняты');
+  const overflowPage = document.createElement('div');
+  overflowPage.className = 'overflowPage';
+  const popup = document.createElement('div');
+  popup.className = 'window';
+  const popupText = document.createElement('p');
+  popupText.className = 'window-text';
+  popupText.textContent = 'Извините все слоты заняты';
+  popup.append(popupText);
+  overflowPage.append(popup);
+  document.body.append(overflowPage);
+  overflowPage.addEventListener('click', () => {
+    overflowPage.remove();
+  })
 };
 
-let inBasketArr: (string | undefined)[]  = []
+let inBasketArr: (string | undefined)[]  = [];
 
 const contentWrapper = document.querySelector('.content-wrapper');
 contentWrapper?.addEventListener('click', e => {
@@ -319,7 +329,7 @@ contentWrapper?.addEventListener('click', e => {
         e.target.textContent = 'В корзине';
         basketCount++;
         inBasketArr.push(e.target.parentNode.dataset.id)
-        addDatainBasket()
+        addDatainBasket();
       } else {
         showWarningMessage();
       }
@@ -329,7 +339,7 @@ contentWrapper?.addEventListener('click', e => {
       e.target.textContent = 'В корзину';
       basketCount--;
       inBasketArr.splice(inBasketArr.indexOf(e.target.parentNode.dataset.id), 1);
-      delDatainBasket()
+      delDatainBasket();
     }
   }
   changeBasketCount();

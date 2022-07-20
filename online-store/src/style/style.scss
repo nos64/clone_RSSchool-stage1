@@ -64,6 +64,42 @@ body {
   margin-bottom: 40px;
 }
 
+.overflowPage {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color:#fdfdfd;
+  opacity: .8;
+}
+
+.window {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 30em;
+  height: 15em;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  background: transparent;
+  color: $textColor;
+  font-size: 50px;
+  font-weight: 700;
+  text-shadow: 5px 5px 5px $borderColor;
+}
+
+.window-text {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
 @media (max-width: 720px) {
   .main-container {
     flex-direction: column;

@@ -1,7 +1,6 @@
 import { dataBase } from '../../db/db';
 import { Card } from '../types/types';
 import { createSettingsWrapper } from '../main/settings/settings';
-// import { createCards } from './content/content';
 
 export const data: Card[] = Object.assign(dataBase);
 
