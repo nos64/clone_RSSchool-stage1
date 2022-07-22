@@ -5,11 +5,10 @@ export const createSettingsWrapper = () => {
   const settingsWrapper: HTMLDivElement = document.createElement('div');
   settingsWrapper.className = 'settings-wrapper';
 
-
-  /**Строка поиска */
+  /** Строка поиска */
   const searchForm: HTMLDivElement = document.createElement('div');
   searchForm.className = 'search-form';
-  
+
   const searchTitle: HTMLHeadingElement = document.createElement('h2');
   searchTitle.className = 'filter-title';
   searchTitle.textContent = 'Поиск';
@@ -23,7 +22,7 @@ export const createSettingsWrapper = () => {
 
   searchForm.append(searchTitle, searchField);
 
-  /**Показать популярные */
+  /** Показать популярные */
   const popularityDiv: HTMLDivElement = document.createElement('div');
   popularityDiv.className = 'search-form';
 
@@ -38,231 +37,238 @@ export const createSettingsWrapper = () => {
   popularityLbl.append(popularityCheckbox);
   popularityDiv.append(popularityLbl);
 
-    /**Сортировка */
-    const options: {value: string; label: string;}[] = [
-      {
-        value: 'all',
-        label: 'Выберете значение',
-      },
-      {
-        value: 'name_a-z',
-        label: 'По марке, от А до Я',
-      },
-      {
-        value: 'name_z-a',
-        label: 'По марке, от Я до А',
-      },
-      {
-        value: 'year_asc',
-        label: 'По году выпуска, по возрастанию',
-      },
-      {
-        value: 'year_desc',
-        label: 'По году выпуска, по убыванию',
-      },
-      {
-        value: 'volume_asc',
-        label: 'По мощности, по возрастанию',
-      },
-      {
-        value: 'volume_desc',
-        label: 'По мощности, по убыванию',
-      },
-    ]
-  
-    const sortDiv: HTMLDivElement = document.createElement('div');
-    sortDiv.className = 'search-form';
-  
-    const sortTitle: HTMLHeadingElement = document.createElement('h2');
-    sortTitle.className = 'filter-title';
-    sortTitle.textContent = 'Сортировка';
-  
-    const sortSelect: HTMLSelectElement = document.createElement('select');
-    sortSelect.className = 'sort-field';
-  
-    options.forEach(item => {
-      const option: HTMLOptionElement = document.createElement('option');
-      option.value = item.value;
-      option.textContent = item.label;
-      sortSelect.append(option);
-    })
-  
-    sortDiv.append(sortTitle, sortSelect);
+  /** Сортировка */
+  const options: {value: string; label: string;}[] = [
+    {
+      value: 'all',
+      label: 'Выберете значение'
+    },
+    {
+      value: 'name_a-z',
+      label: 'По марке, от А до Я'
+    },
+    {
+      value: 'name_z-a',
+      label: 'По марке, от Я до А'
+    },
+    {
+      value: 'year_asc',
+      label: 'По году выпуска, по возрастанию'
+    },
+    {
+      value: 'year_desc',
+      label: 'По году выпуска, по убыванию'
+    },
+    {
+      value: 'volume_asc',
+      label: 'По мощности, по возрастанию'
+    },
+    {
+      value: 'volume_desc',
+      label: 'По мощности, по убыванию'
+    }
+  ];
 
-    /**Обертки слайдеров */
-    const rangeDiv = document.createElement('div');
-    rangeDiv.className = 'range-filters';
+  const sortDiv: HTMLDivElement = document.createElement('div');
+  sortDiv.className = 'search-form';
 
-    // /**Слайдер по мощности двигателя */
-    const volumeWrapper: HTMLDivElement = document.createElement('div');
-    volumeWrapper.className = 'range-filters__volume';
+  const sortTitle: HTMLHeadingElement = document.createElement('h2');
+  sortTitle.className = 'filter-title';
+  sortTitle.textContent = 'Сортировка';
 
-    const volumeTitle = document.createElement('h2');
-    volumeTitle.className = 'filter-title';
-    volumeTitle.textContent = 'Мощность двигателя (л.с.)';
+  const sortSelect: HTMLSelectElement = document.createElement('select');
+  sortSelect.className = 'sort-field';
 
-    const volumeFieldWrapper: HTMLDivElement = document.createElement('div');
-    volumeFieldWrapper.className = 'range-wrapper';
+  options.forEach(item => {
+    const option: HTMLOptionElement = document.createElement('option');
+    option.value = item.value;
+    option.textContent = item.label;
+    sortSelect.append(option);
+  });
 
-    const minVolume: HTMLInputElement = document.createElement('input');
-    minVolume.classList.add('range-field', 'volume-min');
-    minVolume.type = 'number';
-    minVolume.value = '';
+  sortDiv.append(sortTitle, sortSelect);
 
-    /**VOLUME_SLIDER */
-    const volumeSlider = document.createElement('div');
-    volumeSlider.id = 'volume-slider';
+  /** Обертки слайдеров */
+  const rangeDiv = document.createElement('div');
+  rangeDiv.className = 'range-filters';
 
-    const maxVolume: HTMLInputElement = document.createElement('input');
-    maxVolume.classList.add('range-field', 'volume-max');
-    maxVolume.type = 'number';
-    maxVolume.value = '';
+  /** Слайдер по мощности двигателя */
+  const volumeWrapper: HTMLDivElement = document.createElement('div');
+  volumeWrapper.className = 'range-filters__volume';
 
-    volumeFieldWrapper.append(minVolume, volumeSlider, maxVolume);
-    volumeWrapper.append(volumeTitle, volumeFieldWrapper);
-    rangeDiv.append(volumeWrapper);
+  const volumeTitle = document.createElement('h2');
+  volumeTitle.className = 'filter-title';
+  volumeTitle.textContent = 'Мощность двигателя (л.с.)';
 
-    /**Слайдер по году выпуска */
-    const yearWrapper: HTMLDivElement = document.createElement('div');
-    yearWrapper.className = 'range-filters__year';
+  const volumeFieldWrapper: HTMLDivElement = document.createElement('div');
+  volumeFieldWrapper.className = 'range-wrapper';
 
-    const yearTitle = document.createElement('h2');
-    yearTitle.className = 'filter-title';
-    yearTitle.textContent = 'Год выпуска';
+  const minVolume: HTMLInputElement = document.createElement('input');
+  minVolume.classList.add('range-field', 'volume-min');
+  minVolume.type = 'number';
+  minVolume.value = '';
 
-    const yearFieldWrapper: HTMLDivElement = document.createElement('div');
-    yearFieldWrapper.className = 'range-wrapper';
+  /** VOLUME_SLIDER */
+  const volumeSlider = document.createElement('div');
+  volumeSlider.id = 'volume-slider';
 
-    const minYear: HTMLInputElement = document.createElement('input');
-    minYear.classList.add('range-field', 'year-min');
-    minYear.type = 'number';
-    minYear.value = '';
+  const maxVolume: HTMLInputElement = document.createElement('input');
+  maxVolume.classList.add('range-field', 'volume-max');
+  maxVolume.type = 'number';
+  maxVolume.value = '';
 
-    /**YEAR-SLIDER */
-    const yearSlider = document.createElement('div');
-    yearSlider.id = 'year-slider';
+  volumeFieldWrapper.append(minVolume, volumeSlider, maxVolume);
+  volumeWrapper.append(volumeTitle, volumeFieldWrapper);
+  rangeDiv.append(volumeWrapper);
 
-    const maxYear: HTMLInputElement = document.createElement('input');
-    maxYear.classList.add('range-field', 'year-max');
-    maxYear.type = 'number';
-    maxYear.value = '';
+  /** Слайдер по году выпуска */
+  const yearWrapper: HTMLDivElement = document.createElement('div');
+  yearWrapper.className = 'range-filters__year';
 
-    yearFieldWrapper.append(minYear, yearSlider, maxYear);
-    yearWrapper.append(yearTitle, yearFieldWrapper);
-    rangeDiv.append(yearWrapper);
+  const yearTitle = document.createElement('h2');
+  yearTitle.className = 'filter-title';
+  yearTitle.textContent = 'Год выпуска';
 
-    /**Чекбокс фильтры */
-    const filterWrapper: HTMLDivElement = document.createElement('div');
-    filterWrapper.className = 'filters-value';
+  const yearFieldWrapper: HTMLDivElement = document.createElement('div');
+  yearFieldWrapper.className = 'range-wrapper';
 
-    /**Фильтр по Бренду */
-    const byBrandWrapper: HTMLDivElement = document.createElement('div');
-    byBrandWrapper.className = 'filters-value__brand';
+  const minYear: HTMLInputElement = document.createElement('input');
+  minYear.classList.add('range-field', 'year-min');
+  minYear.type = 'number';
+  minYear.value = '';
 
-    const byBrandTitle = document.createElement('h2');
-    byBrandTitle.className = 'filter-title';
-    byBrandTitle.textContent = 'Марка';
+  /** YEAR-SLIDER */
+  const yearSlider = document.createElement('div');
+  yearSlider.id = 'year-slider';
 
-    const checkboxBrandWrapper: HTMLDivElement = document.createElement('div');
-    checkboxBrandWrapper.className = 'checkbox-wrapper';
+  const maxYear: HTMLInputElement = document.createElement('input');
+  maxYear.classList.add('range-field', 'year-max');
+  maxYear.type = 'number';
+  maxYear.value = '';
 
-    const markSet: Set<string> = new Set(); 
-    data.forEach(item => markSet.add(item.brand));
+  yearFieldWrapper.append(minYear, yearSlider, maxYear);
+  yearWrapper.append(yearTitle, yearFieldWrapper);
+  rangeDiv.append(yearWrapper);
 
-    const markArray = Array.from(markSet)
-    markArray.forEach(item => {
-      const label: HTMLLabelElement = document.createElement('label');
-      label.classList.add('checkbox-lbl');
-      label.textContent = item;
+  /** Чекбокс фильтры */
+  const filterWrapper: HTMLDivElement = document.createElement('div');
+  filterWrapper.className = 'filters-value';
 
-      const input: HTMLInputElement = document.createElement('input');
-      input.classList.add('check', 'brand-checkbox');
-      input.type = 'checkbox';
-      input.value = item; 
+  /** Фильтр по Бренду */
+  const byBrandWrapper: HTMLDivElement = document.createElement('div');
+  byBrandWrapper.className = 'filters-value__brand';
 
-      label.append(input);
-      checkboxBrandWrapper.append(label);
-    })
+  const byBrandTitle = document.createElement('h2');
+  byBrandTitle.className = 'filter-title';
+  byBrandTitle.textContent = 'Марка';
 
-    byBrandWrapper.append(byBrandTitle, checkboxBrandWrapper);
-    filterWrapper.append(byBrandWrapper);
+  const checkboxBrandWrapper: HTMLDivElement = document.createElement('div');
+  checkboxBrandWrapper.className = 'checkbox-wrapper';
 
-    /**Фильтр по цвету */
-    const byColorWrapper: HTMLDivElement = document.createElement('div');
-    byColorWrapper.className = 'filters-value__color';
+  const markSet: Set<string> = new Set();
+  data.forEach(item => markSet.add(item.brand));
 
-    const byColorTitle = document.createElement('h2');
-    byColorTitle.className = 'filter-title';
-    byColorTitle.textContent = 'Цвет';
+  const markArray = Array.from(markSet);
+  markArray.forEach(item => {
+    const label: HTMLLabelElement = document.createElement('label');
+    label.classList.add('checkbox-lbl');
+    label.textContent = item;
 
-    const checkboxColorWrapper: HTMLDivElement = document.createElement('div');
-    checkboxColorWrapper.className = 'checkbox-wrapper';
+    const input: HTMLInputElement = document.createElement('input');
+    input.classList.add('check', 'brand-checkbox');
+    input.type = 'checkbox';
+    input.value = item;
 
-    const colorSet: Set<string> = new Set(); 
-    data.forEach(item => colorSet.add(item.color));
-    
-    const colorArray = Array.from(colorSet);
+    label.append(input);
+    checkboxBrandWrapper.append(label);
+  });
 
-    colorArray.forEach(item => {
-      const label: HTMLLabelElement = document.createElement('label');
-      label.classList.add('checkbox-lbl');
-      label.textContent = item;
+  byBrandWrapper.append(byBrandTitle, checkboxBrandWrapper);
+  filterWrapper.append(byBrandWrapper);
 
-      const input: HTMLInputElement = document.createElement('input');
-      input.classList.add('check', 'color-checkbox');
-      input.type = 'checkbox';
-      input.value = item; 
+  /** Фильтр по цвету */
+  const byColorWrapper: HTMLDivElement = document.createElement('div');
+  byColorWrapper.className = 'filters-value__color';
 
-      label.append(input);
-      checkboxColorWrapper.append(label);
-    })
+  const byColorTitle = document.createElement('h2');
+  byColorTitle.className = 'filter-title';
+  byColorTitle.textContent = 'Цвет';
 
-    byColorWrapper.append(byColorTitle, checkboxColorWrapper);
-    filterWrapper.append(byColorWrapper);
+  const checkboxColorWrapper: HTMLDivElement = document.createElement('div');
+  checkboxColorWrapper.className = 'checkbox-wrapper';
 
-    /**Фильтр по собственникам */
-    const byOwnersWrapper: HTMLDivElement = document.createElement('div');
-    byOwnersWrapper.className = 'filters-value__owners';
+  const colorSet: Set<string> = new Set();
+  data.forEach(item => colorSet.add(item.color));
 
-    const byOwnersTitle = document.createElement('h2');
-    byOwnersTitle.className = 'filter-title';
-    byOwnersTitle.textContent = 'Количество собственников';
+  const colorArray = Array.from(colorSet);
 
-    const checkboxOwnersWrapper: HTMLDivElement = document.createElement('div');
-    checkboxOwnersWrapper.className = 'checkbox-wrapper';
+  colorArray.forEach(item => {
+    const label: HTMLLabelElement = document.createElement('label');
+    label.classList.add('checkbox-lbl');
+    label.textContent = item;
 
-    const ownersSet: Set<string> = new Set(); 
-    data.forEach(item => ownersSet.add(item.owners));
-    
-    const ownersArray = Array.from(ownersSet);
+    const input: HTMLInputElement = document.createElement('input');
+    input.classList.add('check', 'color-checkbox');
+    input.type = 'checkbox';
+    input.value = item;
 
-    ownersArray.sort((a: string, b: string) => +a - +b).forEach(item => {
-      const label: HTMLLabelElement = document.createElement('label');
-      label.classList.add('checkbox-lbl');
-      label.textContent = item;
+    label.append(input);
+    checkboxColorWrapper.append(label);
+  });
 
-      const input: HTMLInputElement = document.createElement('input');
-      input.classList.add('check', 'owners-checkbox');
-      input.type = 'checkbox';
-      input.value = item; 
+  byColorWrapper.append(byColorTitle, checkboxColorWrapper);
+  filterWrapper.append(byColorWrapper);
 
-      label.append(input);
-      checkboxOwnersWrapper.append(label);
-    })
+  /** Фильтр по собственникам */
+  const byOwnersWrapper: HTMLDivElement = document.createElement('div');
+  byOwnersWrapper.className = 'filters-value__owners';
 
-    byOwnersWrapper.append(byOwnersTitle, checkboxOwnersWrapper);
-    filterWrapper.append(byOwnersWrapper);
+  const byOwnersTitle = document.createElement('h2');
+  byOwnersTitle.className = 'filter-title';
+  byOwnersTitle.textContent = 'Количество собственников';
 
-    const resetFiltersBtn: HTMLButtonElement = document.createElement('button');
-    resetFiltersBtn.classList.add('settings-btn', 'reset-filters');
-    resetFiltersBtn.textContent = 'Сброс фильтров';
-  
-    const resetSettingsBtn: HTMLButtonElement = document.createElement('button');
-    resetSettingsBtn.classList.add('settings-btn', 'reset-settings');
-    resetSettingsBtn.textContent = 'Сброс настроек';
-    
-  settingsWrapper.append(searchForm, popularityDiv, sortDiv, rangeDiv, 
-        filterWrapper, resetFiltersBtn, resetSettingsBtn);
+  const checkboxOwnersWrapper: HTMLDivElement = document.createElement('div');
+  checkboxOwnersWrapper.className = 'checkbox-wrapper';
+
+  const ownersSet: Set<string> = new Set();
+  data.forEach(item => ownersSet.add(item.owners));
+
+  const ownersArray = Array.from(ownersSet);
+
+  ownersArray.sort((a: string, b: string) => +a - +b).forEach(item => {
+    const label: HTMLLabelElement = document.createElement('label');
+    label.classList.add('checkbox-lbl');
+    label.textContent = item;
+
+    const input: HTMLInputElement = document.createElement('input');
+    input.classList.add('check', 'owners-checkbox');
+    input.type = 'checkbox';
+    input.value = item;
+
+    label.append(input);
+    checkboxOwnersWrapper.append(label);
+  });
+
+  byOwnersWrapper.append(byOwnersTitle, checkboxOwnersWrapper);
+  filterWrapper.append(byOwnersWrapper);
+
+  const resetFiltersBtn: HTMLButtonElement = document.createElement('button');
+  resetFiltersBtn.classList.add('settings-btn', 'reset-filters');
+  resetFiltersBtn.textContent = 'Сброс фильтров';
+
+  const resetSettingsBtn: HTMLButtonElement = document.createElement('button');
+  resetSettingsBtn.classList.add('settings-btn', 'reset-settings');
+  resetSettingsBtn.textContent = 'Сброс настроек';
+
+  settingsWrapper.append(
+    searchForm,
+    popularityDiv,
+    sortDiv,
+    rangeDiv,
+    filterWrapper,
+    resetFiltersBtn,
+    resetSettingsBtn
+  );
 
   return settingsWrapper;
-}
+};

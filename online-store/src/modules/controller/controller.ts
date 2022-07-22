@@ -6,6 +6,20 @@ import { Card } from '../types/types';
 import { createCards } from '../main/content/content';
 
 let modifyArr: Card[] = data;
+const setingsWrapper: HTMLDivElement | null = document.querySelector('.settings-wrapper');
+const minVolume: HTMLInputElement | null = document.querySelector('.volume-min');
+const maxVolume: HTMLInputElement | null = document.querySelector('.volume-max');
+const minYear: HTMLInputElement | null = document.querySelector('.year-min');
+const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
+
+const elemBasketCount: HTMLElement | null = document.querySelector('.header_basket-count');
+let basketCount = 0;
+let inBasketArr: (string | undefined)[] = [];
+
+const resetSettingsBtn: HTMLButtonElement | null = document.querySelector('.reset-settings');
+const resetFiltersBtn: HTMLButtonElement | null = document.querySelector('.reset-filters');
+const allCheckboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.check');
+const searchField: HTMLInputElement | null = document.querySelector('.search-form__search-field');
 
 /** Сортировка */
 const sortField: HTMLSelectElement | null = document.querySelector('.sort-field');
@@ -74,20 +88,9 @@ function sorting(sortData: Card[]) {
   createCards(sortData);
 }
 
-// const minVolume: HTMLInputElement | null = document.querySelector('.volume-min');
-// const maxVolume: HTMLInputElement | null = document.querySelector('.volume-max');
-// const minYear: HTMLInputElement | null = document.querySelector('.year-min');
-// const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
-
 /** Фильтры */
-const setingsWrapper: HTMLDivElement | null = document.querySelector('.settings-wrapper');
-setingsWrapper?.addEventListener('input', filterGoods);
-
 function filterGoods() {
-
   const popularCheck: HTMLInputElement | null = document.querySelector('.popularity-check');
-
-  const searchField: HTMLInputElement | null = document.querySelector('.search-form__search-field');
 
   const brands: NodeListOf<HTMLInputElement> = document.querySelectorAll('.brand-checkbox:checked');
   const brandsArr = Array.from(brands).map(brand => brand.value);
@@ -98,19 +101,14 @@ function filterGoods() {
   const owners: NodeListOf<HTMLInputElement> = document.querySelectorAll('.owners-checkbox:checked');
   const ownersArr = Array.from(owners).map(owner => owner.value);
 
-  const minVolume: HTMLInputElement | null = document.querySelector('.volume-min');
-  const maxVolume: HTMLInputElement | null = document.querySelector('.volume-max');
-  const minYear: HTMLInputElement | null = document.querySelector('.year-min');
-  const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
-
   modifyArr = data.filter(item => (
     (!brandsArr.length || brandsArr.includes(item.brand))
     && (!colorsArr.length || colorsArr.includes(item.color))
     && (!ownersArr.length || ownersArr.includes(item.owners))
-    && (!minVolume || +minVolume?.value <= +item.volume)
-    && (!maxVolume || +maxVolume?.value >= +item.volume)
-    && (!minYear || +minYear?.value <= +item.year)
-    && (!maxYear || +maxYear?.value >= +item.year)
+    && (!minVolume || Number(minVolume?.value) <= +item.volume)
+    && (!maxVolume || Number(maxVolume?.value) >= +item.volume)
+    && (!minYear || Number(minYear?.value) <= +item.year)
+    && (!maxYear || Number(maxYear?.value) >= +item.year)
   ));
 
   /** Показать популярные */
@@ -121,7 +119,7 @@ function filterGoods() {
   /** Поиск */
   const searchValue = searchField?.value.toLowerCase().trim();
   if (searchValue) {
-    modifyArr = modifyArr.filter(item => item.brand.toLowerCase().search(searchValue) !== -1)
+    modifyArr = modifyArr.filter(item => item.brand.toLowerCase().search(searchValue) !== -1);
   }
 
   sorting(modifyArr);
@@ -129,48 +127,8 @@ function filterGoods() {
   localStorage.setItem('modifyArr', JSON.stringify(modifyArr));
 }
 
-/** Получение данных из хранилища */
-function getFromStorage() {
-  const startData: Card[] = JSON.parse(<string>localStorage.getItem('modifyArr'));
-  const basketCnt = JSON.parse(<string>localStorage.getItem('basketCount'));
-  const basketArr = JSON.parse(<string>localStorage.getItem('inBasketArr'));
-  if (startData && startData.length !== 0) createCards(startData);
-  else createCards(data);
-  if (basketCnt) {
-    basketCount = +basketCnt;
-  }
-  if (basketArr) inBasketArr = basketArr;
-  changeBasketCount()
-}
-
-/** Сброс фильтров */
-const resetFiltersBtn: HTMLButtonElement | null = document.querySelector('.reset-filters');
-const allCheckboxes: NodeListOf<HTMLInputElement> = document.querySelectorAll('.check');
-const searchField: HTMLInputElement | null = document.querySelector('.search-form__search-field');
-resetFiltersBtn?.addEventListener('click', e => {
-  e.preventDefault();
-  allCheckboxes.forEach(check => {
-    if (check.checked) check.checked = false;
-  });
-    if (searchField) searchField.value = '';
-
-  getFromStorage();
-});
-
-/** Сброс настроек */
-const resetSettingsBtn: HTMLButtonElement | null = document.querySelector('.reset-settings');
-resetSettingsBtn?.addEventListener('click', e => {
-  e.preventDefault();
-  if (localStorage.getItem('modifyArr')) localStorage.removeItem('modifyArr');
-  if (localStorage.getItem('basketCount')) localStorage.removeItem('basketCount');
-  if (localStorage.getItem('inBasketArr')) localStorage.removeItem('inBasketArr');
-  document.location.reload();
-})
-
 function createVolumeSlider() {
   const volumeSlider: noUiSlider.target | null = document.getElementById('volume-slider');
-  const minVolume: HTMLInputElement | null = document.querySelector('.volume-min');
-  const maxVolume: HTMLInputElement | null = document.querySelector('.volume-max');
 
   if (!volumeSlider || !minVolume || !maxVolume) return;
 
@@ -187,21 +145,17 @@ function createVolumeSlider() {
       connect: true,
       range: {
         min: arrVolume[0],
-        max: arrVolume[arrVolume.length - 1],
+        max: arrVolume[arrVolume.length - 1]
       },
       step: 1,
       format: {
-        to: function (value) {
-          return Math.round(value);
-        },
-        from: function (value) {
-          return Number((value));
-        }
+        to: (value) => Math.round(value),
+        from: (value) => Number((value))
       }
     });
   }
 
-  volumeSlider.noUiSlider?.on('update', function (values: (string | number)[], handle: number): void {
+  volumeSlider.noUiSlider?.on('update', (values: (string | number)[], handle: number): void => {
     if (values) {
       inputs[handle].value = String(values[handle]);
     }
@@ -209,28 +163,22 @@ function createVolumeSlider() {
 
   volumeSlider.noUiSlider?.on('slide', filterGoods);
 
-  minVolume.addEventListener('change', function () {
+  minVolume.addEventListener('change', () => {
     volumeSlider.noUiSlider?.set([minVolume.value, 'null']);
   });
 
-  maxVolume.addEventListener('change', function () {
+  maxVolume.addEventListener('change', () => {
     volumeSlider.noUiSlider?.set(['null', maxVolume.value]);
   });
 
   resetFiltersBtn?.addEventListener('click', () => {
     volumeSlider.noUiSlider?.set([arrVolume[0], arrVolume[arrVolume.length - 1]]);
     filterGoods();
-  })
-
+  });
 }
 
-createVolumeSlider();
-
 function createYearSlider() {
-
   const yearSlider: noUiSlider.target | null = document.getElementById('year-slider');
-  const minYear: HTMLInputElement | null = document.querySelector('.year-min');
-  const maxYear: HTMLInputElement | null = document.querySelector('.year-max');
 
   if (!yearSlider || !minYear || !maxYear) return;
 
@@ -251,17 +199,13 @@ function createYearSlider() {
       },
       step: 1,
       format: {
-        to: function (value) {
-          return Math.round(value);
-        },
-        from: function (value) {
-          return Number((value));
-        }
+        to: (value) => Math.round(value),
+        from: (value) => Number((value))
       }
     });
   }
 
-  yearSlider.noUiSlider?.on('update', function (values: (string | number)[], handle: number): void {
+  yearSlider.noUiSlider?.on('update', (values: (string | number)[], handle: number): void => {
     if (values) {
       inputs[handle].value = String(values[handle]);
     }
@@ -269,25 +213,19 @@ function createYearSlider() {
 
   yearSlider.noUiSlider?.on('slide', filterGoods);
 
-  minYear.addEventListener('change', function () {
+  minYear.addEventListener('change', () => {
     yearSlider.noUiSlider?.set([minYear.value, 'null']);
   });
 
-  maxYear.addEventListener('change', function () {
+  maxYear.addEventListener('change', () => {
     yearSlider.noUiSlider?.set(['null', maxYear.value]);
   });
 
   resetFiltersBtn?.addEventListener('click', () => {
     yearSlider.noUiSlider?.set([arrYear[0], arrYear[arrYear.length - 1]]);
     filterGoods();
-  })
-
+  });
 }
-
-createYearSlider();
-
-const elemBasketCount: HTMLElement | null = document.querySelector('.header_basket-count');
-let basketCount = 0;
 
 const changeBasketCount = () => {
   if (elemBasketCount) {
@@ -313,10 +251,25 @@ const showWarningMessage = () => {
   document.body.append(overflowPage);
   overflowPage.addEventListener('click', () => {
     overflowPage.remove();
-  })
+  });
 };
 
-let inBasketArr: (string | undefined)[]  = [];
+/** Добавление/удаление товара в корзину/из корзины */
+function addDatainBasket() {
+  modifyArr.forEach(item => {
+    if (inBasketArr.includes(item.id)) {
+      item.inBasket = true;
+    }
+  });
+}
+
+function delDatainBasket() {
+  modifyArr.forEach(item => {
+    if (!inBasketArr.includes(item.id)) {
+      item.inBasket = false;
+    }
+  });
+}
 
 const contentWrapper = document.querySelector('.content-wrapper');
 contentWrapper?.addEventListener('click', e => {
@@ -325,10 +278,10 @@ contentWrapper?.addEventListener('click', e => {
     if (!e.target.classList.contains('settings-btn-active')) {
       if (basketCount < 20) {
         e.target.parentNode.classList.add('card-active');
-        e.target.classList.add('settings-btn-active')
+        e.target.classList.add('settings-btn-active');
         e.target.textContent = 'В корзине';
         basketCount++;
-        inBasketArr.push(e.target.parentNode.dataset.id)
+        inBasketArr.push(e.target.parentNode.dataset.id);
         addDatainBasket();
       } else {
         showWarningMessage();
@@ -346,24 +299,44 @@ contentWrapper?.addEventListener('click', e => {
   localStorage.setItem('basketCount', JSON.stringify(basketCount));
   localStorage.setItem('modifyArr', JSON.stringify(modifyArr));
   localStorage.setItem('inBasketArr', JSON.stringify(inBasketArr));
-})
+});
 
+/** Получение данных из хранилища */
+function getFromStorage() {
+  const startData: Card[] = JSON.parse(<string>localStorage.getItem('modifyArr'));
+  const basketCnt = JSON.parse(<string>localStorage.getItem('basketCount'));
+  const basketArr = JSON.parse(<string>localStorage.getItem('inBasketArr'));
+  if (startData && startData.length !== 0) createCards(startData);
+  else createCards(data);
+  if (basketCnt) {
+    basketCount = +basketCnt;
+  }
+  if (basketArr) inBasketArr = basketArr;
+  changeBasketCount();
+}
 
-function addDatainBasket () {
-  modifyArr.forEach(item => {
-    if (inBasketArr.includes(item.id)) {
-      item.inBasket = true;
-    } 
-  })
-} 
+/** Сброс фильтров */
+resetFiltersBtn?.addEventListener('click', e => {
+  e.preventDefault();
+  allCheckboxes.forEach(check => {
+    if (check.checked) check.checked = false;
+  });
+  if (searchField) searchField.value = '';
 
-function delDatainBasket () {
-  modifyArr.forEach(item => {
-    if (!inBasketArr.includes(item.id)) {
-      item.inBasket = false;
-    } 
-  })
-} 
+  getFromStorage();
+});
 
+/** Сброс настроек */
+resetSettingsBtn?.addEventListener('click', e => {
+  e.preventDefault();
+  if (localStorage.getItem('modifyArr')) localStorage.removeItem('modifyArr');
+  if (localStorage.getItem('basketCount')) localStorage.removeItem('basketCount');
+  if (localStorage.getItem('inBasketArr')) localStorage.removeItem('inBasketArr');
+  window.location.reload();
+});
+
+createVolumeSlider();
+createYearSlider();
+setingsWrapper?.addEventListener('input', filterGoods);
 window.addEventListener('load', getFromStorage);
 window.addEventListener('load', addDatainBasket);

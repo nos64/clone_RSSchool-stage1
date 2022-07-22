@@ -43,7 +43,7 @@ const topSvg = document.createElement('img');
 topSvg.src = 'img/arrow-top.svg';
 
 topLink.append(topSvg);
-courseLink.append(courseSvg)
+courseLink.append(courseSvg);
 leftDiv.append(copySpan, yearSpan, gitLink);
 container.append(leftDiv, courseLink);
 footer.append(container);

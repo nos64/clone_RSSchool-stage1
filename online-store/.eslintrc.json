@@ -5,7 +5,7 @@
     "@typescript-eslint"
   ],
   "extends": [
-    // "airbnb",
+    "airbnb-base/legacy",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
   ],
@@ -19,6 +19,8 @@
     "node": true
   },
   "rules": {
+    "no-param-reassign": 0,
+    "no-plusplus": "off",
     "no-debugger": "off",
     "no-console": 0,
     "class-methods-use-this": "off",
