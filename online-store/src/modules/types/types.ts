@@ -22,3 +22,5 @@ export enum PopularText {
   Yes = 'Да',
   No = 'Нет'
 }
+
+export const maxBasketLimit = 20;
