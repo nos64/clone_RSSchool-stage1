@@ -12,3 +12,13 @@ export interface Card {
   owners: string,
   inBasket?: boolean
 }
+
+export enum BasketText {
+  Yes = 'В корзине',
+  No = 'В корзину'
+}
+
+export enum PopularText {
+  Yes = 'Да',
+  No = 'Нет'
+}
