@@ -1,15 +1,36 @@
-// HEADER - X-Total-Count - общее количество машин используется 
+// HEADER - X-Total-Count - общее количество машин используется
 // в скобках гаража - общее количество авто
 // 1. При запуске - Get Cars
 // РеквестАнимейшн запускаем на время - расстояние / время distance /velocity
 
-export interface GetCars {
-  name: string,
-  color: string,
-  id: number
-  _page?: number,
-  _limit?: number
+// export interface GetCars {
+//   name: string,
+//   color: string,
+//   id: number
+//   _page?: number,
+//   _limit?: number
+// }
+
+export interface Store {
+  carsPage: number,
+  cars: GetCarsType[],
+  carsCount: number,
+  // winnersPage: 1,
+  // winners,
+  // winnersCount,
+  // animation: {},
+  view: 'string',
+  sortBy: string | null,
+  sortOrder: string | null,
 }
+
+export type GetCarsType = [
+  {
+    name: string,
+    color: string,
+    id: number,
+  },
+];
 
 export interface GetCar {
   name: string,
@@ -30,8 +51,8 @@ export interface StartStopCar {
 export interface GetWinners {
   _page?: number,
   _limit?: number,
-  _sort?: ['id'|'wins'|'time'],
-  _order?: ['ASC'|'DESC']
+  _sort?: ['id' | 'wins' | 'time'],
+  _order?: ['ASC' | 'DESC']
 }
 
 export interface CreateWinner {

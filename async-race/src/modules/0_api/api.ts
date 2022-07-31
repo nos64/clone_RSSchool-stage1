@@ -32,17 +32,25 @@
 // //   }
 // // };
 
-// const url = 'http://127.0.0.1:3000';
-// // const engine = `${url}/engine`;
-// // const winners = `${url}/winners`;
-// const garage = `${url}/garage`;
+import { GetCarsType } from '../utils/types';
+
+const url = 'http://127.0.0.1:3000';
+// // // const engine = `${url}/engine`;
+// // // const winners = `${url}/winners`;
+const garage = `${url}/garage`;
+
+export const getCars = async (page: number, limit = 7) => {
+  const response = await fetch(`${garage}?page=${page}&_limit=${limit}`);
+  return {
+    items: <GetCarsType> await response.json(),
+    count: response.headers.get('X-Total-Count'),
+  };
+};
 
 // export const getCars = async (page: number, limit = 7) => {
-//   const response = await fetch(`${url}?page=${page}&_limit=${limit}`);
-//   return {
-//     items: await response.json(),
-//     count: response.headers.get('X-Total-Count')
-//   };
+//   const response = await fetch(`${garage}?page=${page}&_limit=${limit}`);
+//   const cars = await response.json();
+//   return cars;
 // };
 
 // export const getCar = async (id: number) => (await fetch(`${garage}/${id}`)).json();

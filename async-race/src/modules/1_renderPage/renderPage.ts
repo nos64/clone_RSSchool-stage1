@@ -1,11 +1,12 @@
 import { createHTMLElement } from '../utils/createHTMLElement';
-// import { renderGarage } from '../renderGarage/renderGarage';
+import { renderGarage } from '../2_renderGarage/renderGarage';
 // import {renderWinners} from '../ui';
 import './renderPage.scss';
 
-// export const renderPage = async () => {
 export const renderPage = () => {
+// export const renderPage = () => {
   const wrapper = createHTMLElement('div', 'wrapper');
+  /** Top Buttons */
   const menuDiv = createHTMLElement('div', 'menu');
   const toGarageBtn = createHTMLElement('button', 'button', 'garage-menu-button');
   toGarageBtn.textContent = 'To garage';
@@ -14,6 +15,7 @@ export const renderPage = () => {
   toWinnersBtn.textContent = 'To winners';
   toWinnersBtn.id = 'winners-menu';
 
+  /** Garage buttons & form */
   const garageView = createHTMLElement('div', 'garage-view');
   garageView.id = 'garage-view';
 
@@ -74,19 +76,24 @@ export const renderPage = () => {
   generateCarsBtn.id = 'generate';
   generateCarsBtn.textContent = 'Generate cars';
 
+  /** Cars in page */
   const garageDiv = createHTMLElement('div');
   garageDiv.id = 'garage';
   // garageDiv.textContent = `${renderGarage()}`;
+  const carsGarage = renderGarage(); // Вставляем машины
+  garageDiv.append(carsGarage); // Вставляем машины
 
+  /** Popup message */
   const messageDiv = createHTMLElement('div');
   const messageParag = createHTMLElement('p', 'message');
   messageParag.id = 'message';
 
+  /** Winners */
   const winnersViewDiv = createHTMLElement('div');
   winnersViewDiv.style.display = 'none';
   winnersViewDiv.id = 'winners-view';
   // winnersViewDiv.textContent = `${renderWinners()}`;
-
+  /** Bottom buttons pagination */
   const paginationDiv = createHTMLElement('div', 'pagination');
   const prevBtn = createHTMLElement('button', 'prev-button');
   prevBtn.textContent = 'Prev';
@@ -113,10 +120,9 @@ export const renderPage = () => {
     garageDiv,
     messageDiv,
     winnersViewDiv,
-    paginationDiv
+    paginationDiv,
   );
   menuDiv.append(toGarageBtn, toWinnersBtn);
   wrapper.append(menuDiv, garageView);
-
   return wrapper;
 };

@@ -1,3 +1,4 @@
+
 .car-buttuns-wrapper {
   display: flex;
 }
@@ -23,10 +24,15 @@
 }
 
 .road {
-
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  border-bottom: 2px dotted #fff;
 }
 
 .launch-pad {
+  width: 100%;
   display: flex;
 }
 
@@ -47,11 +53,14 @@
 }
 
 .car {
-
+  width: 70px;
+  height: auto;
+  margin-left: 5px;
+  padding-bottom: 0;
 }
 
 .flag {
-  width: 40px;
-  height: auto;
-  background-image: ('../../../img/flag.png');
+  width: 20px;
+  height: 40px;
+  margin-right: 100px;
 }

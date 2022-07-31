@@ -1,7 +1,7 @@
 export const createHTMLElement = (
   tag: string,
   className1?: string,
-  className2?: string
+  className2?: string,
 ) => {
   const element: HTMLElement = document.createElement(tag);
   if (className1) {

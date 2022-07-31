@@ -57,3 +57,47 @@
 //   stopButton.disabled = true;
 //   stopButton?.classList.toggle('enabling', true);
 // }
+
+// const setSortOrder = async = (sortBy) => {
+//   store.sortOrder = store.sortOrder === 'asc' ? 'desc' : 'asc';
+//   store.sortBy = sortBy;
+
+//   await updateStateWinners();
+//   document.getElementById('winners-view').innerHTML = renderWinners();
+// };
+
+// export const listen = () => {
+//   document.body.addEventListener('click', async (e) => {
+//     if (e.target.classList.contains('start-engine-button')) {
+//       const id = +e.target.split('start-engine-car-')[1];
+//       startDriving(id);
+//     }
+//     if (e.target.classList.contains('stot-engine-button')) {
+//       const id = +e.target.split('stot-engine-car-')[1];
+//       stotDriving(id);
+//     }
+//     if (e.target.classList.contains('select-button')) {
+//       selectedCar = await getCar(e.target?.dispatchEvent.split('select-car-')[1]);
+//       document.getElementById('update-name').value = selectedCar.name;
+//       document.getElementById('update-color').value = selectedCar.color;
+//       document.getElementById('update-name').disabled = false;
+//       document.getElementById('update-color').disabled = false;
+//       document.getElementById('update-submit').disabled = false;
+//     }
+//     if (e.target.classList.contains('remove-button')) {
+//       const id = +e.target?.dispatchEvent.split('remove-car-')[1];
+//       await deleteCar(id);
+//       await deleteWinner(id);
+//       await updateStateGarage();
+//       document.getElementById('garage')?.innerHTML = renderGarage(); /// Переделать на аппенд
+//     }
+//     if (e.target.classList.contains('generator-button')) {
+//       e.target.disabled - true;
+//     }
+//     // НЕ дописал!!!
+//     }
+//   })
+// }
+
+
+

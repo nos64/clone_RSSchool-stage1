@@ -17,6 +17,9 @@ module.exports = {
     open: true,
     hot: true,
   },
+  experiments: {
+    topLevelAwait: true
+  },
   entry: path.resolve(__dirname, 'src', 'index.ts'),
   output: {
     path: path.resolve(__dirname, 'dist'),
