@@ -1,7 +1,10 @@
-import { createHTMLElement } from '../../types/createHTMLElement';
+import { createHTMLElement } from '../utils/createHTMLElement';
+// import { renderGarage } from '../renderGarage/renderGarage';
+// import {renderWinners} from '../ui';
 import './renderPage.scss';
 
-export const renderPage = async () => {
+// export const renderPage = async () => {
+export const renderPage = () => {
   const wrapper = createHTMLElement('div', 'wrapper');
   const menuDiv = createHTMLElement('div', 'menu');
   const toGarageBtn = createHTMLElement('button', 'button', 'garage-menu-button');
@@ -10,10 +13,11 @@ export const renderPage = async () => {
   const toWinnersBtn = createHTMLElement('button', 'button', 'winners-menu-button');
   toWinnersBtn.textContent = 'To winners';
   toWinnersBtn.id = 'winners-menu';
+
   const garageView = createHTMLElement('div', 'garage-view');
   garageView.id = 'garage-view';
 
-  const divWrapForm = createHTMLElement('div');
+  const divWrapForm = createHTMLElement('div', 'form-wrapper');
   const createForm = createHTMLElement('form', 'form');
   createForm.id = 'create';
   const inputName = createHTMLElement('input', 'input');
@@ -27,9 +31,9 @@ export const renderPage = async () => {
   if (inputColor instanceof HTMLInputElement) {
     inputColor.name = 'color';
     inputColor.type = 'color';
-    inputColor.value = '#fff'
+    inputColor.value = '#fff';
   }
-  const createBtn = createHTMLElement('button', 'button');
+  const createBtn = createHTMLElement('button', 'button', 'form-button');
   createBtn.textContent = 'Create';
   if (createBtn instanceof HTMLButtonElement) {
     createBtn.type = 'submit';
@@ -52,14 +56,14 @@ export const renderPage = async () => {
     inputColorUpdate.value = '#fff';
     inputColorUpdate.disabled = true;
   }
-  const updateBtn = createHTMLElement('button', 'button');
+  const updateBtn = createHTMLElement('button', 'button', 'form-button');
   updateBtn.textContent = 'Update';
   if (updateBtn instanceof HTMLButtonElement) {
     updateBtn.type = 'submit';
   }
-  
 
   const raceControls = createHTMLElement('div', 'race-controls');
+
   const raseStartBtn = createHTMLElement('button', 'race-button');
   raseStartBtn.id = 'race';
   raseStartBtn.textContent = 'Race';
@@ -70,29 +74,29 @@ export const renderPage = async () => {
   generateCarsBtn.id = 'generate';
   generateCarsBtn.textContent = 'Generate cars';
 
-
   const garageDiv = createHTMLElement('div');
   garageDiv.id = 'garage';
-  // garageDiv.textContent = `${renderGarage()}`
+  // garageDiv.textContent = `${renderGarage()}`;
+
   const messageDiv = createHTMLElement('div');
   const messageParag = createHTMLElement('p', 'message');
   messageParag.id = 'message';
 
   const winnersViewDiv = createHTMLElement('div');
   winnersViewDiv.style.display = 'none';
-  winnersViewDiv.id = 'winners=view';
-    // garageDiv.textContent = `${generateWinners()}`
+  winnersViewDiv.id = 'winners-view';
+  // winnersViewDiv.textContent = `${renderWinners()}`;
 
   const paginationDiv = createHTMLElement('div', 'pagination');
   const prevBtn = createHTMLElement('button', 'prev-button');
   prevBtn.textContent = 'Prev';
-  prevBtn.id = 'prev'
+  prevBtn.id = 'prev';
   if (prevBtn instanceof HTMLButtonElement) {
     prevBtn.disabled = true;
   }
   const nextBtn = createHTMLElement('button', 'next-button');
   nextBtn.textContent = 'Next';
-  nextBtn.id = 'next'
+  nextBtn.id = 'next';
   if (nextBtn instanceof HTMLButtonElement) {
     nextBtn.disabled = true;
   }
@@ -100,12 +104,19 @@ export const renderPage = async () => {
   paginationDiv.append(prevBtn, nextBtn);
   messageDiv.append(messageParag);
   raceControls.append(raseStartBtn, raseResetBtn, generateCarsBtn);
-  updateForm.append(inputNameUpdate, inputColorUpdate, updateBtn)
+  updateForm.append(inputNameUpdate, inputColorUpdate, updateBtn);
   createForm.append(inputName, inputColor, createBtn);
   divWrapForm.append(createForm, updateForm);
-  garageView.append(divWrapForm, raceControls, garageDiv, messageDiv, winnersViewDiv, paginationDiv);
+  garageView.append(
+    divWrapForm,
+    raceControls,
+    garageDiv,
+    messageDiv,
+    winnersViewDiv,
+    paginationDiv
+  );
   menuDiv.append(toGarageBtn, toWinnersBtn);
   wrapper.append(menuDiv, garageView);
 
   return wrapper;
-}
+};
