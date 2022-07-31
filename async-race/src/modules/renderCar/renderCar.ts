@@ -10,8 +10,6 @@ import '../../img/flag.png';
 // generateRandomCars } from '../utils/utils';
 // // import store from './store';
 
-// // let selectedCar = null;
-
 const getCarImage = (color: string) => `<?xml version="1.0" encoding="iso-8859-1"?>
   <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
     viewBox="0 0 20.07 14.07" style="enable-background:new 0 0 20.07 20.07;" xml:space="preserve">

@@ -1,3 +1,6 @@
+
+// // let selectedCar = null;
+
 // export const updateStateGarage = async () => {
 //   const { items, count } = await getCars(store.carsPage);
 //   store.cars = items;
@@ -72,7 +75,7 @@
 //       const id = +e.target.split('start-engine-car-')[1];
 //       startDriving(id);
 //     }
-//     if (e.target.classList.contains('stot-engine-button')) {
+//     if (e.target.classList.contains('stop-engine-button')) {
 //       const id = +e.target.split('stot-engine-car-')[1];
 //       stotDriving(id);
 //     }
@@ -89,15 +92,97 @@
 //       await deleteCar(id);
 //       await deleteWinner(id);
 //       await updateStateGarage();
-//       document.getElementById('garage')?.innerHTML = renderGarage(); /// Переделать на аппенд
+//       document.getElementById('garage').innerHTML = renderGarage(); /// Переделать на аппенд
 //     }
 //     if (e.target.classList.contains('generator-button')) {
 //       e.target.disabled - true;
+//       const cars = generateRandomCars();
+//       await Promise.all(cars.map(async c => await createCar(c)));
+//       await updateStateGarage();
+//       document.getElementById('garage').innerHTML = renderGarage(); /// Переделать на аппенд
+//       e.target.disabled = false;
 //     }
-//     // НЕ дописал!!!
+//     if (e.target.classList.contains('race-button')) {
+//       e.target.disabled = true;
+//       const winner = await race(startDriving);
+//       await saveWinner(winner);
+//       message.innerHTML = `${winner.name} went first ${winner.time}s!`;
+//       message.classList.toggle('visible', true);
+//       document.getElementById('reset').disabled = false;
 //     }
-//   })
+//     if (e.target.classList.contains('prev-button')) {
+//       switch(store.view) {
+//         case 'garage': {
+//           store.carsPage--;
+//           await updateStateGarage();
+//           document.getElementById('garage').innerHTML = renderGarage();
+//           break;
+//         }
+//         case 'winners': {
+//           store.winnersPage--;
+//           await updateStateWinners();
+//           document.getElementById('winners-view').innerHTML = renderWinners();
+//           break;
+//         }
+//       }
+//     }
+//     if (e.target.classList.contains('next-button')) {
+//       switch(store.view) {
+//         case 'garage': {
+//           store.carsPage++;
+//           await updateStateGarage();
+//           document.getElementById('garage').innerHTML = renderGarage();
+//           break;
+//         }
+//         case 'winners': {
+//           store.winnersPage++;
+//           await updateStateWinners();
+//           document.getElementById('winners-view').innerHTML = renderWinners();
+//           break;
+//         }
+//       } 
+//     }
+//     if (e.target.classList.contains('garage-menu-button')) {
+//       document.getElementById('garage-view').style.display = 'block';
+//       document.getElementById('winner-view')?.style.display = 'none';
+//     }
+//     if (e.target.classList.contains('winners-menu-button')) {
+//       document.getElementById('winner-view')?.style.display = 'block';
+//       document.getElementById('garage-view').style.display = 'none';
+//       await updateStateWinners();
+//       document.getElementById('winners-view')?.innerHTML = renderWinners();
+//     }
+//     if (e.target.classList.contains('table-wins')) {
+//       setSortOrder('wins');
+//     }
+//     if (e.target.classList.contains('table-time')) {
+//       setSortOrder('time');
+//     }
+//   });
+
+//   document.getElementById('create')?.addEventListener('submit', async (e) => {
+//     e.preventDefault();
+//     const car = Object.fromEntries(new Map([...e.target].filter(({name}) => !!name).map(({value, name}) => [name, value)));
+//       await createCar(car);
+//       await updateStateGarage();
+//       document.getElementById('garage')?.innerHTML = renderGarage();
+//       document.getElementById('create-name').value = '';
+//       e.target.disabled = true;
+//   });
+
+//   document.getElementById('update')?.addEventListener('submit', async (e) => {
+//     e.preventDefault();
+//     const car = Object.fromEntries(new Map([...e.target].filter(({name}) => !!name).map(({value, name}) => [name, value)));
+//       await updateCar(selectedCar.id, car);
+//       await updateStateGarage();
+//       document.getElementById('garage')?.innerHTML = renderGarage();
+//       document.getElementById('create-name').value = '';
+//       document.getElementById('update-name').disabled = true;
+//       document.getElementById('update-color').disabled = true;
+//       document.getElementById('update-submit').disabled = true;
+//       document.getElementById('update-submit').disabled = '#fff';
+//       selectedCar = null;
+//   });
+
 // }
-
-
 

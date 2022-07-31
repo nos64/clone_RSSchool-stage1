@@ -4,7 +4,6 @@ import { renderGarage } from '../2_renderGarage/renderGarage';
 import './renderPage.scss';
 
 export const renderPage = () => {
-// export const renderPage = () => {
   const wrapper = createHTMLElement('div', 'wrapper');
   /** Top Buttons */
   const menuDiv = createHTMLElement('div', 'menu');

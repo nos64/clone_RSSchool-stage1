@@ -1,12 +1,12 @@
 // import store from "./store";
 
 // function getPositionAtCenter(element) {
-//   const {top, left, width, height} = element.getBoundingClientRect();
+//   const { top, left, width, height } = element.getBoundingClientRect();
 //   return {
 //     x: left + width / 2,
-//     y: top + height / 2
+//     y: top + height / 2,
 //   };
-// };
+// }
 
 // export function getDistanceBetweenElements(a, b) {
 //   const aPosition = getPositionAtCenter(a);

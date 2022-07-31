@@ -1,42 +1,10 @@
 // import { GetCars } from "../utils/types";
 
-// // let data = [];
-
-// // const getData = ({search, id, country, city} = {}) => {
-// //   let url = `http://localhost:3000/api/vacancy/${id ? id : ''}`;
-// //   if (search) {
-// //     url = `http://localhost:3000/api/vacancy?search=${search}`;
-// //   }
-
-// //   if (city) {
-// //     url = `http://localhost:3000/api/vacancy?city=${city}`;
-// //   }
-
-// //   if (country) {
-// //     url = `http://localhost:3000/api/vacancy?country=${country}`;
-// //   }
-
-// //   return fetch(url).then(response => response.json());
-// // };
-
-// // const sortData = () => {
-// //   switch (orderBy.value) {
-// //     case 'down':
-// //       data.sort((a, b) => a.minCompensation > b.minCompensation ? 1 : -1);
-// //       break;
-// //     case 'up':
-// //       data.sort((a, b) => b.minCompensation > a.minCompensation ? 1 : -1);
-// //       break;
-// //     default:
-// //       data.sort((a, b) => new Date(a.date).getTime() > new Date(b.date).getTime() ? 1: -1);
-// //   }
-// // };
-
 import { GetCarsType } from '../utils/types';
 
 const url = 'http://127.0.0.1:3000';
 // // // const engine = `${url}/engine`;
-// // // const winners = `${url}/winners`;
+// const winners = `${url}/winners`;
 const garage = `${url}/garage`;
 
 export const getCars = async (page: number, limit = 7) => {
@@ -46,12 +14,6 @@ export const getCars = async (page: number, limit = 7) => {
     count: response.headers.get('X-Total-Count'),
   };
 };
-
-// export const getCars = async (page: number, limit = 7) => {
-//   const response = await fetch(`${garage}?page=${page}&_limit=${limit}`);
-//   const cars = await response.json();
-//   return cars;
-// };
 
 // export const getCar = async (id: number) => (await fetch(`${garage}/${id}`)).json();
 
@@ -95,19 +57,19 @@ export const getCars = async (page: number, limit = 7) => {
 // //   return '';
 // // };
 
-// // export const getWinners = async ({ page, limit = 10, sort, order }) => {
-// //   const response = await fetch(
-// // `${winners}?_page=${page}&_limit=${limit}${getSortOrder(sort, order)}`
-// // );
-// //   const items = await response.json();
+// export const getWinners = async ({ page, limit = 10, sort, order }) => {
+//   const response = await fetch(
+// `${winners}?_page=${page}&_limit=${limit}${getSortOrder(sort, order)}`
+// );
+//   const items = await response.json();
 
-// //   return {
-// // items: await Promise.all(items.map(async winner => (
-// // {...winner, car: await getCar(winner.id)})
-// // )),
-// // count: response.headers.get('X-Total-Count'),
-// //   };
-// // }
+//   return {
+// items: await Promise.all(items.map(async winner => (
+// {...winner, car: await getCar(winner.id)})
+// )),
+// count: response.headers.get('X-Total-Count'),
+//   };
+// }
 
 // // export const getWinner = async (id: number) => (await fetch(`${winners}/${id}`)).json();
 
