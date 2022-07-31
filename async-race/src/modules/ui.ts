@@ -1,4 +1,3 @@
-
 // // let selectedCar = null;
 
 // export const updateStateGarage = async () => {
@@ -19,7 +18,8 @@
 // }
 
 // export const updateStateWinners = async () => {
-//   const { items, count } = await getWinners({page: store.winnersPage, sort: store.sortBy, order: store.sortOrder});
+//   const { items, count } = await getWinners(
+// {page: store.winnersPage, sort: store.sortBy, order: store.sortOrder});
 //   store.winners = items;
 //   store.winnersCount = count;
 
@@ -140,7 +140,7 @@
 //           document.getElementById('winners-view').innerHTML = renderWinners();
 //           break;
 //         }
-//       } 
+//       }
 //     }
 //     if (e.target.classList.contains('garage-menu-button')) {
 //       document.getElementById('garage-view').style.display = 'block';
@@ -162,6 +162,7 @@
 
 //   document.getElementById('create')?.addEventListener('submit', async (e) => {
 //     e.preventDefault();
+// eslint-disable-next-line max-len
 //     const car = Object.fromEntries(new Map([...e.target].filter(({name}) => !!name).map(({value, name}) => [name, value)));
 //       await createCar(car);
 //       await updateStateGarage();
@@ -172,6 +173,7 @@
 
 //   document.getElementById('update')?.addEventListener('submit', async (e) => {
 //     e.preventDefault();
+// eslint-disable-next-line max-len
 //     const car = Object.fromEntries(new Map([...e.target].filter(({name}) => !!name).map(({value, name}) => [name, value)));
 //       await updateCar(selectedCar.id, car);
 //       await updateStateGarage();
@@ -185,4 +187,3 @@
 //   });
 
 // }
-
