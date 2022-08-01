@@ -1,0 +1,19 @@
+.winners-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.winners-table {
+  width: 70%;
+  border: 1px solid grey;
+}
+
+th {
+  border: 1px solid grey;
+}
+
+td {
+  border: 1px solid grey;
+}

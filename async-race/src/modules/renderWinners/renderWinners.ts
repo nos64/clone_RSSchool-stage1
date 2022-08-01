@@ -1,5 +1,6 @@
+import { getCarImage } from '../renderCar/renderCar';
 import { createHTMLElement } from '../utils/createHTMLElement';
-// import './renderGarage.scss';
+import './renderWinners.scss';
 import store from '../utils/store';
 
 export const renderWinners = () => {
@@ -33,26 +34,27 @@ export const renderWinners = () => {
   store.sortBy === 'time' ? tableBtnTime.classList.add(`${store.sortOrder}`) : '';
   tableBtnTime.id = 'sort-by-time';
   tableBtnTime.textContent = 'Best time (seconds)';
-  const tbody = createHTMLElement('tbody');
-  // store.winners.map((winner, index) => {
-  //   const tr = createHTMLElement('tr');
-  //   const tdNum = createHTMLElement('td');
-  //   tdNum.textContent = `${index + 1}`;
-  //   const tdCarColor = createHTMLElement('td');
-  //   tdCarColor.textContent = `${renderCarImage(winner.car.color)}`;
-  //   const tdName = createHTMLElement('td');
-  //   tdName.textContent = `${winner.car.name}`;
-  //   const tdWins = createHTMLElement('td');
-  //   tdWins.textContent = `${winner.wins}`;
-  //   const tdTime = createHTMLElement('td');
-  //   tdTime.textContent = `${winner.time}`;
 
-  //   tr.append(tdNum, tdCarColor, tdName, tdWins, tdTime);
-  //   tbody.append(tr);
-  // }).join('');
+  const tbody = createHTMLElement('tbody');
+  store.winners.forEach((winner, index) => {
+    const tr = createHTMLElement('tr');
+    const tdNum = createHTMLElement('td');
+    tdNum.textContent = `${index + 1}`;
+    const tdCarColor = createHTMLElement('td');
+    tdCarColor.innerHTML = `${getCarImage(winner.car.color)}`;
+    const tdName = createHTMLElement('td');
+    tdName.textContent = `${winner.car.name}`;
+    const tdWins = createHTMLElement('td');
+    // tdWins.textContent = `${winner.wins}`;
+    const tdTime = createHTMLElement('td');
+    // tdTime.textContent = `${winner.time}`;
+    tr.append(tdNum, tdCarColor, tdName, tdWins, tdTime);
+    tbody.append(tr);
+  });
 
   thead.append(thNumber, thCar, thName, tableBtnWins, tableBtnTime);
   winnersTable.append(thead, tbody);
   winnersWrapper.append(winnersTitle, winnersTitlePage, winnersTable);
+
   return winnersWrapper;
 };

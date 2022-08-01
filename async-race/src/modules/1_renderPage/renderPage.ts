@@ -121,10 +121,9 @@ export const renderPage = () => {
     raceControls,
     garageDiv,
     messageDiv,
-    winnersViewDiv,
     paginationDiv,
   );
   menuDiv.append(toGarageBtn, toWinnersBtn);
-  wrapper.append(menuDiv, garageView);
+  wrapper.append(menuDiv, garageView, winnersViewDiv);
   return wrapper;
 };
