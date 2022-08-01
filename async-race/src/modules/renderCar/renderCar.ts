@@ -1,6 +1,6 @@
 import { createHTMLElement } from '../utils/createHTMLElement';
 import './renderCar.scss';
-import { GetCar } from '../utils/types';
+import { GetCarInterface } from '../utils/types';
 import '../../img/flag.png';
 // // import {getCar, getCars, createCar,
 // deleteCar, updateCar, startEngine, stopEngine,
@@ -30,7 +30,7 @@ export const getCarImage = (color: string) => `<?xml version="1.0" encoding="iso
     </g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
   `;
 
-export const renderCar = (data: GetCar) => {
+export const renderCar = (data: GetCarInterface) => {
   const carWrapper = createHTMLElement('div', 'car-wrapper');
 
   const btnWrapper = createHTMLElement('div', 'car-buttuns-wrapper');

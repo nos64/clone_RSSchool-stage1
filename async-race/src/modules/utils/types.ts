@@ -11,18 +11,18 @@
 //   _limit?: number
 // }
 
-export interface Store {
-  carsPage: number,
-  cars: GetCarsType[],
-  carsCount: number,
-  // winnersPage: 1,
-  // winners,
-  // winnersCount,
-  // animation: {},
-  view: 'string',
-  sortBy: string | null,
-  sortOrder: string | null,
-}
+// export interface Store {
+//   carsPage: number,
+//   cars: GetCarsType[],
+//   carsCount: number,
+//   // winnersPage: 1,
+//   // winners,
+//   // winnersCount,
+//   // animation: {},
+//   view: 'string',
+//   sortBy: string | null,
+//   sortOrder: string | null,
+// }
 
 export type GetCarsType = [
   {
@@ -44,19 +44,19 @@ export type Sort = 'id' | 'wins' | 'time';
 
 export type Order = 'ASC' | 'DESC';
 
-export interface GetWinnersCall {
-  _page?: number,
-  _limit?: number,
-  _sort?: Sort,
-  _order?: Order
-}
-export interface GetCar {
+// export interface GetWinnersCall {
+//   _page?: number,
+//   _limit?: number,
+//   _sort?: Sort,
+//   _order?: Order
+// }
+export interface GetCarInterface {
   name: string,
   color: string,
   id: number
 }
 
-export interface CreateCar {
+export interface CreateCarInterface {
   name: string,
   color: string
 }
@@ -71,6 +71,20 @@ export interface CreateWinner {
   wins: number,
   time: number
 }
+
+export interface UpdateWinner {
+  wins: number,
+  time: number
+}
+export const sorter = {
+  byWins: 'wins',
+  byTime: 'time',
+};
+// export interface SaveWinner {
+//   id: number,
+//   wins: number,
+//   time: number
+// }
 
 export interface Headers {
   'X-Total-Count': number

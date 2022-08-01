@@ -1,7 +1,7 @@
 // import {getCars, getWinners} from '../0_api/api';
 import { getCars, getWinners } from '../0_api/api';
 // import { GetWinnersCall } from './types';
-// import { Store } from './types';
+// import { Sort } from './types';
 
 const { items: cars, count: carsCount } = await getCars(1);
 const { items: winners, count: winnersCount } = await getWinners(1, 'wins', 'ASC');
@@ -15,6 +15,6 @@ export default {
   winnersCount,
   animation: {},
   view: 'garage',
-  sortBy: null,
-  sortOrder: null,
+  sortBy: 'wins',
+  sortOrder: 'ASC',
 };

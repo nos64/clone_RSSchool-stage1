@@ -2,6 +2,7 @@ import { getCarImage } from '../renderCar/renderCar';
 import { createHTMLElement } from '../utils/createHTMLElement';
 import './renderWinners.scss';
 import store from '../utils/store';
+import { sorter } from '../utils/types';
 
 export const renderWinners = () => {
   const winnersWrapper = createHTMLElement('div', 'winners-wrapper');
@@ -26,12 +27,12 @@ export const renderWinners = () => {
   thCar.textContent = 'Name';
   const tableBtnWins = createHTMLElement('th', 'table-button', 'table-wins');
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-  store.sortBy === 'wins' ? tableBtnWins.classList.add(`${store.sortOrder}`) : '';
+  store.sortBy === sorter.byWins ? tableBtnWins.classList.add(`${store.sortOrder}`) : '';
   tableBtnWins.id = 'sort-by-wins';
   tableBtnWins.textContent = 'Wins';
   const tableBtnTime = createHTMLElement('th', 'table-button', 'table-wins');
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-  store.sortBy === 'time' ? tableBtnTime.classList.add(`${store.sortOrder}`) : '';
+  store.sortBy === sorter.byTime ? tableBtnTime.classList.add(`${store.sortOrder}`) : '';
   tableBtnTime.id = 'sort-by-time';
   tableBtnTime.textContent = 'Best time (seconds)';
 
