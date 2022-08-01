@@ -1,18 +1,18 @@
 // import {getCars, getWinners} from '../0_api/api';
-import { getCars } from '../0_api/api';
-// import { GetCarsType } from './types';
+import { getCars, getWinners } from '../0_api/api';
+// import { GetWinnersCall } from './types';
 // import { Store } from './types';
 
 const { items: cars, count: carsCount } = await getCars(1);
-// const { items: winners, count: winnersCount } = await getWinners({ page: 1 });
+const { items: winners, count: winnersCount } = await getWinners(1, 'wins', 'ASC');
 
 export default {
   carsPage: 1,
   cars,
   carsCount,
   winnersPage: 1,
-  // winners,
-  // winnersCount,
+  winners,
+  winnersCount,
   animation: {},
   view: 'garage',
   sortBy: null,

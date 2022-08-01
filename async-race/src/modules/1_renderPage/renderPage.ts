@@ -1,6 +1,6 @@
 import { createHTMLElement } from '../utils/createHTMLElement';
 import { renderGarage } from '../2_renderGarage/renderGarage';
-// import {renderWinners} from '../ui';
+import { renderWinners } from '../renderWinners/renderWinners';
 import './renderPage.scss';
 
 export const renderPage = () => {
@@ -91,8 +91,11 @@ export const renderPage = () => {
   const winnersViewDiv = createHTMLElement('div');
   winnersViewDiv.style.display = 'none';
   winnersViewDiv.id = 'winners-view';
+  const winnersView = renderWinners();
+  winnersViewDiv.append(winnersView);
   // winnersViewDiv.textContent = `${renderWinners()}`;
-  /** Bottom buttons pagination */
+
+  // /** Bottom buttons pagination */
   const paginationDiv = createHTMLElement('div', 'pagination');
   const prevBtn = createHTMLElement('button', 'prev-button');
   prevBtn.textContent = 'Prev';

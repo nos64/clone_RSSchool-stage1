@@ -1,10 +1,16 @@
 // import { GetCars } from "../utils/types";
 
-import { GetCarsType } from '../utils/types';
+import {
+  GetCarsType,
+  GetWinnersType,
+  // GetWinnersCall,
+  Sort,
+  Order,
+} from '../utils/types';
 
 const url = 'http://127.0.0.1:3000';
 // // // const engine = `${url}/engine`;
-// const winners = `${url}/winners`;
+const winners = `${url}/winners`;
 const garage = `${url}/garage`;
 
 export const getCars = async (page: number, limit = 7) => {
@@ -15,7 +21,30 @@ export const getCars = async (page: number, limit = 7) => {
   };
 };
 
-// export const getCar = async (id: number) => (await fetch(`${garage}/${id}`)).json();
+export const getCar = async (id: number) => (await fetch(`${garage}/${id}`)).json();
+
+const getSortOrder = (sort: Sort, order: Order) => {
+  if (sort && order) {
+    return `&_sort=${sort}&_order=${order}`;
+  }
+  return '';
+};
+
+export const getWinners = async (
+  page: number,
+  sort: Sort,
+  order: Order,
+  limit = 10,
+) => {
+  const response = await fetch(`${winners}?_page=${page}&_limit=${limit}${getSortOrder(sort, order)}`);
+  const items = <GetWinnersType> await response.json();
+
+  return {
+    items: await Promise.all(items.map(async (winner) => (
+      { ...winner, car: await getCar(winner.id) }))),
+    count: response.headers.get('X-Total-Count'),
+  };
+};
 
 // export const createCar = async (body: {}) => (await fetch(garage, {
 //   method: 'POST',
@@ -49,27 +78,6 @@ export const getCars = async (page: number, limit = 7) => {
 // //   const res = await fetch(`${engine}?id=${id}&statos=drive`).catch();
 // //   return res.status !== 200 ? { sourccess: false } : { ... (await res.json()) };
 // // };
-
-// // const getSortOrder = (sort: ['id'|'wins'|'time'], order: ['ASC'|'DESC']) => {
-// //   if (sort && order) {
-// //     return `&_sort=${sort}&_order=${order}`;
-// //   }
-// //   return '';
-// // };
-
-// export const getWinners = async ({ page, limit = 10, sort, order }) => {
-//   const response = await fetch(
-// `${winners}?_page=${page}&_limit=${limit}${getSortOrder(sort, order)}`
-// );
-//   const items = await response.json();
-
-//   return {
-// items: await Promise.all(items.map(async winner => (
-// {...winner, car: await getCar(winner.id)})
-// )),
-// count: response.headers.get('X-Total-Count'),
-//   };
-// }
 
 // // export const getWinner = async (id: number) => (await fetch(`${winners}/${id}`)).json();
 

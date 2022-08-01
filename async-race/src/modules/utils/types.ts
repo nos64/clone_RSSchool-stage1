@@ -32,6 +32,24 @@ export type GetCarsType = [
   },
 ];
 
+export type GetWinnersType = [
+  {
+    name: string,
+    color: string,
+    id: number,
+  },
+];
+
+export type Sort = 'id' | 'wins' | 'time';
+
+export type Order = 'ASC' | 'DESC';
+
+export interface GetWinnersCall {
+  _page?: number,
+  _limit?: number,
+  _sort?: Sort,
+  _order?: Order
+}
 export interface GetCar {
   name: string,
   color: string,
@@ -46,13 +64,6 @@ export interface CreateCar {
 export interface StartStopCar {
   velocity: number,
   distance: number
-}
-
-export interface GetWinners {
-  _page?: number,
-  _limit?: number,
-  _sort?: ['id' | 'wins' | 'time'],
-  _order?: ['ASC' | 'DESC']
 }
 
 export interface CreateWinner {
