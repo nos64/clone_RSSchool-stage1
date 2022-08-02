@@ -1,6 +1,7 @@
 // import store from "./store";
+// import { RaceAll } from './types';
 
-import store from './store';
+// import store from './store';
 
 function getPositionAtCenter(element: {
   getBoundingClientRect: () => {
@@ -22,11 +23,13 @@ function getPositionAtCenter(element: {
   };
 }
 
+// eslint-disable-next-line consistent-return
 export function getDistanceBetweenElements(a: HTMLElement | null, b: HTMLElement | null) {
-  const aPosition = getPositionAtCenter(a);
-  const bPosition = getPositionAtCenter(b);
-
-  return Math.hypot(aPosition.x, aPosition.y - bPosition.y);
+  if (a && b) {
+    const aPosition = getPositionAtCenter(a);
+    const bPosition = getPositionAtCenter(b);
+    return Math.hypot(aPosition.x, aPosition.y - bPosition.y);
+  }
 }
 
 export function animation(car: HTMLElement | null, distance: number, animationTime: number) {
@@ -55,29 +58,29 @@ export function animation(car: HTMLElement | null, distance: number, animationTi
   return state;
 }
 
-export const raceAll = async (promises, ids) => {
-  const { success, id, time } = await Promise.race(promises);
+// export const raceAll = async (promises, ids: number[]) => {
+//   const { success, id, time }: RaceAll = await Promise.race(promises);
 
-  if (!success) {
-    const failedIndex = ids.findIndex((i) => i === id);
-    const restPromises = [...promises.slice(0, failedIndex),
-      ...promises.slice(failedIndex + 1, promises.length)];
-    const restIds = [...ids.slice(0, failedIndex),
-      ...ids.slice(failedIndex + 1, ids.length)];
+//   if (!success) {
+//     const failedIndex = ids.findIndex((i) => i === id);
+//     const restPromises = [...promises.slice(0, failedIndex),
+//       ...promises.slice(failedIndex + 1, promises.length)];
+//     const restIds = [...ids.slice(0, failedIndex),
+//       ...ids.slice(failedIndex + 1, ids.length)];
 
-    return raceAll(restPromises, restIds);
-  }
+//     return raceAll(restPromises, restIds);
+//   }
 
-  return { ...store.cars.find((car) => car.id === id), time: +(time / 1000).toFixed(2) };
-};
+//   return { ...store.cars.find((car) => car.id === id), time: +(time / 1000).toFixed(2) };
+// };
 
-export const race = async (action) => {
-  const promises = store.cars.map(({ id }) => action(id));
+// export const race = async (action) => {
+//   const promises = store.cars.map(({ id }) => action(id));
 
-  const winner = await raceAll(promises, store.cars.map((car) => car.id));
+//   const winner = await raceAll(promises, store.cars.map((car) => car.id));
 
-  return winner;
-};
+//   return winner;
+// };
 
 const models = ['Alfa Romeo', 'Aston Martin', 'BMW',
   'Buick', 'Chevrolet', 'Chrisler', 'Ford', 'GMC', 'Honda',

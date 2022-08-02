@@ -79,7 +79,7 @@ export const stopEngine = async (id: number) => (
 ).json();
 
 export const drive = async (id: number) => {
-  const res = await fetch(`${engine}?id=${id}&statos=drive`).catch();
+  const res = await fetch(`${engine}?id=${id}&status=drive`).catch();
   return res.status !== 200 ? { sourccess: false } : { ...(await res.json()) };
 };
 

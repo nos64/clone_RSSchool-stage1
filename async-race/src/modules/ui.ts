@@ -1,19 +1,27 @@
-import { createCar, deleteCar, deleteWinner, getCar, getCars, getWinners, saveWinner, startEngine } from './0_api/api';
+import {
+  createCar, deleteCar, deleteWinner, getCar, getCars, getWinners,
+  // saveWinner,
+  // startEngine
+} from './0_api/api';
 import { renderWinners } from './renderWinners/renderWinners';
-import { getDistanceBetweenElements, animation, generateRandomCars, race } from './utils/utils';
+import {
+  // getDistanceBetweenElements,
+  // animation,
+  generateRandomCars,
+  // race
+} from './utils/utils';
 import store from './utils/store';
-import { CreateCarInterface, GetCarInterface, Sort } from './utils/types';
+import {
+  // CreateCarInterface,
+  // GetCarInterface,
+  Sort,
+} from './utils/types';
 import { renderGarage } from './2_renderGarage/renderGarage';
-import { upadateCar, drive } from './0_api/api';
+// import { upadateCar,drive } from './0_api/api';
 
 let selectedCar: { name: string; color: string; id: number; } | null = null;
 const nextBtn = document.getElementById('next');
 const prevBtn = document.getElementById('prev');
-const garage = document.getElementById('garage');
-const winnersView = document.getElementById('winners-view');
-const updateName = document.getElementById('update-name');
-const updateColor = document.getElementById('update-color');
-const updateSubmit = document.getElementById('update-submit');
 
 export const updateStateGarage = async () => {
   const { items, count } = await getCars(store.carsPage);
@@ -59,34 +67,34 @@ export const updateStateWinners = async () => {
   }
 };
 
-const startDriving = async (id: number) => {
-  const startButton: HTMLElement | null = document.getElementById(`start-engine-car-${id}`);
-  if (startButton && startButton instanceof HTMLButtonElement) {
-    startButton.disabled = true;
-    startButton?.classList.toggle('enabling', true);
-  }
+// const startDriving = async (id: number) => {
+//   const startButton: HTMLElement | null = document.getElementById(`start-engine-car-${id}`);
+//   if (startButton && startButton instanceof HTMLButtonElement) {
+//     startButton.disabled = true;
+//     startButton?.classList.toggle('enabling', true);
+//   }
 
-  const { velocity, distance } = await startEngine(id);
-  const time = Math.round(distance / velocity);
+//   const { velocity, distance } = await startEngine(id);
+//   const time = Math.round(distance / velocity);
 
-  startButton?.classList.toggle('enabling', true);
-  const stopEngBtn = document.getElementById(`stop-engine-car-${id}`);
-  if (stopEngBtn && stopEngBtn instanceof HTMLButtonElement) {
-    stopEngBtn.disabled = false;
-  }
+//   startButton?.classList.toggle('enabling', true);
+//   const stopEngBtn = document.getElementById(`stop-engine-car-${id}`);
+//   if (stopEngBtn && stopEngBtn instanceof HTMLButtonElement) {
+//     stopEngBtn.disabled = false;
+//   }
 
-  const car = document.getElementById(`car-${id}`);
-  const flag = document.getElementById(`flag-${id}`);
-  const htmlDistance = Math.floor(getDistanceBetweenElements(car, flag)) + 100;
+//   const car = document.getElementById(`car-${id}`);
+//   const flag = document.getElementById(`flag-${id}`);
+//   const htmlDistance = Math.floor(getDistanceBetweenElements(car, flag)) + 100;
 
-  store.animation[id] = animation(car, htmlDistance, time);
+//   store.animation[id] = animation(car, htmlDistance, time);
 
-  const { success } = await drive(id);
-  if (!success) {
-    window.cancelAnimationFrame(store.animation[id].id);
-  }
-  return { success, id, time };
-};
+//   const { success } = await drive(id);
+//   if (!success) {
+//     window.cancelAnimationFrame(store.animation[id].id);
+//   }
+//   return { success, id, time };
+// };
 
 const stopDriving = async (id: number) => {
   const stopButton = document.getElementById(`stop-engine-car-${id}`);
@@ -97,27 +105,37 @@ const stopDriving = async (id: number) => {
 };
 
 const setSortOrder = async (sortBy: Sort) => {
+  const winnersView: HTMLElement | null = document.getElementById('winners-view');
   store.sortOrder = store.sortOrder === 'asc' ? 'desc' : 'asc';
   store.sortBy = sortBy;
 
   await updateStateWinners();
   if (winnersView) {
     winnersView.innerHTML = '';
-    winnersView?.append(renderWinners());
+    winnersView.append(renderWinners());
   }
 };
 
 export const listen = () => {
+  const garage = document.getElementById('garage');
+  const garageView: HTMLElement | null = document.getElementById('garage-view');
+  const winnersView: HTMLElement | null = document.getElementById('winners-view');
+  const updateName = document.getElementById('update-name');
+  const updateColor = document.getElementById('update-color');
+  const updateSubmit = document.getElementById('update-submit');
   document.body.addEventListener('click', async (e) => {
     if (e.target && e.target instanceof HTMLElement) {
-      const garageView: HTMLElement | null = document.getElementById('garage-view');
       if (e.target.classList.contains('garage-menu-button')) {
         if (garageView) garageView.style.display = 'block';
         if (winnersView) winnersView.style.display = 'none';
       }
       if (e.target.classList.contains('winners-menu-button')) {
-        if (winnersView) winnersView.style.display = 'block';
-        if (garageView) garageView.style.display = 'none';
+        if (winnersView) {
+          winnersView.style.display = 'block';
+        }
+        if (garageView) {
+          garageView.style.display = 'none';
+        }
         await updateStateWinners();
         if (winnersView) {
           winnersView.textContent = '';
@@ -125,8 +143,8 @@ export const listen = () => {
         }
       }
       if (e.target.classList.contains('start-engine-button')) {
-        const id: number = +e.target.id.split('start-engine-car-')[1];
-        startDriving(id);
+        // const id: number = +e.target.id.split('start-engine-car-')[1];
+        // startDriving(id);
       }
       if (e.target.classList.contains('stop-engine-button')) {
         const id = +e.target.id.split('stot-engine-car-')[1];
@@ -134,17 +152,17 @@ export const listen = () => {
       }
       if (e.target.classList.contains('select-button')) {
         selectedCar = await getCar(+e.target.id.split('select-car-')[1]);
-        
+
         if (selectedCar && updateName instanceof HTMLInputElement) {
           updateName.value = selectedCar.name;
           updateName.disabled = false;
         }
-        
+
         if (selectedCar && updateColor instanceof HTMLInputElement) {
           updateColor.value = selectedCar.color;
           updateColor.disabled = false;
         }
-        
+
         if (updateSubmit instanceof HTMLButtonElement) {
           updateSubmit.disabled = false;
         }
@@ -154,12 +172,13 @@ export const listen = () => {
         await deleteCar(id);
         await deleteWinner(id);
         await updateStateGarage();
+        console.log(garage);
         if (garage) {
           garage.textContent = '';
           garage.append(renderGarage());
         }
       }
-      if (e.target.classList.contains('generator-button')) {
+      if (e.target.classList.contains('generate-button')) {
         if (e.target instanceof HTMLButtonElement) {
           e.target.disabled = true;
 
@@ -176,11 +195,11 @@ export const listen = () => {
       if (e.target.classList.contains('race-button')) {
         if (e.target instanceof HTMLButtonElement) {
           e.target.disabled = true;
-          const winner = await race(startDriving);
+          // const winner = await race(startDriving);
           // await saveWinner(winner);///////////////////////////////
           const message = document.getElementById('message');
           if (message) {
-            message.innerHTML = `${winner.name} went first ${winner.time}s!`;
+            // message.innerHTML = `${winner.name} went first ${winner.time}s!`;
             message.classList.toggle('visible', true);
           }
           const resetBtn = document.getElementById('reset');
@@ -244,56 +263,56 @@ export const listen = () => {
     }
   });
 
-  document.getElementById('create')?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (e.target instanceof HTMLElement) {
-      const car: CreateCarInterface = Object.fromEntries(
-        new Map([...e.target].filter(
-          ({name}) => !!name).map(({value, name}) => [name, value)));
-        await createCar(car);
-        await updateStateGarage();
-        if (garage) {
-          garage.textContent = '';
-          garage.append(renderGarage());
-        }
-        const createName = document.getElementById('create-name');
-        if (createName && createName instanceof HTMLInputElement) {
-          createName.value = '';
-        }
-        if (e.target instanceof HTMLButtonElement) {
-          e.target.disabled = true;
-        }
-    }
-  });
+  // document.getElementById('create')?.addEventListener('submit', async (e) => {
+  //   e.preventDefault();
+  //   if (e.target instanceof  HTMLCollection) {
+  //     const car: CreateCarInterface = Object.fromEntries(
+  //     new Map([...e.target].filter(
+  //     ({name}) => !!name).map(({value, name}) => [name, value)));
+  //     await createCar(car);
+  //     await updateStateGarage();
+  //     if (garage) {
+  //     garage.textContent = '';
+  //     garage.append(renderGarage());
+  //     }
+  //     const createName = document.getElementById('create-name');
+  //     if (createName && createName instanceof HTMLInputElement) {
+  //       createName.value = '';
+  //     }
+  //     if (e.target instanceof HTMLButtonElement) {
+  //       e.target.disabled = true;
+  //     }
+  //   }
+  // });
 
-  document.getElementById('update')?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (e.target instanceof HTMLElement) {
-    const car: GetCarInterface  = Object.fromEntries(
-      new Map([...e.target].filter(
-        ({name}) => !!name).map(({value, name}) => [name, value)));
-      if (selectedCar) {
-        await upadateCar(selectedCar.id, car);
-        await updateStateGarage();
-        if (garage) {
-          garage.textContent = '';
-          garage.append(renderGarage());
-        }
-        if (updateName instanceof HTMLInputElement) {
-          updateName.value = '';
-          updateName.disabled = true;
-        }
-        if (updateColor instanceof HTMLInputElement) {
-          updateColor.disabled = true;
-        }
-        if (updateSubmit instanceof HTMLButtonElement) {
-          updateSubmit.disabled = true;
-        }
-        if (updateColor instanceof HTMLInputElement) {
-          updateColor.value = '#ffffff';
-        }
-        selectedCar = null;
-      }
-    }
-  });
-}
+  // document.getElementById('update')?.addEventListener('submit', async (e) => {
+  // e.preventDefault();
+  // if (e.target instanceof HTMLCollection) {
+  // const car: GetCarInterface  = Object.fromEntries(
+  // new Map([...e.target].filter(
+  // ({ name }) => !!name).map(({value, name}) => [name, value)));
+  // if (selectedCar) {
+  //   await upadateCar(selectedCar.id, car);
+  //   await updateStateGarage();
+  //   if (garage) {
+  //     garage.textContent = '';
+  //     garage.append(renderGarage());
+  //   }
+  //   if (updateName instanceof HTMLInputElement) {
+  //     updateName.value = '';
+  //     updateName.disabled = true;
+  //   }
+  //   if (updateColor instanceof HTMLInputElement) {
+  //     updateColor.disabled = true;
+  //   }
+  //   if (updateSubmit instanceof HTMLButtonElement) {
+  //     updateSubmit.disabled = true;
+  //   }
+  //   if (updateColor instanceof HTMLInputElement) {
+  //     updateColor.value = '#ffffff';
+  //   }
+  //   selectedCar = null;
+  // }
+  // }
+// });
+};

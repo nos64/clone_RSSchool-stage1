@@ -80,11 +80,16 @@ export const sorter = {
   byWins: 'wins',
   byTime: 'time',
 };
-// export interface SaveWinner {
-//   id: number,
-//   wins: number,
-//   time: number
-// }
+export interface RaceAll {
+  success: boolean,
+  id: number,
+  time: number
+}
+
+export interface CarEngine {
+  id: number,
+  status: string
+}
 
 export interface Headers {
   'X-Total-Count': number
