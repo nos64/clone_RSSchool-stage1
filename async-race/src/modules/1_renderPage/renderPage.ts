@@ -57,7 +57,7 @@ export const renderPage = () => {
     inputColorUpdate.value = '#fff';
     inputColorUpdate.disabled = true;
   }
-  const updateBtn = createHTMLElement('button', 'button', 'form-button');
+  const updateBtn = createHTMLElement('button', 'button', 'form-button', 'update-submit');
   updateBtn.textContent = 'Update';
   if (updateBtn instanceof HTMLButtonElement) {
     updateBtn.type = 'submit';
@@ -121,9 +121,8 @@ export const renderPage = () => {
     raceControls,
     garageDiv,
     messageDiv,
-    paginationDiv,
   );
   menuDiv.append(toGarageBtn, toWinnersBtn);
-  wrapper.append(menuDiv, garageView, winnersViewDiv);
+  wrapper.append(menuDiv, garageView, winnersViewDiv, paginationDiv);
   return wrapper;
 };

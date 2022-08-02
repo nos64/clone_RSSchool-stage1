@@ -20,15 +20,15 @@ import { renderGarage } from './2_renderGarage/renderGarage';
 // import { upadateCar,drive } from './0_api/api';
 
 let selectedCar: { name: string; color: string; id: number; } | null = null;
-const nextBtn = document.getElementById('next');
-const prevBtn = document.getElementById('prev');
 
 export const updateStateGarage = async () => {
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
   const { items, count } = await getCars(store.carsPage);
   store.cars = items;
   store.carsCount = count;
-  if (store.carsCount && nextBtn instanceof HTMLButtonElement
-    && prevBtn instanceof HTMLButtonElement) {
+  if (store.carsCount && prevBtn instanceof HTMLButtonElement
+      && nextBtn instanceof HTMLButtonElement) {
     if (store.carsPage * 7 < +store.carsCount) {
       nextBtn.disabled = false;
     } else {
@@ -43,6 +43,8 @@ export const updateStateGarage = async () => {
 };
 
 export const updateStateWinners = async () => {
+  const nextBtn = document.getElementById('next');
+  const prevBtn = document.getElementById('prev');
   const { items, count } = await getWinners(1, 'wins', 'ASC');
   // {
   //   page: store.winnersPage,
@@ -128,6 +130,7 @@ export const listen = () => {
       if (e.target.classList.contains('garage-menu-button')) {
         if (garageView) garageView.style.display = 'block';
         if (winnersView) winnersView.style.display = 'none';
+        await updateStateGarage();
       }
       if (e.target.classList.contains('winners-menu-button')) {
         if (winnersView) {
