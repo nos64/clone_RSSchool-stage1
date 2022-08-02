@@ -205,7 +205,7 @@ const getRandomColor = () => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const generateRandomCars = (count = 100) => new Array(count).fill(1).map((_) => (
+export const generateRandomCars = (count = 100) => new Array(count).fill(1).map((i) => (
   {
     name: getRandomeName(),
     color: getRandomColor(),
