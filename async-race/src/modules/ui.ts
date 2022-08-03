@@ -26,14 +26,13 @@ export const updateStateGarage = async () => {
   const nextBtn = document.getElementById('next');
   const { items, count } = await getCars(store.carsPage);
   store.cars = items;
-
   store.carsCount = count;
+
   if (store.carsCount && prevBtn instanceof HTMLButtonElement
       && nextBtn instanceof HTMLButtonElement) {
     if (store.carsPage * 7 < +store.carsCount) {
       nextBtn.disabled = false;
     } else {
-      console.log('store.carsPage: ', store.carsPage);
       nextBtn.disabled = true;
     }
     if (store.carsPage > 1) {
@@ -178,7 +177,7 @@ export const listen = () => {
         await deleteWinner(id);
         await updateStateGarage();
         if (garage) {
-          garage.textContent = '';
+          garage.innerHTML = '';
           garage.append(renderGarage());
         }
       }
@@ -242,7 +241,7 @@ export const listen = () => {
             store.carsPage++;
             await updateStateGarage();
             if (garage) {
-              garage.textContent = '';
+              garage.innerHTML = '';
               garage.append(renderGarage());
             }
             break;

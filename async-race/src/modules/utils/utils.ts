@@ -195,17 +195,16 @@ const getRandomeName = () => {
 };
 
 const getRandomColor = () => {
-  const letters = '0123456789ABCDEF';
+  const letters = '0123456789abcdef';
   let color = '#';
   for (let i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
-
   return color;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const generateRandomCars = (count = 100) => new Array(count).fill(1).map((i) => (
+export const generateRandomCars = (count = 100) => new Array(count).fill(1).map((_) => (
   {
     name: getRandomeName(),
     color: getRandomColor(),
