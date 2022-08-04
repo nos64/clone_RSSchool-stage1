@@ -1,5 +1,10 @@
 import {
-  createCar, deleteCar, deleteWinner, getCar, getCars, getWinners,
+  createCar,
+  deleteCar,
+  deleteWinner,
+  getCar, getCars,
+  getWinners,
+  // upadateCar,
   // saveWinner,
   // startEngine
 } from './0_api/api';
@@ -12,6 +17,7 @@ import {
 } from './utils/utils';
 import store from './utils/store';
 import {
+  // CreateCarInterface,
   // CreateCarInterface,
   // GetCarInterface,
   Sort,
@@ -265,18 +271,41 @@ export const listen = () => {
       }
     }
   });
+  document.getElementById('create')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const target = e.target as HTMLElement;
+    const carName = (target.children[0] as HTMLInputElement).value;
+    const carColor = (target.children[1] as HTMLInputElement).value;
+    const car = { name: carName, color: carColor };
+    await createCar(car);
+    await updateStateGarage();
+    if (garage) {
+      garage.textContent = '';
+      garage.append(renderGarage());
+    }
+    const createName = document.getElementById('create-name');
+    if (createName && createName instanceof HTMLInputElement) {
+      createName.value = '';
+    }
+    if (e.target instanceof HTMLButtonElement) {
+      e.target.disabled = true;
+    }
+  });
+
+  // const createForm = document.getElementById('create') as HTMLFormElement;
+  // createForm.addEventListener('submit', createCarFromForm);
 
   // document.getElementById('create')?.addEventListener('submit', async (e) => {
   //   e.preventDefault();
-  //   if (e.target instanceof  HTMLCollection) {
+  //   if (e.target instanceof NodeList) {
   //     const car: CreateCarInterface = Object.fromEntries(
-  //     new Map([...e.target].filter(
-  //     ({name}) => !!name).map(({value, name}) => [name, value)));
+  //       new Map([...e.target].filter(
+  //         (item) => !!item.name).map(({ value, name }) => [name, value])));
   //     await createCar(car);
   //     await updateStateGarage();
   //     if (garage) {
-  //     garage.textContent = '';
-  //     garage.append(renderGarage());
+  //       garage.textContent = '';
+  //       garage.append(renderGarage());
   //     }
   //     const createName = document.getElementById('create-name');
   //     if (createName && createName instanceof HTMLInputElement) {

@@ -48,12 +48,7 @@ export type GetWinnersType = [
 export type Sort = 'id' | 'wins' | 'time';
 
 export type Order = 'ASC' | 'DESC';
-// export interface GetWinnersCall {
-//   _page?: number,
-//   _limit?: number,
-//   _sort?: Sort,
-//   _order?: Order
-// }
+
 export interface GetCarInterface {
   name: string,
   color: string,
