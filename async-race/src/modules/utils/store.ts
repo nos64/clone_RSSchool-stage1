@@ -6,7 +6,7 @@ import { getCars, getWinners } from '../0_api/api';
 const { items: cars, count: carsCount } = await getCars(1);
 const { items: winners, count: winnersCount } = await getWinners(1, 'wins', 'ASC');
 
-export default {
+const store = {
   carsPage: 1,
   cars,
   carsCount,
@@ -18,3 +18,5 @@ export default {
   sortBy: 'wins',
   sortOrder: 'ASC',
 };
+
+export default store;

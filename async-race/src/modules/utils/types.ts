@@ -32,6 +32,11 @@ export type GetCarsType = [
   },
 ];
 
+export interface GetCarsReturn {
+  items: GetCarsType,
+  count: string | null,
+}
+
 export type GetWinnersType = [
   {
     name: string,
@@ -43,7 +48,6 @@ export type GetWinnersType = [
 export type Sort = 'id' | 'wins' | 'time';
 
 export type Order = 'ASC' | 'DESC';
-
 // export interface GetWinnersCall {
 //   _page?: number,
 //   _limit?: number,

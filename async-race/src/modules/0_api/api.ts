@@ -1,7 +1,7 @@
 // import { GetCars } from "../utils/types";
 
 import {
-  GetCarsType,
+  // GetCarsType,
   GetWinnersType,
   // GetWinnersCall,
   GetCarInterface,
@@ -9,21 +9,24 @@ import {
   Sort,
   Order,
   CreateWinner,
+  GetCarsReturn,
   // UpdateWinner,
   // SaveWinner,
 } from '../utils/types';
 
 const url = 'http://127.0.0.1:3000';
-const engine = `${url}/engine`;
 const winners = `${url}/winners`;
 const garage = `${url}/garage`;
+const engine = `${url}/engine`;
 
 export const getCars = async (page: number, limit = 7) => {
-  const response = await fetch(`${garage}?page=${page}&_limit=${limit}`);
-  return {
-    items: <GetCarsType> await response.json(),
+  const response = await fetch(`${garage}?_page=${page}&_limit=${limit}`);
+  console.log('page: ', page);
+  const carsArr: GetCarsReturn = {
+    items: await response.json(),
     count: response.headers.get('X-Total-Count'),
   };
+  return carsArr;
 };
 
 export const getCar = async (id: number) => (await fetch(`${garage}/${id}`)).json();

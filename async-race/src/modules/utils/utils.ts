@@ -37,7 +37,6 @@ export function animation(car: HTMLElement | null, distance: number, animationTi
   const state = {
     id: 0,
   };
-  console.log('state: ', state);
 
   function step(timestamp: number | null) {
     if (!start) {
