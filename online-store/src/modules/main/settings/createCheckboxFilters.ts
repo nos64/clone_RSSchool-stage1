@@ -1,9 +1,10 @@
 import './settings.scss';
 import { data } from '../main';
 import { createHTMLElement } from '../../types/createHTMLElement';
+import { checkboxFilterTypes } from '../../types/checkboxTypes';
 
 export const createByFilter = (
-  nameFilter: 'brand' | 'color' | 'owners',
+  nameFilter: checkboxFilterTypes,
   title: string
 ) => {
   const filterWrapper = createHTMLElement('div', `filters-value__${nameFilter}`);

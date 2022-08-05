@@ -133,10 +133,10 @@ contentWrapper?.addEventListener('click', e => {
 
 /** Получение данных из хранилища */
 function getFromStorage() {
-  const startData: Card[] = JSON.parse(<string>localStorage.getItem('modifyArr'));
-  const basketCnt: (string | undefined)[] = JSON.parse(<string>localStorage.getItem('basketCount'));
-  const basketArr: (string | undefined)[] = JSON.parse(<string>localStorage.getItem('inBasketArr'));
-  if (startData && startData.length) {
+  const startData: Card[] = JSON.parse(<string>localStorage.getItem('modifyArr')) || [];
+  const basketCnt: string[] = JSON.parse(<string>localStorage.getItem('basketCount')) || [];
+  const basketArr: string[] = JSON.parse(<string>localStorage.getItem('inBasketArr')) || [];
+  if (startData.length) {
     createCards(startData);
   } else {
     createCards(data);

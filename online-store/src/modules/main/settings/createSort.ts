@@ -1,34 +1,43 @@
 import './settings.scss';
 import { createHTMLElement } from '../../types/createHTMLElement';
+import {
+  all,
+  nameAZ,
+  nameZA,
+  yearAsc,
+  yearDesc,
+  volumeAsc,
+  volumeDesc
+} from '../../types/sortConstantsAndTypes';
 
 export const createSort = () => {
   const options: {value: string; label: string;}[] = [
     {
-      value: 'all',
+      value: all,
       label: 'Выберете значение'
     },
     {
-      value: 'name_a-z',
+      value: nameAZ,
       label: 'По марке, от А до Я'
     },
     {
-      value: 'name_z-a',
+      value: nameZA,
       label: 'По марке, от Я до А'
     },
     {
-      value: 'year_asc',
+      value: yearAsc,
       label: 'По году выпуска, по возрастанию'
     },
     {
-      value: 'year_desc',
+      value: yearDesc,
       label: 'По году выпуска, по убыванию'
     },
     {
-      value: 'volume_asc',
+      value: volumeAsc,
       label: 'По мощности, по возрастанию'
     },
     {
-      value: 'volume_desc',
+      value: volumeDesc,
       label: 'По мощности, по убыванию'
     }
   ];
