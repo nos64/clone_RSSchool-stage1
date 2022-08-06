@@ -32,7 +32,7 @@ export const renderPage = () => {
   if (inputColor instanceof HTMLInputElement) {
     inputColor.name = 'color';
     inputColor.type = 'color';
-    inputColor.value = '#fff';
+    inputColor.value = '#ffffff';
   }
   const createBtn = createHTMLElement('button', 'button', 'form-button');
   createBtn.textContent = 'Create';
@@ -54,13 +54,15 @@ export const renderPage = () => {
   if (inputColorUpdate instanceof HTMLInputElement) {
     inputColorUpdate.name = 'color';
     inputColorUpdate.type = 'color';
-    inputColorUpdate.value = '#fff';
+    inputColorUpdate.value = '#ffffff';
     inputColorUpdate.disabled = true;
   }
   const updateBtn = createHTMLElement('button', 'button', 'form-button', 'update-submit');
   updateBtn.textContent = 'Update';
+  updateBtn.id = 'update-submit';
   if (updateBtn instanceof HTMLButtonElement) {
     updateBtn.type = 'submit';
+    updateBtn.disabled = true;
   }
 
   const raceControls = createHTMLElement('div', 'race-controls');

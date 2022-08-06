@@ -4,6 +4,7 @@ import {
   deleteWinner,
   getCar, getCars,
   getWinners,
+  upadateCar,
   // upadateCar,
   // saveWinner,
   // startEngine
@@ -129,9 +130,7 @@ export const listen = () => {
   const garage = document.getElementById('garage');
   const garageView: HTMLElement | null = document.getElementById('garage-view');
   const winnersView: HTMLElement | null = document.getElementById('winners-view');
-  const updateName = document.getElementById('update-name');
-  const updateColor = document.getElementById('update-color');
-  const updateSubmit = document.getElementById('update-submit');
+
   document.body.addEventListener('click', async (e) => {
     if (e.target && e.target instanceof HTMLElement) {
       if (e.target.classList.contains('garage-menu-button')) {
@@ -161,6 +160,9 @@ export const listen = () => {
         stopDriving(id);
       }
       if (e.target.classList.contains('select-button')) {
+        const updateName = document.getElementById('update-name');
+        const updateColor = document.getElementById('update-color');
+        const updateSubmit = document.getElementById('update-submit');
         selectedCar = await getCar(+e.target.id.split('select-car-')[1]);
 
         if (selectedCar && updateName instanceof HTMLInputElement) {
@@ -273,12 +275,14 @@ export const listen = () => {
   });
   document.getElementById('create')?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const target = e.target as HTMLElement;
-    const carName = (target.children[0] as HTMLInputElement).value;
-    const carColor = (target.children[1] as HTMLInputElement).value;
-    const car = { name: carName, color: carColor };
-    await createCar(car);
-    await updateStateGarage();
+    const carName: HTMLElement | null = document.getElementById('create-name');
+    const carColor: HTMLElement | null = document.getElementById('create-color');
+    if (carName instanceof HTMLInputElement && carColor instanceof HTMLInputElement) {
+      if (carName.value === '') carName.value = 'New Car';
+      const car = { name: carName.value, color: carColor.value };
+      await createCar(car);
+      await updateStateGarage();
+    }
     if (garage) {
       garage.textContent = '';
       garage.append(renderGarage());
@@ -292,59 +296,37 @@ export const listen = () => {
     }
   });
 
-  // const createForm = document.getElementById('create') as HTMLFormElement;
-  // createForm.addEventListener('submit', createCarFromForm);
-
-  // document.getElementById('create')?.addEventListener('submit', async (e) => {
-  //   e.preventDefault();
-  //   if (e.target instanceof NodeList) {
-  //     const car: CreateCarInterface = Object.fromEntries(
-  //       new Map([...e.target].filter(
-  //         (item) => !!item.name).map(({ value, name }) => [name, value])));
-  //     await createCar(car);
-  //     await updateStateGarage();
-  //     if (garage) {
-  //       garage.textContent = '';
-  //       garage.append(renderGarage());
-  //     }
-  //     const createName = document.getElementById('create-name');
-  //     if (createName && createName instanceof HTMLInputElement) {
-  //       createName.value = '';
-  //     }
-  //     if (e.target instanceof HTMLButtonElement) {
-  //       e.target.disabled = true;
-  //     }
-  //   }
-  // });
-
-  // document.getElementById('update')?.addEventListener('submit', async (e) => {
-  // e.preventDefault();
-  // if (e.target instanceof HTMLCollection) {
-  // const car: GetCarInterface  = Object.fromEntries(
-  // new Map([...e.target].filter(
-  // ({ name }) => !!name).map(({value, name}) => [name, value)));
-  // if (selectedCar) {
-  //   await upadateCar(selectedCar.id, car);
-  //   await updateStateGarage();
-  //   if (garage) {
-  //     garage.textContent = '';
-  //     garage.append(renderGarage());
-  //   }
-  //   if (updateName instanceof HTMLInputElement) {
-  //     updateName.value = '';
-  //     updateName.disabled = true;
-  //   }
-  //   if (updateColor instanceof HTMLInputElement) {
-  //     updateColor.disabled = true;
-  //   }
-  //   if (updateSubmit instanceof HTMLButtonElement) {
-  //     updateSubmit.disabled = true;
-  //   }
-  //   if (updateColor instanceof HTMLInputElement) {
-  //     updateColor.value = '#ffffff';
-  //   }
-  //   selectedCar = null;
-  // }
-  // }
-// });
+  document.getElementById('update')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const carName: HTMLElement | null = document.getElementById('update-name');
+    const carColor: HTMLElement | null = document.getElementById('update-color');
+    if (carName instanceof HTMLInputElement && carColor instanceof HTMLInputElement) {
+      const car = { name: carName.value, color: carColor.value };
+      if (selectedCar) {
+        await upadateCar(selectedCar.id, car);
+        await updateStateGarage();
+        if (garage) {
+          garage.textContent = '';
+          garage.append(renderGarage());
+        }
+        const updateName = document.getElementById('update-name');
+        if (updateName && updateName instanceof HTMLInputElement) {
+          updateName.value = '';
+          updateName.disabled = true;
+        }
+        const updateColor = document.getElementById('update-color');
+        if (updateColor instanceof HTMLInputElement) {
+          updateColor.disabled = true;
+        }
+        const updateSubmit = document.getElementById('update-submit');
+        if (updateSubmit instanceof HTMLButtonElement) {
+          updateSubmit.disabled = true;
+        }
+        if (updateColor instanceof HTMLInputElement) {
+          updateColor.value = '#ffffff';
+        }
+        selectedCar = null;
+      }
+    }
+  });
 };

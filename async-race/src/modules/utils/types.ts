@@ -55,6 +55,11 @@ export interface GetCarInterface {
   id: number
 }
 
+export interface UpdateCarInterface {
+  name: string,
+  color: string,
+}
+
 export interface CreateCarInterface {
   name: string,
   color: string

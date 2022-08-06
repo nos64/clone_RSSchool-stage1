@@ -186,7 +186,7 @@ const names = [
   'Daewoo',
 ];
 
-const getRandomeName = () => {
+export const getRandomeName = () => {
   const model = models[Math.floor(Math.random() * models.length)];
   const name = names[Math.floor(Math.random() * names.length)];
 

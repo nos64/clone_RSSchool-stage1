@@ -4,8 +4,9 @@ import {
   // GetCarsType,
   GetWinnersType,
   // GetWinnersCall,
-  GetCarInterface,
+  // GetCarInterface,
   CreateCarInterface,
+  UpdateCarInterface,
   Sort,
   Order,
   CreateWinner,
@@ -65,7 +66,7 @@ export const createCar = async (body: CreateCarInterface) => (await fetch(garage
 export const deleteCar = async (id: number) => (
   await fetch(`${garage}/${id}`, { method: 'DELETE' })).json();
 
-export const upadateCar = async (id: number, body: GetCarInterface) => (await fetch(`${garage}/${id}`, {
+export const upadateCar = async (id: number, body: UpdateCarInterface) => (await fetch(`${garage}/${id}`, {
   method: 'PUT',
   body: JSON.stringify(body),
   headers: {
