@@ -1,7 +1,7 @@
-import { createHTMLElement } from '../utils/createHTMLElement';
+import { createHTMLElement } from '../../utils/createHTMLElement';
 import './renderGarage.scss';
 import { renderCar } from '../renderCar/renderCar';
-import store from '../utils/store';
+import store from '../../utils/state';
 
 export const renderGarage = () => {
   const garageWrapper = createHTMLElement('div', 'garage-wrapper');

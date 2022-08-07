@@ -11,8 +11,6 @@ import {
   Order,
   CreateWinner,
   GetCarsReturn,
-  GetCarInterface,
-  RaceStatus,
   // UpdateWinner,
   // SaveWinner,
 } from '../utils/types';
@@ -57,8 +55,7 @@ export const getWinners = async (
   };
 };
 
-// eslint-disable-next-line max-len
-export const createCar = async (body: CreateCarInterface): Promise<GetCarInterface> => (await fetch(garage, {
+export const createCar = async (body: CreateCarInterface) => (await fetch(garage, {
   method: 'POST',
   body: JSON.stringify(body),
   headers: {
@@ -85,21 +82,20 @@ export const stopEngine = async (id: number) => (
   await fetch(`${engine}?id=${id}&status=stopped`)
 ).json();
 
-export const drive = async (id: number): Promise<RaceStatus> => {
+export const drive = async (id: number) => {
   const res = await fetch(`${engine}?id=${id}&status=drive`).catch();
-  return res.status !== 200 ? { success: false } : { ...(await res.json()) };
+  return res.status !== 200 ? { sourccess: false } : { ...(await res.json()) };
 };
 
-export const getWinner = async (id: number): Promise<CreateWinner> => (await fetch(`${winners}/${id}`)).json();
+export const getWinner = async (id: number) => (await fetch(`${winners}/${id}`)).json();
 
 export const getWinnerStatus = async (id: number) => (await fetch(`${winners}/${id}`)).status;
 
-export const deleteWinner = async (id: number): Promise<void> => (
+export const deleteWinner = async (id: number) => (
   await fetch(`${winners}/${id}`, { method: 'DELETE' })
 ).json();
 
-// eslint-disable-next-line max-len
-export const createWinner = async (body: CreateWinner): Promise<CreateWinner> => (await fetch(winners, {
+export const createWinner = async (body: CreateWinner) => (await fetch(winners, {
   method: 'POST',
   body: JSON.stringify(body),
   headers: {
@@ -125,7 +121,7 @@ export const saveWinner = async (id: number, time: number) => {
       time,
     });
   } else {
-    const winner: CreateWinner = await getWinner(id);
+    const winner = await getWinner(id);
     await updateWinner(id, {
       id,
       wins: winner.wins + 1,

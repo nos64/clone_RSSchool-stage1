@@ -1,0 +1,29 @@
+import { createCar } from '../0_api/api';
+import { renderGarage } from '../page/2.1_renderGarage/renderGarage';
+import { updateStateGarage } from './updateStateGarwge';
+
+export const createCarBtn = () => {
+  const garage = document.getElementById('garage');
+  document.getElementById('create')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const carName: HTMLElement | null = document.getElementById('create-name');
+    const carColor: HTMLElement | null = document.getElementById('create-color');
+    if (carName instanceof HTMLInputElement && carColor instanceof HTMLInputElement) {
+      if (carName.value === '') carName.value = 'New Car';
+      const car = { name: carName.value, color: carColor.value };
+      await createCar(car);
+      await updateStateGarage();
+    }
+    if (garage) {
+      garage.textContent = '';
+      garage.append(renderGarage());
+    }
+    const createName = document.getElementById('create-name');
+    if (createName && createName instanceof HTMLInputElement) {
+      createName.value = '';
+    }
+    if (e.target instanceof HTMLButtonElement) {
+      e.target.disabled = true;
+    }
+  });
+};

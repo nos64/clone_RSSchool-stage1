@@ -1,8 +1,8 @@
-import { getCarImage } from '../renderCar/renderCar';
-import { createHTMLElement } from '../utils/createHTMLElement';
 import './renderWinners.scss';
-import store from '../utils/store';
-import { sorter } from '../utils/types';
+import store from '../../utils/state';
+import { sorter } from '../../utils/types';
+import { createHTMLElement } from '../../utils/createHTMLElement';
+import { getCarImage } from '../renderCar/getCarImage';
 
 export const renderWinners = () => {
   const winnersWrapper = createHTMLElement('div', 'winners-wrapper');

@@ -1,6 +1,6 @@
 import './header.scss';
 
-import { createHTMLElement } from '../utils/createHTMLElement';
+import { createHTMLElement } from '../../utils/createHTMLElement';
 
 const header = createHTMLElement('header', 'header');
 document.body.append(header);

@@ -1,6 +1,6 @@
-import { createHTMLElement } from '../utils/createHTMLElement';
-import { renderGarage } from '../2_renderGarage/renderGarage';
-import { renderWinners } from '../renderWinners/renderWinners';
+import { createHTMLElement } from '../../utils/createHTMLElement';
+import { renderGarage } from '../2.1_renderGarage/renderGarage';
+import { renderWinners } from '../2.2_renderWinners/renderWinners';
 import './renderPage.scss';
 
 export const renderPage = () => {
