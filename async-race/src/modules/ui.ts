@@ -2,8 +2,11 @@ import {
   createCar,
   deleteCar,
   deleteWinner,
+  drive,
   getCar, getCars,
   getWinners,
+  saveWinner,
+  startEngine,
   upadateCar,
   // upadateCar,
   // saveWinner,
@@ -11,9 +14,10 @@ import {
 } from './0_api/api';
 import { renderWinners } from './renderWinners/renderWinners';
 import {
+  animation,
   // getDistanceBetweenElements,
   // animation,
-  generateRandomCars,
+  generateRandomCars, getDistanceBetweenElements, race,
   // race
 } from './utils/utils';
 import store from './utils/store';
@@ -77,34 +81,36 @@ export const updateStateWinners = async () => {
   }
 };
 
-// const startDriving = async (id: number) => {
-//   const startButton: HTMLElement | null = document.getElementById(`start-engine-car-${id}`);
-//   if (startButton && startButton instanceof HTMLButtonElement) {
-//     startButton.disabled = true;
-//     startButton?.classList.toggle('enabling', true);
-//   }
+const startDriving = async (id: number) => {
+  const startButton: HTMLElement | null = document.getElementById(`start-engine-car-${id}`);
+  if (startButton && startButton instanceof HTMLButtonElement) {
+    startButton.disabled = true;
+    startButton?.classList.toggle('enabling', true);
+  }
 
-//   const { velocity, distance } = await startEngine(id);
-//   const time = Math.round(distance / velocity);
+  const { velocity, distance } = await startEngine(id);
+  const time = Math.round(distance / velocity);
 
-//   startButton?.classList.toggle('enabling', true);
-//   const stopEngBtn = document.getElementById(`stop-engine-car-${id}`);
-//   if (stopEngBtn && stopEngBtn instanceof HTMLButtonElement) {
-//     stopEngBtn.disabled = false;
-//   }
+  startButton?.classList.toggle('enabling', true);
+  const stopEngBtn = document.getElementById(`stop-engine-car-${id}`);
+  if (stopEngBtn && stopEngBtn instanceof HTMLButtonElement) {
+    stopEngBtn.disabled = false;
+  }
 
-//   const car = document.getElementById(`car-${id}`);
-//   const flag = document.getElementById(`flag-${id}`);
-//   const htmlDistance = Math.floor(getDistanceBetweenElements(car, flag)) + 100;
-
-//   store.animation[id] = animation(car, htmlDistance, time);
-
-//   const { success } = await drive(id);
-//   if (!success) {
-//     window.cancelAnimationFrame(store.animation[id].id);
-//   }
-//   return { success, id, time };
-// };
+  const car: HTMLElement | null = document.getElementById(`car-${id}`);
+  const flag: HTMLElement | null = document.getElementById(`flag-${id}`);
+  if (car && flag) {
+    // eslint-disable-next-line max-len
+    const htmlDistance: number = Math.floor(getDistanceBetweenElements(car, flag)) + 100;
+    store.animation[id] = animation(car, htmlDistance, time);
+  }
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const { success } = await drive(id);
+  if (!success) {
+    window.cancelAnimationFrame(store.animation[id].id);
+  }
+  return { success, id, time };
+};
 
 const stopDriving = async (id: number) => {
   const stopButton = document.getElementById(`stop-engine-car-${id}`);
@@ -152,8 +158,8 @@ export const listen = () => {
         }
       }
       if (e.target.classList.contains('start-engine-button')) {
-        // const id: number = +e.target.id.split('start-engine-car-')[1];
-        // startDriving(id);
+        const id: number = +e.target.id.split('start-engine-car-')[1];
+        startDriving(id);
       }
       if (e.target.classList.contains('stop-engine-button')) {
         const id = +e.target.id.split('stot-engine-car-')[1];
@@ -206,11 +212,11 @@ export const listen = () => {
       if (e.target.classList.contains('race-button')) {
         if (e.target instanceof HTMLButtonElement) {
           e.target.disabled = true;
-          // const winner = await race(startDriving);
-          // await saveWinner(winner);///////////////////////////////
+          const winner = await race(startDriving);
+          await saveWinner(winner);
           const message = document.getElementById('message');
           if (message) {
-            // message.innerHTML = `${winner.name} went first ${winner.time}s!`;
+            message.innerHTML = `${winner.name} went first ${winner.time}s!`;
             message.classList.toggle('visible', true);
           }
           const resetBtn = document.getElementById('reset');

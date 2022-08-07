@@ -11,18 +11,27 @@
 //   _limit?: number
 // }
 
-// export interface Store {
-//   carsPage: number,
-//   cars: GetCarsType[],
-//   carsCount: number,
-//   // winnersPage: 1,
-//   // winners,
-//   // winnersCount,
-//   // animation: {},
-//   view: 'string',
-//   sortBy: string | null,
-//   sortOrder: string | null,
-// }
+export interface Store {
+  carsPage: number,
+  cars: GetCarsType;
+  carsCount: string | null;
+  winnersPage: number;
+  winners: {
+    car: GetCarsType;
+    name: string;
+    color: string;
+    id: number;
+  }[];
+  winnersCount: string | null;
+  animation: AnimationReturn;
+  view: string;
+  sortBy: string;
+  sortOrder: string;
+}
+
+export interface AnimationReturn {
+  id: number;
+}
 
 export type GetCarsType = [
   {
@@ -70,6 +79,10 @@ export interface StartStopCar {
   distance: number
 }
 
+export interface RaceStatus {
+  success: boolean,
+}
+
 export interface CreateWinner {
   id: number,
   wins: number,
@@ -84,11 +97,23 @@ export const sorter = {
   byWins: 'wins',
   byTime: 'time',
 };
+
 export interface RaceAll {
   success: boolean,
-  id: number,
-  time: number
+  time: number,
+  name?: string | undefined,
+  color?: string | undefined,
+  id?: number | undefined,
 }
+
+export type RaceAllReturn = [
+  {
+    time: number;
+    name?: string | undefined;
+    color?: string | undefined;
+    id?: number | undefined;
+  },
+];
 
 export interface CarEngine {
   id: number,
