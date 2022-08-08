@@ -13,18 +13,14 @@ export const renderWinners = () => {
   winnersTitlePage.textContent = `Garage #${store.winnersPage}`;
 
   const winnersTable = createHTMLElement('table', 'winners-table');
-  if (winnersTable instanceof HTMLTableElement) {
-    winnersTable.border = '0';
-    winnersTable.cellSpacing = '0';
-    winnersTable.cellSpacing = '0';
-  }
+
   const thead = createHTMLElement('thead');
   const thNumber = createHTMLElement('th');
   thNumber.textContent = 'Number';
   const thCar = createHTMLElement('th');
   thCar.textContent = 'Car';
   const thName = createHTMLElement('th');
-  thCar.textContent = 'Name';
+  thName.textContent = 'Name';
   const tableBtnWins = createHTMLElement('th', 'table-button', 'table-wins');
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   store.sortBy === sorter.byWins ? tableBtnWins.classList.add(`${store.sortOrder}`) : '';

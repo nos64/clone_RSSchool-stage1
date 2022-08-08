@@ -1,5 +1,5 @@
-import { driveCar, startEngine } from '../utils/api';
 import store from '../utils/state';
+import { driveCar, startEngine } from '../utils/api';
 import { RaceAll } from '../utils/types';
 import { animationCar, getDistanceBetweenElements } from '../utils/utils';
 
@@ -7,13 +7,11 @@ export const startDriving = async (id: number) => {
   const startButton: HTMLElement | null = document.getElementById(`start-engine-car-${id}`);
   if (startButton && startButton instanceof HTMLButtonElement) {
     startButton.disabled = true;
-    startButton?.classList.toggle('enabling', true);
   }
 
   const { velocity, distance } = await startEngine(id);
   const time = Math.round(distance / velocity);
 
-  startButton?.classList.toggle('enabling', true);
   const stopEngBtn = document.getElementById(`stop-engine-car-${id}`);
   if (stopEngBtn && stopEngBtn instanceof HTMLButtonElement) {
     stopEngBtn.disabled = false;

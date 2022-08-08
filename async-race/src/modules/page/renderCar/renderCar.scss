@@ -1,3 +1,4 @@
+@import '../../../style/var';
 
 .garage-title,
 .garage-title-page {
@@ -18,13 +19,8 @@
 margin-right: 10px;
 }
 
-
-.car-wrapper {
-
-}
-
 .car-name {
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .road {
@@ -45,15 +41,30 @@ margin-right: 10px;
   padding-right: 10px;
 }
 
-.icon {
 
-}
 
 .start-engine-button,
 .stop-engine-button {
   width: 45px;
   height: 30px;
-  
+  border-radius: 5px;
+  border: none;
+  transition: all .3s ease-in-out;
+}
+
+.start-engine-button:hover,
+.stop-engine-button:hover {
+  background-color: $btnHoverColor;
+}
+
+.start-engine-button:disabled {
+  background-color: green;
+  color: #fff;
+}
+
+.stop-engine-button:disabled {
+  background-color: red;
+  color: #fff;
 }
 
 .car {

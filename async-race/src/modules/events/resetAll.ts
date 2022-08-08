@@ -9,10 +9,10 @@ export const resetAll = () => {
           e.target.disabled = true;
           store.cars.map(({ id }) => stopDriving(id));
         }
-        const message = document.getElementById('message');
+        const message = document.querySelector('.message-wrapper');
         if (message) {
-          message.classList.toggle('visible', false);
-          message.classList.toggle('visible', true);
+          message.classList.toggle('message-visible');
+          message.textContent = '';
         }
         const raceBtn = document.getElementById('race');
         if (raceBtn && raceBtn instanceof HTMLButtonElement) {

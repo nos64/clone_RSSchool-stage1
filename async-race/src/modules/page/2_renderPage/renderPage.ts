@@ -84,7 +84,7 @@ export const renderPage = () => {
   garageDiv.append(carsGarage); // Вставляем машины
 
   /** Popup message */
-  const messageDiv = createHTMLElement('div');
+  const messageDiv = createHTMLElement('div', 'message-wrapper');
   const messageParag = createHTMLElement('p', 'message');
   messageParag.id = 'message';
 

@@ -5,10 +5,8 @@ export const stopDriving = async (id: number) => {
   const stopButton = document.getElementById(`stop-engine-car-${id}`);
   if (stopButton && stopButton instanceof HTMLButtonElement) {
     stopButton.disabled = true;
-    stopButton?.classList.toggle('enabling', true);
   }
   await stopEngine(id);
-  stopButton?.classList.toggle('enabling', false);
   const startButton: HTMLElement | null = document.getElementById(`start-engine-car-${id}`);
   if (startButton && startButton instanceof HTMLButtonElement) {
     startButton.disabled = false;

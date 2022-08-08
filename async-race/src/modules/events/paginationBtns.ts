@@ -1,6 +1,6 @@
+import store from '../utils/state';
 import { renderGarage } from '../page/2.1_renderGarage/renderGarage';
 import { renderWinners } from '../page/2.2_renderWinners/renderWinners';
-import store from '../utils/state';
 import { updateStateGarage } from './updateStateGarwge';
 import { updateStateWinners } from './updateStateWinners';
 

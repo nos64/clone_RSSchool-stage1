@@ -12,12 +12,13 @@ export const raceAll = () => {
           const arr: RaceAll[] = [];
           store.cars.forEach(async (car) => {
             const winner = await startDriving(car.id);
-            arr.push(winner);
-            arr.sort((a, b) => a.time - b.time);
+            if (winner.success) arr.push(winner);
+            arr.sort((a, b) => +a.time - +b.time);
             await saveWinner(arr[0].id, arr[0].time);
-            const message = document.getElementById('message');
+            const message = document.querySelector('.message-wrapper');
             if (message) {
-              message.innerHTML = `${arr[0].id} went first ${arr[0].time / 1000}s!`;
+              message.classList.toggle('message-visible');
+              message.innerHTML = `${arr[0].id} went first ${arr[0].time / 1000} s!`;
             }
           });
           const resetBtn = document.getElementById('reset');
