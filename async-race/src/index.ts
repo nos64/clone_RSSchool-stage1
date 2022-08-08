@@ -2,7 +2,7 @@ import './index.html';
 import './index.scss';
 import { updateStateGarage } from './modules/events/updateStateGarwge';
 import './modules/page/page';
-import { listen } from './modules/events/ui';
+import { eventsListener } from './modules/events/eventsListener';
 
-listen();
+eventsListener();
 await updateStateGarage();

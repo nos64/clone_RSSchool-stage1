@@ -151,7 +151,6 @@ export const updateWinner = async (id: number, body: CreateWinner) => (await fet
 
 export const saveWinner = async (id: number, time: number) => {
   const winnerStatus = await getWinnerStatus(id);
-
   if (winnerStatus === 404) {
     await createWinner({
       id,

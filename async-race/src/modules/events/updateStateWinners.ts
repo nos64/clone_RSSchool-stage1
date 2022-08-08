@@ -4,7 +4,6 @@ import store from '../utils/state';
 export const updateStateWinners = async () => {
   const nextBtn = document.getElementById('next');
   const prevBtn = document.getElementById('prev');
-  // const { items, count } = await getWinners(1, 'wins', 'ASC');
   const { items, count } = await getWinners(store.winnersPage, store.sortBy, store.sortOrder);
 
   store.winners = items;

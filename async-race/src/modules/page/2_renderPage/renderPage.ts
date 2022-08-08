@@ -80,7 +80,6 @@ export const renderPage = () => {
   /** Cars in page */
   const garageDiv = createHTMLElement('div');
   garageDiv.id = 'garage';
-  // garageDiv.textContent = `${renderGarage()}`;
   const carsGarage = renderGarage(); // Вставляем машины
   garageDiv.append(carsGarage); // Вставляем машины
 
@@ -95,7 +94,6 @@ export const renderPage = () => {
   winnersViewDiv.id = 'winners-view';
   const winnersView = renderWinners();
   winnersViewDiv.append(winnersView);
-  // winnersViewDiv.textContent = `${renderWinners()}`;
 
   // /** Bottom buttons pagination */
   const paginationDiv = createHTMLElement('div', 'pagination');

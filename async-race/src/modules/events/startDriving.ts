@@ -29,6 +29,7 @@ export const startDriving = async (id: number) => {
   if (!success) {
     window.cancelAnimationFrame(store.animation.id);
   }
+
   const drivingObj: RaceAll = { success, id, time };
 
   return drivingObj;

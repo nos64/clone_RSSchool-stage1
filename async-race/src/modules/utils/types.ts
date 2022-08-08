@@ -106,7 +106,7 @@ export const sorter = {
 export interface RaceAll {
   success: boolean,
   id: number,
-  time: number
+  time: number,
 }
 
 export interface RaceAllReturn {
