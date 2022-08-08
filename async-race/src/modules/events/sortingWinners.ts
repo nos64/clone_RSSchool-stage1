@@ -5,7 +5,7 @@ import { updateStateWinners } from './updateStateWinners';
 
 export const setSortOrder = async (sortBy: Sort) => {
   const winnersView: HTMLElement | null = document.getElementById('winners-view');
-  store.sortOrder = store.sortOrder === 'asc' ? 'desc' : 'asc';
+  store.sortOrder = store.sortOrder === 'ASC' ? 'DESC' : 'ASC';
   store.sortBy = sortBy;
   await updateStateWinners();
   if (winnersView) {

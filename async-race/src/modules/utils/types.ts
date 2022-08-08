@@ -25,8 +25,10 @@ export interface Store {
   winnersCount: string | null;
   animation: { id: number; };
   view: string;
-  sortBy: string;
-  sortOrder: string;
+  // sortBy: string;
+  sortBy: Sort;
+  // sortOrder: string;
+  sortOrder: Order;
 }
 
 // export type GetCarsType = [
@@ -112,6 +114,7 @@ export interface RaceAllReturn {
   name?: string | undefined;
   color?: string | undefined;
   id?: number | undefined;
+
 }
 export interface CarEngine {
   id: number,

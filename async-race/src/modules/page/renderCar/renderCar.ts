@@ -41,7 +41,7 @@ export const renderCar = (data: CarInterface) => {
   // const flag = createHTMLElement('div', 'flag');
   const flag = createHTMLElement('img', 'flag');
   if (flag instanceof HTMLImageElement) {
-    flag.src = '../../img/flag.png';
+    flag.src = './img/flag.png';
   }
   flag.id = `flag-${data.id}`;
 

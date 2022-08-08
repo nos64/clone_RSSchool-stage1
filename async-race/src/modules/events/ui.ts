@@ -9,7 +9,6 @@ import { removeBtn } from './removeBtn';
 import { startDriving } from './startDriving';
 // import { race } from '../utils/utils';
 import store from '../utils/state';
-// import { saveWinner } from '../0_api/api';
 // import { race } from '../utils/utils';
 // import { saveWinner } from '../0_api/api';
 
@@ -31,7 +30,8 @@ export const listen = () => {
       if (e.target.classList.contains('race-button')) {
         if (e.target instanceof HTMLButtonElement) {
           e.target.disabled = true;
-          // const winner = await race(startDriving);
+          const winner = store.cars.forEach(async (car) => startDriving(car.id));
+          console.log('winner: ', winner);
           // await saveWinner(winner);
           const message = document.getElementById('message');
           if (message) {
