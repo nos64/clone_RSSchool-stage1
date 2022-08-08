@@ -2,6 +2,7 @@ import { createHTMLElement } from '../../utils/createHTMLElement';
 import './renderGarage.scss';
 import { renderCar } from '../renderCar/renderCar';
 import store from '../../utils/state';
+import { CarInterface } from '../../utils/types';
 
 export const renderGarage = () => {
   const garageWrapper = createHTMLElement('div', 'garage-wrapper');
@@ -14,7 +15,7 @@ export const renderGarage = () => {
   const garageList = createHTMLElement('ul', 'garage-list');
 
   if (store) {
-    store.cars.forEach((car) => {
+    store.cars.forEach((car: CarInterface) => {
       const li = createHTMLElement('li', 'garage-li');
 
       const carLi = renderCar(car);

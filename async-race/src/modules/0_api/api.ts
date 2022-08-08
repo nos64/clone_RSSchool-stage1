@@ -2,7 +2,7 @@
 
 import {
   // GetCarsType,
-  GetWinnersType,
+  // GetWinnersType,
   // GetWinnersCall,
   // GetCarInterface,
   CreateCarInterface,
@@ -11,6 +11,9 @@ import {
   Order,
   CreateWinner,
   GetCarsReturn,
+  GetWinners,
+  CarInterface,
+  // Status,
   // UpdateWinner,
   // SaveWinner,
 } from '../utils/types';
@@ -20,9 +23,9 @@ const winners = `${url}/winners`;
 const garage = `${url}/garage`;
 const engine = `${url}/engine`;
 
+/** CARS */
 export const getCars = async (page: number, limit = 7) => {
   const response = await fetch(`${garage}?_page=${page}&_limit=${limit}`);
-  console.log('page: ', page);
   const carsArr: GetCarsReturn = {
     items: await response.json(),
     count: response.headers.get('X-Total-Count'),
@@ -30,30 +33,7 @@ export const getCars = async (page: number, limit = 7) => {
   return carsArr;
 };
 
-export const getCar = async (id: number) => (await fetch(`${garage}/${id}`)).json();
-
-const getSortOrder = (sort: Sort, order: Order) => {
-  if (sort && order) {
-    return `&_sort=${sort}&_order=${order}`;
-  }
-  return '';
-};
-
-export const getWinners = async (
-  page: number,
-  sort: Sort,
-  order: Order,
-  limit = 10,
-) => {
-  const response = await fetch(`${winners}?_page=${page}&_limit=${limit}${getSortOrder(sort, order)}`);
-  const items = <GetWinnersType> await response.json();
-
-  return {
-    items: await Promise.all(items.map(async (winner) => (
-      { ...winner, car: await getCar(winner.id) }))),
-    count: response.headers.get('X-Total-Count'),
-  };
-};
+export const getCar = async (id: number): Promise<CarInterface> => (await fetch(`${garage}/${id}`)).json();
 
 export const createCar = async (body: CreateCarInterface) => (await fetch(garage, {
   method: 'POST',
@@ -74,20 +54,67 @@ export const upadateCar = async (id: number, body: UpdateCarInterface) => (await
   },
 })).json();
 
+/** MOOVES */
+// eslint-disable-next-line max-len
+// export const startEngine = async (id: number) => (await fetch(`${engine}?id=${id}&status=started`)).json();
 export const startEngine = async (id: number) => (
-  await fetch(`${engine}?id=${id}&status=started`)
+  await fetch(
+    `${engine}?id=${id}&status=started`,
+    {
+      method: 'PATCH',
+    },
+  )
 ).json();
 
 export const stopEngine = async (id: number) => (
-  await fetch(`${engine}?id=${id}&status=stopped`)
+  await fetch(
+    `${engine}?id=${id}&status=stopped`,
+    {
+      method: 'PATCH',
+    },
+  )
 ).json();
 
-export const drive = async (id: number) => {
-  const res = await fetch(`${engine}?id=${id}&status=drive`).catch();
-  return res.status !== 200 ? { sourccess: false } : { ...(await res.json()) };
+export const driveCar = async (id: number) => (
+  await fetch(
+    `${engine}?id=${id}&status=drive`,
+    {
+      method: 'PATCH',
+    },
+  )
+).json()
+  .then(async (response) => (
+    response.status !== 200 ? { success: false } : { ...(await response.json()) }
+  ));
+
+/** SORTING */
+const getSortOrder = (sort: Sort, order: Order) => {
+  if (sort && order) {
+    return `&_sort=${sort}&_order=${order}`;
+  }
+  return '';
 };
 
-export const getWinner = async (id: number) => (await fetch(`${winners}/${id}`)).json();
+/** WINNER */
+export const getWinners = async (
+  page: number,
+  sort: Sort,
+  order: Order,
+  limit = 10,
+) => {
+  const response = await fetch(`${winners}?_page=${page}&_limit=${limit}${getSortOrder(sort, order)}`);
+  const items: GetWinners[] = await response.json();
+
+  return {
+    items: await Promise.all(items.map(async (winner) => ({
+      ...winner,
+      car: await getCar(winner.id),
+    }))),
+    count: response.headers.get('X-Total-Count'),
+  };
+};
+
+export const getWinner = async (id: number): Promise<GetWinners> => (await fetch(`${winners}/${id}`)).json();
 
 export const getWinnerStatus = async (id: number) => (await fetch(`${winners}/${id}`)).status;
 

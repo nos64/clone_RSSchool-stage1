@@ -1,10 +1,10 @@
 import { createHTMLElement } from '../../utils/createHTMLElement';
 import './renderCar.scss';
-import { GetCarInterface } from '../../utils/types';
+import { CarInterface } from '../../utils/types';
 import '../../../img/flag.png';
 import { getCarImage } from './getCarImage';
 
-export const renderCar = (data: GetCarInterface) => {
+export const renderCar = (data: CarInterface) => {
   const carWrapper = createHTMLElement('div', 'car-wrapper');
 
   const btnWrapper = createHTMLElement('div', 'car-buttuns-wrapper');
@@ -25,18 +25,14 @@ export const renderCar = (data: GetCarInterface) => {
   const controlPanel = createHTMLElement('div', 'control-panel');
   const startEngineBtn = createHTMLElement('button', 'icon', 'start-engine-button');
   startEngineBtn.id = `start-engine-car-${data.id}`;
-  // if (startEngineBtn instanceof HTMLButtonElement) {
-  // eslint-disable-next-line no-unused-expressions
-  // isEngineStarted ? startEngineBtn.disabled = 'disabled' : startEngineBtn.disabled = '';
-  // }
-  startEngineBtn.textContent = 'A';
+
+  startEngineBtn.textContent = 'Start';
   const stopEngineBtn = createHTMLElement('button', 'icon', 'stop-engine-button');
   stopEngineBtn.id = `stop-engine-car-${data.id}`;
-  // if (stopEngineBtn instanceof HTMLButtonElement) {
-  // eslint-disable-next-line no-unused-expressions
-  // isEngineStarted ? stopEngineBtn.disabled = 'disabled' : stopEngineBtn.disabled = '';
-  // }
-  stopEngineBtn.textContent = 'B';
+  if (stopEngineBtn instanceof HTMLButtonElement) {
+    stopEngineBtn.disabled = true;
+  }
+  stopEngineBtn.textContent = 'Stop';
   const car = createHTMLElement('div', 'car');
   car.id = `car-${data.id}`;
   // const carImage = getCarImage(data.color);

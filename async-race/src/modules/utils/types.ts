@@ -11,29 +11,40 @@
 //   _limit?: number
 // }
 
-// export interface Store {
-//   carsPage: number,
-//   cars: GetCarsType[],
-//   carsCount: number,
-//   // winnersPage: 1,
-//   // winners,
-//   // winnersCount,
-//   // animation: {},
-//   view: 'string',
-//   sortBy: string | null,
-//   sortOrder: string | null,
-// }
+export interface Store {
+  carsPage: number;
+  cars: CarInterface[];
+  carsCount: string | null;
+  winnersPage: number;
+  winners: {
+    car: CarInterface;
+    id: number;
+    wins: number;
+    time: number;
+  }[];
+  winnersCount: string | null;
+  animation: { id: number; };
+  view: string;
+  sortBy: string;
+  sortOrder: string;
+}
 
-export type GetCarsType = [
-  {
-    name: string,
-    color: string,
-    id: number,
-  },
-];
+// export type GetCarsType = [
+//   {
+//     name: string,
+//     color: string,
+//     id: number,
+//   },
+// ];
+
+export interface CarInterface {
+  name: string,
+  color: string,
+  id: number,
+}
 
 export interface GetCarsReturn {
-  items: GetCarsType,
+  items: CarInterface[],
   count: string | null,
 }
 
@@ -45,15 +56,21 @@ export type GetWinnersType = [
   },
 ];
 
+export interface GetWinners {
+  id: number,
+  wins: number,
+  time: number
+}
+
 export type Sort = 'id' | 'wins' | 'time';
 
 export type Order = 'ASC' | 'DESC';
 
-export interface GetCarInterface {
-  name: string,
-  color: string,
-  id: number
-}
+// export interface GetCarInterface {
+//   name: string,
+//   color: string,
+//   id: number
+// }
 
 export interface UpdateCarInterface {
   name: string,
@@ -90,11 +107,26 @@ export interface RaceAll {
   time: number
 }
 
+export interface RaceAllReturn {
+  time: number;
+  name?: string | undefined;
+  color?: string | undefined;
+  id?: number | undefined;
+}
 export interface CarEngine {
   id: number,
   status: string
 }
 
+export interface Status {
+  success: boolean
+}
 export interface Headers {
   'X-Total-Count': number
+}
+
+export interface RaceAction {
+  success: boolean;
+  id: number;
+  time: number;
 }
