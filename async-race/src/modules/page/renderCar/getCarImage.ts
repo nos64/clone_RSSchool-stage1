@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 export const getCarImage = (color: string) => `<?xml version="1.0" encoding="iso-8859-1"?>
   <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
     viewBox="0 0 20.07 14.07" style="enable-background:new 0 0 20.07 20.07;" xml:space="preserve">
@@ -17,3 +18,26 @@ export const getCarImage = (color: string) => `<?xml version="1.0" encoding="iso
         s0.23-0.512,0.512-0.512s0.512,0.229,0.512,0.512C3.78,12.353,3.55,12.582,3.268,12.582z"/>
     </g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
   `;
+
+// function createCarImage(randomColor: string, id: number): SVGSVGElement {
+//   const svgImage = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+//   const dWrapper = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+//   const svgPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+//   svgPath.setAttribute('d', 'M640 320L640 368C 640 385.7 625.7 400 608 400L608 400L574.7 400C 567.1 445.4 527.6 480 480 480C 432.4 480 392.9 445.4 385.3 400L385.3 400L254.7 400C 247.1 445.4 207.6 480 160 480C 112.4 480 72.94 445.4 65.33 400L65.33 400L32 400C 14.33 400 0 385.7 0 368L0 368L0 256C 0 228.9 16.81 205.8 40.56 196.4L40.56 196.4L82.2 92.35C 96.78 55.9 132.1 32 171.3 32L171.3 32L353.2 32C 382.4 32 409.1 45.26 428.2 68.03L428.2 68.03L528.2 193C 591.2 200.1 640 254.8 640 319.1L640 319.1L640 320zM171.3 96C 158.2 96 146.5 103.1 141.6 116.1L141.6 116.1L111.3 192L224 192L224 96L171.3 96zM272 192L445.4 192L378.2 108C 372.2 100.4 362.1 96 353.2 96L353.2 96L272 96L272 192zM525.3 400C 527 394.1 528 389.6 528 384C 528 357.5 506.5 336 480 336C 453.5 336 432 357.5 432 384C 432 389.6 432.1 394.1 434.7 400C 441.3 418.6 459.1 432 480 432C 500.9 432 518.7 418.6 525.3 400zM205.3 400C 207 394.1 208 389.6 208 384C 208 357.5 186.5 336 160 336C 133.5 336 112 357.5 112 384C 112 389.6 112.1 394.1 114.7 400C 121.3 418.6 139.1 432 160 432C 180.9 432 198.7 418.6 205.3 400z');
+//   svgPath.setAttribute('fill', randomColor);
+//   svgPath.setAttribute('carIDSVG', ${ id });
+//   svgImage.appendChild(svgPath);
+//   svgImage.appendChild(dWrapper);
+//   return svgImage;
+// }
+// export const getCarImage = (color: string): SVGSVGElement => {
+//   const svgImage = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+//   const dWrapper = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+//   const svgPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+//   svgPath.setAttribute('d', 'M640 320L640 368C 640 385.7 625.7 400 608 400L608 400L574.7 400C 567.1 445.4 527.6 480 480 480C 432.4 480 392.9 445.4 385.3 400L385.3 400L254.7 400C 247.1 445.4 207.6 480 160 480C 112.4 480 72.94 445.4 65.33 400L65.33 400L32 400C 14.33 400 0 385.7 0 368L0 368L0 256C 0 228.9 16.81 205.8 40.56 196.4L40.56 196.4L82.2 92.35C 96.78 55.9 132.1 32 171.3 32L171.3 32L353.2 32C 382.4 32 409.1 45.26 428.2 68.03L428.2 68.03L528.2 193C 591.2 200.1 640 254.8 640 319.1L640 319.1L640 320zM171.3 96C 158.2 96 146.5 103.1 141.6 116.1L141.6 116.1L111.3 192L224 192L224 96L171.3 96zM272 192L445.4 192L378.2 108C 372.2 100.4 362.1 96 353.2 96L353.2 96L272 96L272 192zM525.3 400C 527 394.1 528 389.6 528 384C 528 357.5 506.5 336 480 336C 453.5 336 432 357.5 432 384C 432 389.6 432.1 394.1 434.7 400C 441.3 418.6 459.1 432 480 432C 500.9 432 518.7 418.6 525.3 400zM205.3 400C 207 394.1 208 389.6 208 384C 208 357.5 186.5 336 160 336C 133.5 336 112 357.5 112 384C 112 389.6 112.1 394.1 114.7 400C 121.3 418.6 139.1 432 160 432C 180.9 432 198.7 418.6 205.3 400z');
+//   svgPath.setAttribute('fill', color);
+//   // svgPath.setAttribute('carIDSVG', ${ id });
+//   svgImage.appendChild(svgPath);
+//   svgImage.appendChild(dWrapper);
+//   return svgImage;
+// };

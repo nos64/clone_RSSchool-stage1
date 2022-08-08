@@ -1,4 +1,4 @@
-import { getCar, upadateCar } from '../0_api/api';
+import { getCar, upadateCar } from '../utils/api';
 import { renderGarage } from '../page/2.1_renderGarage/renderGarage';
 import { updateStateGarage } from './updateStateGarwge';
 

@@ -7,7 +7,7 @@ export const renderPage = () => {
   const wrapper = createHTMLElement('div', 'wrapper');
   /** Top Buttons */
   const menuDiv = createHTMLElement('div', 'menu');
-  const toGarageBtn = createHTMLElement('button', 'button', 'garage-menu-button');
+  const toGarageBtn = createHTMLElement('button', 'button', 'garage-menu-button', 'view-active');
   toGarageBtn.textContent = 'To garage';
   toGarageBtn.id = 'garage-menu';
   const toWinnersBtn = createHTMLElement('button', 'button', 'winners-menu-button');

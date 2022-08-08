@@ -1,5 +1,5 @@
 // import {getCars, getWinners} from '../0_api/api';
-import { getCars, getWinners } from '../0_api/api';
+import { getCars, getWinners } from './api';
 import { Store } from './types';
 // import { GetWinnersCall } from './types';
 // import { Sort } from './types';

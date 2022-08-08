@@ -7,7 +7,7 @@ import {
   GetCarsReturn,
   GetWinners,
   CarInterface,
-} from '../utils/types';
+} from './types';
 
 const url = 'http://127.0.0.1:3000';
 const winners = `${url}/winners`;

@@ -1,4 +1,4 @@
-import { getCars } from '../0_api/api';
+import { getCars } from '../utils/api';
 import store from '../utils/state';
 
 export const updateStateGarage = async () => {

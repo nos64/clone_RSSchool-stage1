@@ -1,4 +1,4 @@
-import { getWinners } from '../0_api/api';
+import { getWinners } from '../utils/api';
 import store from '../utils/state';
 
 export const updateStateWinners = async () => {

@@ -35,10 +35,10 @@ export const renderCar = (data: CarInterface) => {
   stopEngineBtn.textContent = 'Stop';
   const car = createHTMLElement('div', 'car');
   car.id = `car-${data.id}`;
-  // const carImage = getCarImage(data.color);
-  car.innerHTML = `${getCarImage(data.color)}`;
 
-  // const flag = createHTMLElement('div', 'flag');
+  car.innerHTML = `${getCarImage(data.color)}`;
+  // car.append(getCarImage(data.color));
+
   const flag = createHTMLElement('img', 'flag');
   if (flag instanceof HTMLImageElement) {
     flag.src = './img/flag.png';

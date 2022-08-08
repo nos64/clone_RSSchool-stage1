@@ -1,4 +1,4 @@
-import { createCar } from '../0_api/api';
+import { createCar } from '../utils/api';
 import { renderGarage } from '../page/2.1_renderGarage/renderGarage';
 import { generateRandomCars } from '../utils/utils';
 import { updateStateGarage } from './updateStateGarwge';
