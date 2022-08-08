@@ -1,6 +1,4 @@
 import store from './state';
-// import { RaceAction, RaceAll, RaceAllReturn } from './types';
-// import { RaceAll, RaceAllReturn } from './types';
 
 function getPositionAtCenter(element: HTMLElement) {
   const {
@@ -43,33 +41,6 @@ export function animationCar(car: HTMLElement, distance: number, animationTime: 
   state = window.requestAnimationFrame(animation);
   return state;
 }
-
-// export const raceAll = async (promises: RaceAll[], ids: number[]): Promise<RaceAllReturn> => {
-//   // eslint-disable-next-line @typescript-eslint/naming-convention
-//   const { success, id, time }: RaceAll = await Promise.race(promises);
-
-//   if (!success) {
-//     const failedIndex = ids.findIndex((item) => item === id);
-//     const restPromises = [...promises.slice(0, failedIndex),
-//       ...promises.slice(failedIndex + 1, promises.length)];
-//     const restIds = [...ids.slice(0, failedIndex),
-//       ...ids.slice(failedIndex + 1, ids.length)];
-
-//     return raceAll(restPromises, restIds);
-//   }
-//   const raceObj: RaceAllReturn = {
-//     ...store.cars.find((car: { id: number; }) => car.id === id),
-//     time: +(time / 1000).toFixed(2),
-//   };
-//   return raceObj;
-// };
-
-// export const race = async (action: (id: number) => Promise<RaceAll>): Promise<RaceAll> => {
-//   const promises = store.cars.map(({ id }) => action(id));
-//   const winner = <RaceAction> await raceAll(promises, store.cars.map((car) => car.id));
-
-//   return winner;
-// };
 
 const models = [
   'Roadster',

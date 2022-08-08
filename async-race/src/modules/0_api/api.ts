@@ -1,10 +1,4 @@
-// import { GetCars } from "../utils/types";
-
 import {
-  // GetCarsType,
-  // GetWinnersType,
-  // GetWinnersCall,
-  // GetCarInterface,
   CreateCarInterface,
   UpdateCarInterface,
   Sort,
@@ -13,9 +7,6 @@ import {
   GetCarsReturn,
   GetWinners,
   CarInterface,
-  // Status,
-  // UpdateWinner,
-  // SaveWinner,
 } from '../utils/types';
 
 const url = 'http://127.0.0.1:3000';
