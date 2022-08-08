@@ -46,9 +46,9 @@ export const renderWinners = () => {
     const tdName = createHTMLElement('td');
     tdName.textContent = `${winner.car.name}`;
     const tdWins = createHTMLElement('td');
-    // tdWins.textContent = `${winner.wins}`;
+    tdWins.textContent = `${winner.wins}`;
     const tdTime = createHTMLElement('td');
-    // tdTime.textContent = `${winner.time}`;
+    tdTime.textContent = `${winner.time / 1000}`;
     tr.append(tdNum, tdCarColor, tdName, tdWins, tdTime);
     tbody.append(tr);
   });

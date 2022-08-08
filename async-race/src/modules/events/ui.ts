@@ -9,6 +9,9 @@ import { removeBtn } from './removeBtn';
 import { startDriving } from './startDriving';
 // import { race } from '../utils/utils';
 import store from '../utils/state';
+import { RaceAll } from '../utils/types';
+import { saveWinner } from '../0_api/api';
+// import { saveWinner } from '../0_api/api';
 // import { race } from '../utils/utils';
 // import { saveWinner } from '../0_api/api';
 
@@ -30,13 +33,18 @@ export const listen = () => {
       if (e.target.classList.contains('race-button')) {
         if (e.target instanceof HTMLButtonElement) {
           e.target.disabled = true;
-          const winner = store.cars.forEach(async (car) => startDriving(car.id));
-          console.log('winner: ', winner);
-          // await saveWinner(winner);
+          const arr: RaceAll[] = [];
+          store.cars.forEach(async (car) => {
+            const winner = await startDriving(car.id);
+            arr.push(winner);
+            arr.sort((a, b) => a.time - b.time);
+            await saveWinner(arr[0].id, arr[0].time);
+          });
+
           const message = document.getElementById('message');
           if (message) {
             // message.innerHTML = `${winner.name} went first ${winner.time}s!`;
-            message.classList.toggle('visible', true);
+            // message.classList.toggle('visible', true);
           }
           const resetBtn = document.getElementById('reset');
           if (resetBtn && resetBtn instanceof HTMLButtonElement) {
