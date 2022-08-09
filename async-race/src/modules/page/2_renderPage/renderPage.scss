@@ -46,7 +46,8 @@ padding: 0 30px;
 .race-button:disabled,
 .button:disabled {
   color: #fff;
-background-color: $btnDisabled;
+  background-color: $btnDisabled;
+  cursor:auto;
 }
 
 

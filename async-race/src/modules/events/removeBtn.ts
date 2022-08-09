@@ -1,6 +1,6 @@
 import { deleteCar, deleteWinner } from '../utils/api';
 import { renderGarage } from '../page/2.1_renderGarage/renderGarage';
-import { updateStateGarage } from './updateStateGarwge';
+import { updateStateGarage } from './updateStateGarage';
 
 export const removeBtn = () => {
   const garage = document.getElementById('garage');

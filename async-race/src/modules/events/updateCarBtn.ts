@@ -1,6 +1,6 @@
 import { getCar, upadateCar } from '../utils/api';
 import { renderGarage } from '../page/2.1_renderGarage/renderGarage';
-import { updateStateGarage } from './updateStateGarwge';
+import { updateStateGarage } from './updateStateGarage';
 
 let selectedCar: { name: string; color: string; id: number; } | null = null;
 

@@ -80,8 +80,7 @@ export const renderPage = () => {
   /** Cars in page */
   const garageDiv = createHTMLElement('div');
   garageDiv.id = 'garage';
-  const carsGarage = renderGarage(); // Вставляем машины
-  garageDiv.append(carsGarage); // Вставляем машины
+  garageDiv.append(renderGarage());
 
   /** Popup message */
   const messageDiv = createHTMLElement('div', 'message-wrapper');
@@ -92,8 +91,7 @@ export const renderPage = () => {
   const winnersViewDiv = createHTMLElement('div');
   winnersViewDiv.style.display = 'none';
   winnersViewDiv.id = 'winners-view';
-  const winnersView = renderWinners();
-  winnersViewDiv.append(winnersView);
+  winnersViewDiv.append(renderWinners());
 
   // /** Bottom buttons pagination */
   const paginationDiv = createHTMLElement('div', 'pagination');

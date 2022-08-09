@@ -46,8 +46,6 @@ export const upadateCar = async (id: number, body: UpdateCarInterface) => (await
 })).json();
 
 /** MOOVES */
-// eslint-disable-next-line max-len
-// export const startEngine = async (id: number) => (await fetch(`${engine}?id=${id}&status=started`)).json();
 export const startEngine = async (id: number) => (
   await fetch(
     `${engine}?id=${id}&status=started`,
@@ -70,24 +68,7 @@ export const driveCar = async (id: number) => {
   const response = await fetch(`${engine}?id=${id}&status=drive`, { method: 'PATCH' });
   if (response.status !== 200) return { success: false };
   return { ...(await response.json()) };
-  // const carsArr: GetCarsReturn = {
-  //   items: await response.json(),
-  //   count: response.headers.get('X-Total-Count'),
-  // };
-  // return carsArr;
 };
-
-// export const driveCar = async (id: number) => (
-//   await fetch(
-//     `${engine}?id=${id}&status=drive`,
-//     {
-//       method: 'PATCH',
-//     },
-//   )
-// ).json()
-//   .then(async (response) => (
-//     response.status !== 200 ? { success: false } : { ...(await response.json()) }
-//   ));
 
 /** SORTING */
 const getSortOrder = (sort: Sort, order: Order) => {

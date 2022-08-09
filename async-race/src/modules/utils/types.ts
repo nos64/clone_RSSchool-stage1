@@ -27,14 +27,6 @@ export interface GetCarsReturn {
   count: string | null,
 }
 
-// export type GetWinnersType = [
-//   {
-//     name: string,
-//     color: string,
-//     id: number,
-//   },
-// ];
-
 export interface GetWinners {
   id: number,
   wins: number,
@@ -55,26 +47,11 @@ export interface CreateCarInterface {
   color: string
 }
 
-// export interface StartStopCar {
-//   velocity: number,
-//   distance: number
-// }
-
 export interface CreateWinner {
   id: number,
   wins: number,
   time: number
 }
-
-// export interface UpdateWinner {
-//   wins: number,
-//   time: number
-// }
-
-export const sorter = {
-  byWins: 'wins',
-  byTime: 'time',
-};
 
 export interface RaceAll {
   success: boolean,
@@ -82,28 +59,4 @@ export interface RaceAll {
   time: number,
 }
 
-// export interface RaceAllReturn {
-//   time: number;
-//   name?: string | undefined;
-//   color?: string | undefined;
-//   id?: number | undefined;
-// }
-
-// export interface CarEngine {
-//   id: number,
-//   status: string
-// }
-
-// export interface Status {
-//   success: boolean
-// }
-
-// export interface Headers {
-//   'X-Total-Count': number
-// }
-
-// export interface RaceAction {
-//   success: boolean;
-//   id: number;
-//   time: number;
-// }
+export const maxColorRange = 16777215;

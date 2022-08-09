@@ -1,7 +1,7 @@
 import store from '../utils/state';
 import { renderGarage } from '../page/2.1_renderGarage/renderGarage';
 import { renderWinners } from '../page/2.2_renderWinners/renderWinners';
-import { updateStateGarage } from './updateStateGarwge';
+import { updateStateGarage } from './updateStateGarage';
 import { updateStateWinners } from './updateStateWinners';
 
 export const paginationBtns = () => {

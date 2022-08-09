@@ -60,11 +60,13 @@ margin-right: 10px;
 .start-engine-button:disabled {
   background-color: green;
   color: #fff;
+  cursor:auto;
 }
 
 .stop-engine-button:disabled {
   background-color: red;
   color: #fff;
+  cursor:auto;
 }
 
 .car {

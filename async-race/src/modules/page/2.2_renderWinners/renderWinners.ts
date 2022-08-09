@@ -1,6 +1,5 @@
 import './renderWinners.scss';
 import store from '../../utils/state';
-import { sorter } from '../../utils/types';
 import { createHTMLElement } from '../../utils/createHTMLElement';
 import { getCarImage } from '../renderCar/getCarImage';
 
@@ -22,13 +21,9 @@ export const renderWinners = () => {
   const thName = createHTMLElement('th');
   thName.textContent = 'Name';
   const tableBtnWins = createHTMLElement('th', 'table-button', 'table-wins');
-  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-  store.sortBy === sorter.byWins ? tableBtnWins.classList.add(`${store.sortOrder}`) : '';
   tableBtnWins.id = 'sort-by-wins';
   tableBtnWins.textContent = 'Wins';
   const tableBtnTime = createHTMLElement('th', 'table-button', 'table-wins');
-  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-  store.sortBy === sorter.byTime ? tableBtnTime.classList.add(`${store.sortOrder}`) : '';
   tableBtnTime.id = 'sort-by-time';
   tableBtnTime.textContent = 'Best time (seconds)';
 

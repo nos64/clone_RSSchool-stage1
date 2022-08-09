@@ -7,7 +7,7 @@ import { removeBtn } from './removeBtn';
 import { raceAll } from './raceAll';
 import { resetAll } from './resetAll';
 import { sortingWinnersBtns } from './sortingWinnersBtns';
-import { startStopDriving } from './startStopDriving';
+import { startStopDriving } from './startStopDrivingBtns';
 
 export const eventsListener = () => {
   createCarBtn();

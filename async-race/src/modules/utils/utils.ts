@@ -1,4 +1,5 @@
 import store from './state';
+import { maxColorRange } from './types';
 
 function getPositionAtCenter(element: HTMLElement) {
   const {
@@ -21,7 +22,7 @@ export function getDistanceBetweenElements(a: HTMLElement, b: HTMLElement) {
 
 export function animationCar(car: HTMLElement, distance: number, animationTime: number) {
   let start: number | null = null;
-  let state = 0;
+  let requestID = 0;
 
   function animation(timestamp: number | null) {
     if (!start) {
@@ -33,13 +34,13 @@ export function animationCar(car: HTMLElement, distance: number, animationTime: 
       car.style.transform = `translateX(${Math.min(passed, distance)}px)`;
 
       if (passed < distance) {
-        state = window.requestAnimationFrame(animation);
-        store.animation.id = state;
+        requestID = window.requestAnimationFrame(animation);
+        store.animation.id = requestID;
       }
     }
   }
-  state = window.requestAnimationFrame(animation);
-  return state;
+  requestID = window.requestAnimationFrame(animation);
+  return requestID;
 }
 
 const models = [
@@ -155,16 +156,11 @@ export const getRandomeName = () => {
 };
 
 const getRandomColor = () => {
-  const hexNum = '0123456789abcdef';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += hexNum[Math.floor(Math.random() * 16)];
-  }
-  return color;
+  const color = '#';
+  return color + Math.floor(Math.random() * maxColorRange).toString(16);
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const generateRandomCars = (count = 100) => new Array(count).fill(1).map((_) => (
+export const generateRandomCars = (count = 100) => new Array(count).fill(1).map(() => (
   {
     name: getRandomeName(),
     color: getRandomColor(),

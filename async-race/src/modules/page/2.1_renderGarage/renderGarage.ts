@@ -1,4 +1,3 @@
-import './renderGarage.scss';
 import { createHTMLElement } from '../../utils/createHTMLElement';
 import { renderCar } from '../renderCar/renderCar';
 import store from '../../utils/state';

@@ -37,7 +37,6 @@ export const renderCar = (data: CarInterface) => {
   car.id = `car-${data.id}`;
 
   car.innerHTML = `${getCarImage(data.color)}`;
-  // car.append(getCarImage(data.color));
 
   const flag = createHTMLElement('img', 'flag');
   if (flag instanceof HTMLImageElement) {
@@ -47,7 +46,6 @@ export const renderCar = (data: CarInterface) => {
 
   btnWrapper.append(selectBtn, removeBtn, nameSpan);
   controlPanel.append(startEngineBtn, stopEngineBtn);
-  // car.append(carImage);
   launchPad.append(controlPanel, car);
   road.append(launchPad, flag);
   carWrapper.append(btnWrapper, road);

@@ -1,6 +1,6 @@
 import store from '../utils/state';
 import { renderWinners } from '../page/2.2_renderWinners/renderWinners';
-import { updateStateGarage } from './updateStateGarwge';
+import { updateStateGarage } from './updateStateGarage';
 import { updateStateWinners } from './updateStateWinners';
 
 export const garageWinnersBtns = () => {
