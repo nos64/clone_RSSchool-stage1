@@ -14,10 +14,13 @@ function getPositionAtCenter(element: HTMLElement) {
   };
 }
 
-export function getDistanceBetweenElements(a: HTMLElement, b: HTMLElement) {
-  const aPosition = getPositionAtCenter(a);
-  const bPosition = getPositionAtCenter(b);
-  return Math.hypot(aPosition.x - bPosition.x, aPosition.y - bPosition.y);
+export function getDistanceBetweenElements(elementOne: HTMLElement, elementTwo: HTMLElement) {
+  const elementOnePosition = getPositionAtCenter(elementOne);
+  const elementTwoPosition = getPositionAtCenter(elementTwo);
+  return Math.hypot(
+    elementOnePosition.x - elementTwoPosition.x,
+    elementOnePosition.y - elementTwoPosition.y,
+  );
 }
 
 export function animationCar(car: HTMLElement, distance: number, animationTime: number) {
@@ -130,7 +133,7 @@ const names = [
   'Pontiac',
   'Porsche',
   'Renault',
-  'Å koda',
+  'Skoda',
   'Smart',
   'Subaru',
   'Suzuki',
