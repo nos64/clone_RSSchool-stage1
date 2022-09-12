@@ -103,3 +103,5 @@ export const names = [
   'Mazzanti',
   'Daewoo',
 ];
+
+export const maxColorRange = 16777215;

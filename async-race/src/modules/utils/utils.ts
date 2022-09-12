@@ -1,6 +1,5 @@
 import store from './state';
-import { maxColorRange } from './types';
-import { models, names } from './constants';
+import { models, names, maxColorRange } from './constants';
 
 function getPositionAtCenter(element: HTMLElement) {
   const {

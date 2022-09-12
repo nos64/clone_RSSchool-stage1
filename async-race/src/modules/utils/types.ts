@@ -59,4 +59,3 @@ export interface RaceAll {
   time: number,
 }
 
-export const maxColorRange = 16777215;
