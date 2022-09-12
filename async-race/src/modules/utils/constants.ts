@@ -1,3 +1,10 @@
+export const url = 'http://127.0.0.1:3000';
+
+export enum apiResponseStatus {
+  OK = 200,
+  NOTFOUND = 404,
+}
+
 export const models = [
   'Roadster',
   'S',

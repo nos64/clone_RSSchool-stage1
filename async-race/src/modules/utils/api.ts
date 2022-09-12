@@ -8,8 +8,8 @@ import {
   GetWinners,
   CarInterface,
 } from './types';
+import { url, apiResponseStatus } from './constants';
 
-const url = 'http://127.0.0.1:3000';
 const winners = `${url}/winners`;
 const garage = `${url}/garage`;
 const engine = `${url}/engine`;
@@ -66,7 +66,7 @@ export const stopEngine = async (id: number) => (
 
 export const driveCar = async (id: number) => {
   const response = await fetch(`${engine}?id=${id}&status=drive`, { method: 'PATCH' });
-  if (response.status !== 200) return { success: false };
+  if (response.status !== apiResponseStatus.OK) return { success: false };
   return { ...(await response.json()) };
 };
 
@@ -118,7 +118,7 @@ export const updateWinner = async (id: number, body: CreateWinner) => (await fet
 
 export const saveWinner = async (id: number, time: number) => {
   const winnerStatus = await getWinnerStatus(id);
-  if (winnerStatus === 404) {
+  if (winnerStatus === apiResponseStatus.NOTFOUND) {
     await createWinner({
       id,
       wins: 1,
