@@ -71,12 +71,7 @@ export const driveCar = async (id: number) => {
 };
 
 /** SORTING */
-const getSortOrder = (sort: Sort, order: Order) => {
-  if (sort && order) {
-    return `&_sort=${sort}&_order=${order}`;
-  }
-  return '';
-};
+const getSortOrder = (sort: Sort, order: Order) => `&_sort=${sort}&_order=${order}`;
 
 /** WINNER */
 export const getWinners = async (
