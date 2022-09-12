@@ -1,5 +1,6 @@
 import { getWinners } from '../utils/api';
 import store from '../utils/state';
+import { firstWinnersPage, limitLinesPerWinnersPage } from '../utils/constants';
 
 export const updateStateWinners = async () => {
   const nextBtn = document.getElementById('next');
@@ -10,12 +11,12 @@ export const updateStateWinners = async () => {
   store.winnersCount = count;
   if (store.winnersCount && nextBtn instanceof HTMLButtonElement
     && prevBtn instanceof HTMLButtonElement) {
-    if (store.winnersPage * 10 < +store.winnersCount) {
+    if (store.winnersPage * limitLinesPerWinnersPage < +store.winnersCount) {
       nextBtn.disabled = false;
     } else {
       nextBtn.disabled = true;
     }
-    if (store.winnersPage > 1) {
+    if (store.winnersPage > firstWinnersPage) {
       prevBtn.disabled = false;
     } else {
       prevBtn.disabled = true;

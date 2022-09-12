@@ -2,6 +2,7 @@ import './renderWinners.scss';
 import store from '../../utils/state';
 import { createHTMLElement } from '../../utils/createHTMLElement';
 import { getCarImage } from '../renderCar/getCarImage';
+import { miliSeconds } from '../../utils/constants';
 
 export const renderWinners = () => {
   const winnersWrapper = createHTMLElement('div', 'winners-wrapper');
@@ -39,7 +40,7 @@ export const renderWinners = () => {
     const tdWins = createHTMLElement('td');
     tdWins.textContent = `${winner.wins}`;
     const tdTime = createHTMLElement('td');
-    tdTime.textContent = `${(winner.time / 1000).toFixed(2)}`;
+    tdTime.textContent = `${(winner.time / miliSeconds).toFixed(2)}`;
     tr.append(tdNum, tdCarColor, tdName, tdWins, tdTime);
     tbody.append(tr);
   });

@@ -5,6 +5,10 @@ export enum apiResponseStatus {
   NOTFOUND = 404,
 }
 
+export const limitLinesPerWinnersPage = 10;
+
+export const limitCarsPerGaragePage = 7;
+
 export const models = [
   'Roadster',
   'S',
@@ -112,3 +116,9 @@ export const names = [
 ];
 
 export const maxColorRange = 16777215;
+
+export const miliSeconds = 1000;
+
+export const countGenerateRandomCars = 100;
+
+export const firstWinnersPage = 1;

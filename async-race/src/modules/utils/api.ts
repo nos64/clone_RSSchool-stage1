@@ -8,14 +8,16 @@ import {
   GetWinners,
   CarInterface,
 } from './types';
-import { url, apiResponseStatus } from './constants';
+import {
+  url, apiResponseStatus, limitLinesPerWinnersPage, limitCarsPerGaragePage,
+} from './constants';
 
 const winners = `${url}/winners`;
 const garage = `${url}/garage`;
 const engine = `${url}/engine`;
 
 /** CARS */
-export const getCars = async (page: number, limit = 7) => {
+export const getCars = async (page: number, limit = limitCarsPerGaragePage) => {
   const response = await fetch(`${garage}?_page=${page}&_limit=${limit}`);
   const carsArr: GetCarsReturn = {
     items: await response.json(),
@@ -78,7 +80,7 @@ export const getWinners = async (
   page: number,
   sort: Sort,
   order: Order,
-  limit = 10,
+  limit = limitLinesPerWinnersPage,
 ) => {
   const response = await fetch(`${winners}?_page=${page}&_limit=${limit}${getSortOrder(sort, order)}`);
   const items: GetWinners[] = await response.json();

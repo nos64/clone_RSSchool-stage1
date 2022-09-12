@@ -1,5 +1,7 @@
 import store from './state';
-import { models, names, maxColorRange } from './constants';
+import {
+  models, names, maxColorRange, countGenerateRandomCars,
+} from './constants';
 
 function getPositionAtCenter(element: HTMLElement) {
   const {
@@ -55,7 +57,8 @@ export const getRandomeName = () => {
 
 const getRandomColor = () => `#${Math.floor(Math.random() * maxColorRange).toString(16)}`;
 
-export const generateRandomCars = (count = 100) => new Array(count).fill(1).map(() => (
+// eslint-disable-next-line max-len
+export const generateRandomCars = (count = countGenerateRandomCars) => new Array(count).fill(1).map(() => (
   {
     name: getRandomeName(),
     color: getRandomColor(),
