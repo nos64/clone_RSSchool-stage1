@@ -58,4 +58,3 @@ export interface RaceAll {
   id: number,
   time: number,
 }
-

@@ -53,10 +53,7 @@ export const getRandomeName = () => {
   return `${model} ${name}`;
 };
 
-const getRandomColor = () => {
-  const color = '#';
-  return color + Math.floor(Math.random() * maxColorRange).toString(16);
-};
+const getRandomColor = () => `#${Math.floor(Math.random() * maxColorRange).toString(16)}`;
 
 export const generateRandomCars = (count = 100) => new Array(count).fill(1).map(() => (
   {
