@@ -1,5 +1,6 @@
 import { getCars } from '../utils/api';
 import store from '../utils/state';
+import { limitCarsPerGaragePage, firstGaragePage } from '../utils/constants';
 
 export const updateStateGarage = async () => {
   const prevBtn = document.getElementById('prev');
@@ -10,15 +11,8 @@ export const updateStateGarage = async () => {
 
   if (store.carsCount && prevBtn instanceof HTMLButtonElement
       && nextBtn instanceof HTMLButtonElement) {
-    if (store.carsPage * 7 < +store.carsCount) {
-      nextBtn.disabled = false;
-    } else {
-      nextBtn.disabled = true;
-    }
-    if (store.carsPage > 1) {
-      prevBtn.disabled = false;
-    } else {
-      prevBtn.disabled = true;
-    }
+    nextBtn.disabled = !(store.winnersPage * limitCarsPerGaragePage < +store.carsCount);
+
+    prevBtn.disabled = !(store.carsPage > firstGaragePage);
   }
 };

@@ -11,15 +11,8 @@ export const updateStateWinners = async () => {
   store.winnersCount = count;
   if (store.winnersCount && nextBtn instanceof HTMLButtonElement
     && prevBtn instanceof HTMLButtonElement) {
-    if (store.winnersPage * limitLinesPerWinnersPage < +store.winnersCount) {
-      nextBtn.disabled = false;
-    } else {
-      nextBtn.disabled = true;
-    }
-    if (store.winnersPage > firstWinnersPage) {
-      prevBtn.disabled = false;
-    } else {
-      prevBtn.disabled = true;
-    }
+    nextBtn.disabled = !(store.winnersPage * limitLinesPerWinnersPage < +store.winnersCount);
+
+    prevBtn.disabled = !(store.winnersPage > firstWinnersPage);
   }
 };
