@@ -9,11 +9,11 @@ export const renderCar = (data: CarInterface) => {
 
   const btnWrapper = createHTMLElement('div', 'car-buttuns-wrapper');
 
-  const selectBtn = createHTMLElement('button', 'button', 'select-button');
+  const selectBtn = createHTMLElement('button', ['button', 'select-button']);
   selectBtn.textContent = 'Select';
   selectBtn.id = `select-car-${data.id}`;
 
-  const removeBtn = createHTMLElement('button', 'button', 'remove-button');
+  const removeBtn = createHTMLElement('button', ['button', 'remove-button']);
   removeBtn.textContent = 'Remove';
   removeBtn.id = `remove-car-${data.id}`;
 
@@ -23,11 +23,11 @@ export const renderCar = (data: CarInterface) => {
   const road = createHTMLElement('div', 'road');
   const launchPad = createHTMLElement('div', 'launch-pad');
   const controlPanel = createHTMLElement('div', 'control-panel');
-  const startEngineBtn = createHTMLElement('button', 'icon', 'start-engine-button');
+  const startEngineBtn = createHTMLElement('button', ['icon', 'start-engine-button']);
   startEngineBtn.id = `start-engine-car-${data.id}`;
 
   startEngineBtn.textContent = 'Start';
-  const stopEngineBtn = createHTMLElement('button', 'icon', 'stop-engine-button');
+  const stopEngineBtn = createHTMLElement('button', ['icon', 'stop-engine-button']);
   stopEngineBtn.id = `stop-engine-car-${data.id}`;
   if (stopEngineBtn instanceof HTMLButtonElement) {
     stopEngineBtn.disabled = true;

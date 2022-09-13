@@ -7,10 +7,10 @@ export const renderPage = () => {
   const wrapper = createHTMLElement('div', 'wrapper');
   /** Top Buttons */
   const menuDiv = createHTMLElement('div', 'menu');
-  const toGarageBtn = createHTMLElement('button', 'button', 'garage-menu-button', 'view-active');
+  const toGarageBtn = createHTMLElement('button', ['button', 'garage-menu-button', 'view-active']);
   toGarageBtn.textContent = 'To garage';
   toGarageBtn.id = 'garage-menu';
-  const toWinnersBtn = createHTMLElement('button', 'button', 'winners-menu-button');
+  const toWinnersBtn = createHTMLElement('button', ['button', 'winners-menu-button']);
   toWinnersBtn.textContent = 'To winners';
   toWinnersBtn.id = 'winners-menu';
 
@@ -34,7 +34,7 @@ export const renderPage = () => {
     inputColor.type = 'color';
     inputColor.value = '#ffffff';
   }
-  const createBtn = createHTMLElement('button', 'button', 'form-button');
+  const createBtn = createHTMLElement('button', ['button', 'form-button']);
   createBtn.textContent = 'Create';
   if (createBtn instanceof HTMLButtonElement) {
     createBtn.type = 'submit';
@@ -57,7 +57,7 @@ export const renderPage = () => {
     inputColorUpdate.value = '#ffffff';
     inputColorUpdate.disabled = true;
   }
-  const updateBtn = createHTMLElement('button', 'button', 'form-button', 'update-submit');
+  const updateBtn = createHTMLElement('button', ['button', 'form-button', 'update-submit']);
   updateBtn.textContent = 'Update';
   updateBtn.id = 'update-submit';
   if (updateBtn instanceof HTMLButtonElement) {

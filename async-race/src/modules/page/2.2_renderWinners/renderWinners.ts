@@ -21,10 +21,10 @@ export const renderWinners = () => {
   thCar.textContent = 'Car';
   const thName = createHTMLElement('th');
   thName.textContent = 'Name';
-  const tableBtnWins = createHTMLElement('th', 'table-button', 'table-wins');
+  const tableBtnWins = createHTMLElement('th', ['table-button', 'table-wins']);
   tableBtnWins.id = 'sort-by-wins';
   tableBtnWins.textContent = 'Wins';
-  const tableBtnTime = createHTMLElement('th', 'table-button', 'table-wins');
+  const tableBtnTime = createHTMLElement('th', ['table-button', 'table-wins']);
   tableBtnTime.id = 'sort-by-time';
   tableBtnTime.textContent = 'Best time (seconds)';
 
