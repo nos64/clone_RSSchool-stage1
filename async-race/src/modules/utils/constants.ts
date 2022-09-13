@@ -124,3 +124,5 @@ export const countGenerateRandomCars = 100;
 export const firstWinnersPage = 1;
 
 export const firstGaragePage = 1;
+
+export const distanceOnFlag = 50;

@@ -2,6 +2,7 @@ import { saveWinner } from '../utils/api';
 import store from '../utils/state';
 import { RaceAll } from '../utils/types';
 import { startDriving } from './startDriving';
+import { miliSeconds } from '../utils/constants';
 
 export const raceAll = () => {
   document.body.addEventListener('click', async (e) => {
@@ -25,7 +26,7 @@ export const raceAll = () => {
                 // eslint-disable-next-line array-callback-return
                 store.cars.find((item) => {
                   if (item.id === arr[0].id) {
-                    message.innerHTML = `${item.name} went first ${arr[0].time / 1000} s!`;
+                    message.innerHTML = `${item.name} went first ${arr[0].time / miliSeconds} s!`;
                   }
                 });
               }

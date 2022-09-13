@@ -2,6 +2,7 @@ import store from '../utils/state';
 import { driveCar, startEngine } from '../utils/api';
 import { RaceAll } from '../utils/types';
 import { animationCar, getDistanceBetweenElements } from '../utils/utils';
+import { distanceOnFlag } from '../utils/constants';
 
 export const startDriving = async (id: number) => {
   const startButton: HTMLElement | null = document.getElementById(`start-engine-car-${id}`);
@@ -20,7 +21,9 @@ export const startDriving = async (id: number) => {
   const car: HTMLElement | null = document.getElementById(`car-${id}`);
   const flag: HTMLElement | null = document.getElementById(`flag-${id}`);
   if (car !== null && flag !== null) {
-    const distanceBetweenElements = Math.floor(getDistanceBetweenElements(car, flag)) + 50;
+    const distanceBetweenElements = Math.floor(
+      getDistanceBetweenElements(car, flag),
+    ) + distanceOnFlag;
     animationCar(car, distanceBetweenElements, time);
   }
   const { success } = await driveCar(id);
