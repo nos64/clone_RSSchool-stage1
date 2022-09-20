@@ -12,3 +12,11 @@ Previously development of this application has been started by some belarusian d
 We have found in the latest news that a new company called "The Fast and the Furious" announced about releasing a new product that will really blow people's minds. There is no a lot of info about this product. All we know it's about "easier cars' management that you can imagine". It's exactly our thiefs :suspect:. They're going to release their product in two weeks. But we can't allow them to do that. We must be first.
 
 What are you waiting for? Let's coding!
+
+Setup and Running
+Use node 14.x or higher.
+Clone this repo: $ git clone https://github.com/mikhama/async-race-api.git.
+Go to downloaded folder: $ cd async-race-api.
+Install dependencies: $ npm install.
+Start server: $ npm start.
+Now you can send requests to the address: http://127.0.0.1:3000.
